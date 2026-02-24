@@ -1,49 +1,34 @@
-# Exercise 2 & 3 — Mario
+# Exercise 1 — Hello, It's Me
 
 ## Goal
-Print a text pyramid (or double pyramid) of `#` symbols.
+Prompt the user for their name and greet them by name.
 
 ## Key Concepts
-- `do-while` loops for input validation
-- Nested `for` loops
-- Integer division and modulo
+- `#include` directives
+- `string` type (CS50 library)
+- `get_string()` — reads a line of text from the user
+- `printf()` — prints formatted output
+- `%s` format specifier for strings
 
-## Hint: Think in rows and columns
-
-For a pyramid of height **4**, row-by-row:
-
-| Row | Spaces | Hashes |
-|-----|--------|--------|
-| 1   | 3      | 1      |
-| 2   | 2      | 2      |
-| 3   | 1      | 3      |
-| 4   | 0      | 4      |
-
-Notice: `spaces = height - row`, `hashes = row`
+## Steps
+1. Include `<cs50.h>` and `<stdio.h>`
+2. Declare a `string` variable
+3. Assign it the result of `get_string("What is your name? ")`
+4. Use `printf("hello, %s\n", name)` to print the greeting
 
 ## Expected Behavior
 ```
-$ ./mario
-Height: 0
-Height: 9
-Height: 4
-   #
-  ##
- ###
-####
-```
+$ ./hello
+What is your name? Alice
+hello, Alice
 
-## Double pyramid (more comfortable)
-```
-$ ./mario_more
-Height: 3
-  #  #
- ##  ##
-###  ###
+$ ./hello
+What is your name? Bob
+hello, Bob
 ```
 
 ## Check
 ```bash
-check50 cs50/problems/2024/x/mario/less
-check50 cs50/problems/2024/x/mario/more
+check50 cs50/problems/2024/x/hello
+style50 hello.c
 ```
