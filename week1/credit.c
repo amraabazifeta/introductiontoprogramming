@@ -1,16 +1,11 @@
-// credit.c
 #include <cs50.h>
 #include <stdio.h>
 
 int main(void)
 {
-    // Kart numarasını al
     long number = get_long("Number: ");
     long temp = number;
 
-    // ---------------------------
-    // STEP 1: Basamak sayısı
-    // ---------------------------
     int length = 0;
     while (temp > 0)
     {
@@ -18,9 +13,6 @@ int main(void)
         length++;
     }
 
-    // ---------------------------
-    // STEP 2: Luhn Algorithm
-    // ---------------------------
     int sum_doubled = 0;
     int sum_rest = 0;
 
@@ -54,18 +46,12 @@ int main(void)
 
     int total = sum_doubled + sum_rest;
 
-    // ---------------------------
-    // STEP 3: Geçerli mi?
-    // ---------------------------
     if (total % 10 != 0)
     {
         printf("INVALID\n");
         return 0;
     }
 
-    // ---------------------------
-    // STEP 4: Kart türü
-    // ---------------------------
     temp = number;
     while (temp >= 100)
     {
@@ -92,3 +78,4 @@ int main(void)
         printf("INVALID\n");
     }
 }
+
