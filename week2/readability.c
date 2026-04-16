@@ -17,7 +17,7 @@ int main(void)
         {
             letters++;
         }
-if (text[i] == ' ')
+        if (text[i] == ' ')
 
         {
             words++;
