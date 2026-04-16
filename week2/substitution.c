@@ -1,68 +1,89 @@
 #include <cs50.h>
-#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
-bool is_valid_key(string key);
+#define MAX 9
+
+typedef struct
+{
+    string name;
+    int votes;
+}
+candidate;
+
+candidate candidates[MAX];
+int candidate_count;
+
+bool vote(string name);
+void print_winner(void);
 
 int main(int argc, string argv[])
 {
-    if (argc != 2 || !is_valid_key(argv[1]))
+    if (argc < 2)
     {
-        printf("Usage: ./substitution key\n");
+        printf("Usage: plurality [candidate ...]\n");
         return 1;
     }
 
-    string plaintext = get_string("plaintext: ");
-    printf("ciphertext: ");
-
-    for (int i = 0; i < strlen(plaintext); i++)
+    candidate_count = argc - 1;
+    if (candidate_count > MAX)
     {
-        if (isupper(plaintext[i]))
+        printf("Maximum number of candidates is %i\n", MAX);
+        return 2;
+    }
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        candidates[i].name = argv[i + 1];
+        candidates[i].votes = 0;
+    }
+
+    int voter_count = get_int("Number of voters: ");
+
+    for (int i = 0; i < voter_count; i++)
+    {
+        string name = get_string("Vote: ");
+
+        if (!vote(name))
         {
-            int index = plaintext[i] - 'A';
-            printf("%c", toupper(argv[1][index]));
-        }
-        else if (islower(plaintext[i]))
-        {
-            int index = plaintext[i] - 'a';
-            printf("%c", tolower(argv[1][index]));
-        }
-        else
-        {
-            printf("%c", plaintext[i]);
+            printf("Invalid vote.\n");
         }
     }
 
-    printf("\n");
-    return 0;
+    print_winner();
 }
 
-bool is_valid_key(string key)
+bool vote(string name)
 {
-    if (strlen(key) != 26)
+    for (int i = 0; i < candidate_count; i++)
     {
-        return false;
+        if (strcmp(name, candidates[i].name) == 0)
+        {
+            candidates[i].votes++;
+            return true;
+        }
     }
 
-    bool seen[26] = {false};
+    return false;
+}
 
-    for (int i = 0; i < 26; i++)
+void print_winner(void)
+{
+    int max_votes = 0;
+
+    for (int i = 0; i < candidate_count; i++)
     {
-        if (!isalpha(key[i]))
+        if (candidates[i].votes > max_votes)
         {
-            return false;
+            max_votes = candidates[i].votes;
         }
-
-        int index = tolower(key[i]) - 'a';
-
-        if (seen[index])
-        {
-            return false;
-        }
-
-        seen[index] = true;
     }
 
-    return true;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == max_votes)
+        {
+            printf("%s\n", candidates[i].name);
+        }
+    }
 }
