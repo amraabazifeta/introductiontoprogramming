@@ -33,7 +33,9 @@ int main(void)
     float S = ((float) sentences / words) * 100;
 
     float index = 0.0588 * L - 0.296 * S - 15.8;
-
+printf("letters: %i\n", letters);
+printf("words: %i\n", words);
+printf("sentences: %i\n", sentences);
     if (index < 1)
     {
         printf("Before Grade 1\n");
