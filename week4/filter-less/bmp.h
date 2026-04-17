@@ -17,8 +17,7 @@ typedef struct
     WORD   bfReserved1;
     WORD   bfReserved2;
     DWORD  bfOffBits;    // offset to pixel data
-} __attribute__((__packed__))
-BITMAPFILEHEADER;
+} __attribute__((__packed__)) BITMAPFILEHEADER;
 
 // BMP info header (next 40 bytes)
 typedef struct
@@ -34,8 +33,7 @@ typedef struct
     LONG   biYPelsPerMeter;
     DWORD  biClrUsed;
     DWORD  biClrImportant;
-} __attribute__((__packed__))
-BITMAPINFOHEADER;
+} __attribute__((__packed__)) BITMAPINFOHEADER;
 
 // One RGB pixel (3 bytes: Blue, Green, Red)
 typedef struct
@@ -43,5 +41,4 @@ typedef struct
     BYTE  rgbtBlue;
     BYTE  rgbtGreen;
     BYTE  rgbtRed;
-} __attribute__((__packed__))
-RGBTRIPLE;
+} __attribute__((__packed__)) RGBTRIPLE;
