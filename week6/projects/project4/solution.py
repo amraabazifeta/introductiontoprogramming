@@ -1,17 +1,29 @@
 # Project 4 — Word Counter
 # Author: your name here
+# Branch: firstname-project4
 
 sentence = input("Enter a sentence: ")
-words = sentence.lower().split()
 
-# TODO: total word count using len()
+cleaned = ""
+for ch in sentence:
+    if ch.isalnum() or ch.isspace():
+        cleaned += ch
 
-# TODO: character count (no spaces)
-# Hint: sentence.replace(" ", "") removes all spaces, then use len()
+words = cleaned.lower().split()
 
-# TODO: word frequency dictionary
-# frequency = {}
-# for word in words:
-#     ...
+total_words = len(words)
+total_characters = len(cleaned.replace(" ", ""))
 
-# TODO: print total words, total characters, then word frequency
+frequency = {}
+for word in words:
+    if word in frequency:
+        frequency[word] += 1
+    else:
+        frequency[word] = 1
+
+print(f"Total words: {total_words}")
+print(f"Total characters (no spaces): {total_characters}")
+print("Word frequency:")
+
+for word, count in sorted(frequency.items(), key=lambda x: x[1], reverse=True):
+    print(f"  {word}  -> {count}")
