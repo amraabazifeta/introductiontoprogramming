@@ -4,6 +4,7 @@
 
 scores = []
 
+# notları al
 for i in range(5):
     score = float(input(f"Enter score {i + 1}: "))
     scores.append(score)
@@ -23,11 +24,13 @@ elif average >= 60:
 else:
     grade = "F"
 
-# bonus (en yüksek / en düşük)
+# en yüksek / en düşük
 highest = max(scores)
 lowest = min(scores)
 
-# sonuç yazdır
+# 🔥 NOTLARI DA YAZDIR
+print("\n--- RESULTS ---")
+print(f"Scores entered: {scores}")
 print(f"Average: {round(average, 2)}")
 print(f"Grade: {grade}")
 print(f"Highest score: {highest}")
