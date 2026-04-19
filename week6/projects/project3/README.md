@@ -1,51 +1,6 @@
-# 🟡 Project 3 — Grade Calculator
-
-**Difficulty:** Medium | **Concepts:** for loop · Lists · Conditions · sum()
-
----
-
-## 📋 Problem
-
-Ask the user to enter **5 subject scores** (0–100). Calculate the average and print the letter grade.
-
-| Average | Grade |
-|---|---|
-| >= 90 | A |
-| >= 80 | B |
-| >= 70 | C |
-| >= 60 | D |
-| < 60  | F |
-
----
-
-## 📥 Expected Input / Output
-
-```
-Enter score 1: 85
-Enter score 2: 92
-Enter score 3: 78
-Enter score 4: 90
-Enter score 5: 88
-Average: 86.6
-Grade: B
-```
-
----
-
-## 💬 Group Discussion Questions
-
-1. How do you collect 5 inputs without writing 5 separate lines? (Hint: loop + list)
-2. What does `scores.append(score)` do?
-3. What's the difference between `sum(scores) / len(scores)` and writing your own loop?
-4. How do you chain multiple conditions using `elif`?
-
----
-
-## 💻 Starter Code
-
-```python
 # Project 3 — Grade Calculator
 # Author: your name here
+# Branch: firstname-project3
 
 scores = []
 
@@ -53,18 +8,27 @@ for i in range(5):
     score = float(input(f"Enter score {i + 1}: "))
     scores.append(score)
 
-# TODO: calculate the average
-# average = ...
+# average hesapla
+average = sum(scores) / len(scores)
 
-# TODO: determine the grade using if/elif/else
-# if average >= 90: ...
+# grade belirle
+if average >= 90:
+    grade = "A"
+elif average >= 80:
+    grade = "B"
+elif average >= 70:
+    grade = "C"
+elif average >= 60:
+    grade = "D"
+else:
+    grade = "F"
 
-# TODO: print the result
-```
+# bonus (en yüksek / en düşük)
+highest = max(scores)
+lowest = min(scores)
 
----
-
-## ⭐ Bonus Challenge
-
-- Show the highest and lowest score.
-- Allow any number of subjects (ask the user how many before the loop).
+# sonuç yazdır
+print(f"Average: {round(average, 2)}")
+print(f"Grade: {grade}")
+print(f"Highest score: {highest}")
+print(f"Lowest score: {lowest}")
