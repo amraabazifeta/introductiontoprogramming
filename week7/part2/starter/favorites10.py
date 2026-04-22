@@ -18,7 +18,15 @@ from cs50 import SQL
 db = SQL("sqlite:///favorites.db")
 
 # TODO: Ask the user for their favourite problem using input()
+favorite = input("Favorite: ")
+
 # TODO: Execute a SQL query: SELECT COUNT(*) AS n FROM favorites WHERE problem = ?
 #       Pass the user's input as the second argument to db.execute()
+# Store the result in a variable (this returns a list of dictionaries)
+rows = db.execute("SELECT COUNT(*) AS n FROM favorites WHERE problem = ?", favorite)
+
 # TODO: Get the first (and only) row from the result
+row = rows[0]
+
 # TODO: Print row["n"]
+print(row["n"])
