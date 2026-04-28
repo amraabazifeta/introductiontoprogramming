@@ -91,20 +91,20 @@ person *create_family(int generations)
     if (generations > 1)
     {
         // TODO: recursively create two parents
-        // p->parents[0] = create_family(generations - 1);
-        // p->parents[1] = create_family(generations - 1);
+        p->parents[0] = create_family(generations - 1);
+        p->parents[1] = create_family(generations - 1);
 
         // TODO: randomly inherit one allele from each parent
-        // p->alleles[0] = p->parents[0]->alleles[rand() % 2];
-        // p->alleles[1] = p->parents[1]->alleles[rand() % 2];
+        p->alleles[0] = p->parents[0]->alleles[rand() % 2];
+        p->alleles[1] = p->parents[1]->alleles[rand() % 2];
     }
     else
     {
         // TODO: oldest generation — no parents, random alleles
-        // p->parents[0] = NULL;
-        // p->parents[1] = NULL;
-        // p->alleles[0] = random_allele();
-        // p->alleles[1] = random_allele();
+        p->parents[0] = NULL;
+        p->parents[1] = NULL;
+        p->alleles[0] = random_allele();
+        p->alleles[1] = random_allele();
     }
 
     return p;
@@ -135,8 +135,11 @@ void free_family(person *p)
     }
 
     // TODO: recursively free both parents first
+    free_family(p->parents[0]);
+    free_family(p->parents[1]);
 
     // TODO: then free this person
+    free(p);
 }
 
 // ---------------------------------------------------------------------------
