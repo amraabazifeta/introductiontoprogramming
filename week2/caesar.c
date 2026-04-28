@@ -1,111 +1,77 @@
-// caesar.c
-// CS50x - Week 2, Problem Set 2
-//
-// Exercise: Caesar Cipher
-// ------------------------
-// Encrypt a message by rotating each letter forward in the alphabet
-// by a numeric key given as a command-line argument.
-//
-//   Example (key = 3):  A→D, B→E, Z→C (wraps around)
-//   "hello" → "khoor"
-//
-// Usage:
-//   ./caesar KEY       (KEY must be a non-negative integer)
-//   ./caesar           → prints usage error
-//   ./caesar abc       → prints usage error
-//
-// How to compile:  make caesar
-// How to run:      ./caesar 13
-// How to check:    check50 cs50/problems/2024/x/caesar
-
-#include <cs50.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
-// Function prototypes
-bool only_digits(string s);
+// Fonksiyon prototipleri
+bool only_digits(char *s);
 char rotate(char c, int n);
 
-int main(int argc, string argv[])
+int main(int argc, char *argv[])
 {
-    // ---------------------------------------------------------------------------
-    // STEP 1: Validate command-line arguments
-    // ---------------------------------------------------------------------------
-    // The program must be called with exactly one argument: ./caesar KEY
-    // If argc != 2, OR if the key is not all digits, print the usage message
-    // and return 1 (indicating an error).
-    //
-    // TODO: Check that argc == 2
-    // TODO: Check that argv[1] contains only digit characters using only_digits()
-    // If either check fails:
-    //   printf("Usage: ./caesar key\n");
-    //   return 1;
+    // ADIM 1: Komut satırı argümanlarını doğrula
+    // Kullanım: ./caesar key (argc tam olarak 2 olmalı)
+    if (argc != 2 || !only_digits(argv[1]))
+    {
+        printf("Usage: ./caesar key\n");
+        return 1;
+    }
 
+    // ADIM 2: Anahtarı (key) string'den int'e çevir
+    int key = atoi(argv[1]);
 
-    // ---------------------------------------------------------------------------
-    // STEP 2: Convert the key from string to int
-    // ---------------------------------------------------------------------------
-    // TODO: Use atoi() to convert argv[1] to an integer.
-    //   int key = atoi(argv[1]);
+    // ADIM 3: Kullanıcıdan düz metni (plaintext) al
+    char plaintext[500];
+    printf("plaintext:  ");
+    fgets(plaintext, sizeof(plaintext), stdin);
 
+    // ADIM 4: Şifreli metni hesapla ve yazdır
+    printf("ciphertext: ");
 
-    // ---------------------------------------------------------------------------
-    // STEP 3: Get the plaintext from the user
-    // ---------------------------------------------------------------------------
-    // TODO: Use get_string() to prompt for plaintext.
-    //   string plaintext = get_string("plaintext:  ");
+    for (int i = 0, n = strlen(plaintext); i < n; i++)
+    {
+        // Her karakteri anahtar kadar döndür ve yazdır
+        // Not: fgets satır sonundaki '\n' karakterini de alır, rotate bunu korur.
+        printf("%c", rotate(plaintext[i], key));
+    }
 
+    // Eğer fgets ile gelen satır sonu karakteri yoksa yeni satır ekle
+    if (plaintext[strlen(plaintext) - 1] != '\n')
+    {
+        printf("\n");
+    }
 
-    // ---------------------------------------------------------------------------
-    // STEP 4: Encrypt and print the ciphertext
-    // ---------------------------------------------------------------------------
-    // TODO: Loop through each character of plaintext.
-    //       Call rotate(c, key) for each character to get the encrypted version.
-    //       Print each encrypted character WITHOUT a newline inside the loop.
-    //
-    // After the loop, print a newline:
-    //   printf("\n");
-    //
-    // The output should start with "ciphertext: " (with a trailing space):
-    //   printf("ciphertext: ");
-
+    return 0;
 }
 
-// ---------------------------------------------------------------------------
-// TODO: Implement only_digits
-// ---------------------------------------------------------------------------
-// Return true if every character in s is a digit (0-9), false otherwise.
-// Hint: use isdigit() from <ctype.h>
-// ---------------------------------------------------------------------------
-bool only_digits(string s)
+// Argümanın sadece rakamlardan oluşup oluşmadığını kontrol eder
+bool only_digits(char *s)
 {
-    // TODO: Loop through each character of s
-    // TODO: If any character is NOT a digit, return false
-    // TODO: If all characters are digits, return true
-
-    return true; // placeholder — replace this
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (!isdigit(s[i]))
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
-// ---------------------------------------------------------------------------
-// TODO: Implement rotate
-// ---------------------------------------------------------------------------
-// Rotate character c forward by n positions in the alphabet.
-// Preserve case: uppercase stays uppercase, lowercase stays lowercase.
-// Non-letter characters are returned UNCHANGED.
-//
-// The math (for uppercase):
-//   char encrypted = (c - 'A' + n) % 26 + 'A';
-//
-// The math (for lowercase):
-//   char encrypted = (c - 'a' + n) % 26 + 'a';
-// ---------------------------------------------------------------------------
+// Karakteri n pozisyon kadar ileri kaydırır
 char rotate(char c, int n)
 {
-    // TODO: If c is uppercase, rotate it and return the result
-    // TODO: If c is lowercase, rotate it and return the result
-    // TODO: If c is not a letter, return c unchanged
-
-    return c; // placeholder — replace this
+    if (isupper(c))
+    {
+        // Büyük harf: (Alfabetik sıra + anahtar) % 26 + 'A' başlangıcı
+        return (c - 'A' + n) % 26 + 'A';
+    }
+    else if (islower(c))
+    {
+        // Küçük harf: (Alfabetik sıra + anahtar) % 26 + 'a' başlangıcı
+        return (c - 'a' + n) % 26 + 'a';
+    }
+    
+    // Harf değilse (boşluk, nokta vb.) olduğu gibi döndür
+    return c;
 }
