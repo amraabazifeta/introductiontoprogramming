@@ -26,5 +26,8 @@ db = SQL("sqlite:///favorites.db")
 #   - GROUPs BY language
 #   - ORDERs BY n DESC
 # Store the result in a variable called 'rows'
+rows = db.execute("SELECT language, COUNT(*) AS n FROM favorites GROUP BY language ORDER BY n DESC")
 
 # TODO: Loop over rows and print row["language"] and row["n"]
+for row in rows:
+    print(f"{row['language']} {row['n']}")

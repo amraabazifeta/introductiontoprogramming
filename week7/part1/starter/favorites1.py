@@ -12,5 +12,7 @@ with open("favorites.csv", "r") as file:
     next(reader)
     for row in reader:
         # TODO: Store row[1] in a variable called 'favorite'
+        favorite = row[1]
+        
         # TODO: Print favorite
-        pass
+        print(favorite)

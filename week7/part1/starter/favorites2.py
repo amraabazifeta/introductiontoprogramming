@@ -11,5 +11,8 @@ import csv
 
 with open("favorites.csv", "r") as file:
     # TODO: Create a csv.DictReader (not csv.reader)
+    reader = csv.DictReader(file)
+    
     # TODO: Loop over rows and print row["language"]
-    pass
+    for row in reader:
+        print(row["language"])
