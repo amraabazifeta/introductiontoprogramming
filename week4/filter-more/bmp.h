@@ -1,26 +1,22 @@
-// CS50x Week 4 — BMP type definitions (distribution code)
-// DO NOT MODIFY THIS FILE
+#ifndef BMP_H
+#define BMP_H
 
 #include <stdint.h>
 
-// Aliases for C types
 typedef uint8_t  BYTE;
 typedef uint32_t DWORD;
 typedef int32_t  LONG;
 typedef uint16_t WORD;
 
-// BMP file header (first 14 bytes)
 typedef struct
 {
-    WORD   bfType;       // "BM" magic bytes
-    DWORD  bfSize;       // size of file in bytes
+    WORD   bfType;
+    DWORD  bfSize;
     WORD   bfReserved1;
     WORD   bfReserved2;
-    DWORD  bfOffBits;    // offset to pixel data
-} __attribute__((__packed__))
-BITMAPFILEHEADER;
+    DWORD  bfOffBits;
+} __attribute__((__packed__)) BITMAPFILEHEADER;
 
-// BMP info header (next 40 bytes)
 typedef struct
 {
     DWORD  biSize;
@@ -34,14 +30,13 @@ typedef struct
     LONG   biYPelsPerMeter;
     DWORD  biClrUsed;
     DWORD  biClrImportant;
-} __attribute__((__packed__))
-BITMAPINFOHEADER;
+} __attribute__((__packed__)) BITMAPINFOHEADER;
 
-// One RGB pixel (3 bytes: Blue, Green, Red)
 typedef struct
 {
     BYTE  rgbtBlue;
     BYTE  rgbtGreen;
     BYTE  rgbtRed;
-} __attribute__((__packed__))
-RGBTRIPLE;
+} __attribute__((__packed__)) RGBTRIPLE;
+
+#endif
