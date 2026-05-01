@@ -1,128 +1,135 @@
-# CS50 Python & CSV — Collaborative Learning Repository
 
-Welcome! This is the class repository for **Introduction to Programming** (CS50-style).  
-You will learn Python CSV processing, build real projects, review your peers' code, and explain your thinking in pull requests. **All three activities are assessed.**
+# Week 7 - Logic Lab Mini Projects
+
+This folder contains the collaborative work for the Week 7 programming tasks. 
+
+## Team Members
+* **Gül İfdal Aldemir** 
+* **Sudenaz Soytürk** 
+* **Hevin Peri Evin** 
+* **İrem Pala** 
+
+---
+*Detailed project descriptions and reflections will be added below.*
+# 📊 CS50 Python & CSV — Week 7 Logic Lab
+
+Welcome to the collaborative repository for **Introduction to Programming (CS50-style course)**.
+
+In this module, we worked with Python, CSV files, SQLite databases, and GitHub workflows. We also practiced teamwork, code review, and writing explanations (Teach-Back).
 
 ---
 
-## 📁 Repository Structure
-
-```
-cs50-python-csv/
-├── week1/          ← CSV basics: csv.reader, DictReader, counting
-├── week2/          ← Sorting, SQL, parameterised queries
-├── mini-projects/  ← 4 graded in-class projects
-└── challenges/     ← Optional extension problems
-```
-
----
-
-## 🚀 Quick Start (Do This First)
+# 📁 Repository Structure
 
 ```bash
-# 1. Accept the GitHub Classroom assignment link (from your instructor)
-# 2. Clone YOUR fork
-git clone https://github.com/YOUR-USERNAME/cs50-python-csv.git
-cd cs50-python-csv
+cs50-python-csv/
+├── week1/          # CSV basics (DictReader, counting, sorting)
+├── week2/          # SQL queries and analysis
+├── mini-projects/  # 4 graded collaborative projects
+└── challenges/     # Optional extension tasks
+🚀 Projects Overview
+📌 Project 1 — Language Poll Analysis
+Reads CSV file using DictReader
+Counts programming language popularity
+Sorts results from most to least popular
+Prints total responses
 
-# 3. Add the upstream remote so you can pull updates
-git remote add upstream https://github.com/COURSE-ORG/cs50-python-csv.git
+Key Concept: Using dictionaries for counting data efficiently
 
-# 4. Create your first branch (replace 'yourname')
+📌 Project 2 — Grade Tracker
+Reads student grades from CSV
+Calculates average, highest, lowest scores
+Builds grade distribution (A–F)
+
+Key Concept: Data aggregation and classification
+
+📌 Project 3 — Event Booking Reporter
+Reads and cleans booking data
+Counts events using dictionary
+Finds most and least popular events
+
+Key Concept: Data cleaning + frequency analysis
+
+📌 Project 4 — Survey Dashboard (SQLite)
+Loads CSV data into SQLite database
+Runs SQL queries for analysis
+Filters students by satisfaction score
+
+Key Concept: Python + SQL integration
+
+👥 Team Members
+Gül İfdal Aldemir
+Sudenaz Soytürk
+Hevin Peri Evin
+İrem Pala
+👥 Team Roles & Task Distribution
+📌 Project 1 — Language Poll Analysis
+Gül İfdal Aldemir: Coding, sorting logic, Teach-Back
+Sudenaz Soytürk: Debugging, CSV structure checks
+Hevin Peri Evin: Output testing
+İrem Pala: Code review and comments
+📌 Project 2 — Grade Tracker
+Sudenaz Soytürk: Main coding (grading logic)
+Gül İfdal Aldemir: Teach-Back writing
+Hevin Peri Evin: Testing outputs
+İrem Pala: Code readability improvements
+📌 Project 3 — Event Booking Reporter
+Gül İfdal Aldemir: Core logic
+Sudenaz Soytürk: Data cleaning and debugging
+İrem Pala: Review and GitHub support
+Hevin Peri Evin: Testing and validation
+📌 Project 4 — Survey Dashboard (SQLite)
+Hevin Peri Evin: SQL queries
+Gül İfdal Aldemir: Python integration + Teach-Back
+Sudenaz Soytürk: CSV loading
+İrem Pala: Testing and debugging
+🤝 Collaboration Approach
+We discussed each problem before coding
+Tasks were divided but decisions were shared
+GitHub Pull Requests were used for review
+Everyone contributed to debugging and improvements
+Teach-Back sections helped us explain our understanding
+🔄 Git Workflow
 git checkout -b yourname/week1
-
-# 5. Work, commit, push, open a PR
 git add .
-git commit -m "feat(week1): add DictReader solution"
+git commit -m "feat(week1): add solution"
 git push origin yourname/week1
-# Then open a Pull Request on GitHub: yourname/week1 → group/YOUR-TEAM
-```
+team members (GitHub)
+@irempala52
+@hevinperi
+@gulifdal
+@sudesoyturk
 
----
+All work was submitted through Pull Requests for review.
 
-## 🌿 Branching Strategy
+🧠 What We Learned
+Reading and processing CSV files in Python
+Using dictionaries for counting and analysis
+Sorting and aggregating data
+Using SQLite with Python
+Writing SQL queries
+Working with GitHub (branching, PRs, reviews)
+Explaining code clearly (Teach-Back method)
+📊 Assessment Breakdown
+Component	Weight
+Working code	40%
+Teach-Back	30%
+Peer review	15%
+Git workflow	15%
+🧪 Testing
 
-| Branch | Purpose | Who commits |
-|--------|---------|-------------|
-| `main` | Protected. Clean, reviewed solutions only | Instructor only |
-| `group/<team-name>` | Shared team branch. Base for all your work | Instructor creates; team merges into |
-| `<yourname>/week<n>` | Your weekly exercises (e.g. `amira/week1`) | You |
-| `<yourname>/project<n>` | Your mini-project work (e.g. `jorge/project2`) | You |
-| `hotfix/<issue-number>` | Fix a bug found after merge | Team member who spotted it |
+Each project was tested using:
 
-### Rules (non-negotiable)
-1. **Never commit directly to `main` or your group branch.**
-2. Always branch from your **group branch**, not from `main`.
-3. Branch names must follow the naming convention — PRs with wrong names are returned unreviewed.
-4. Delete your feature branch after the PR is merged.
+python starter.py
 
----
+Outputs were verified manually and through terminal results.
 
-## 💬 Commit Message Format
+📌 Conclusion
 
-```
-type(scope): short description
+This project improved our understanding of:
 
-Types : feat | fix | docs | test | refactor | style
-Scopes: week1 | week2 | project1 | project2 | project3 | project4
-
-Examples:
-  feat(week1): switch reader to DictReader
-  fix(project2): handle KeyError for empty CSV rows
-  docs(week2): add comments explaining sorted() key argument
-  test(project3): add edge case for zero-attendee event
-```
-
----
-
-## 👥 The Four Roles
-
-Roles rotate every project so everyone practises everything.
-
-| Role | Responsibility | GitHub Duty |
-|------|---------------|-------------|
-| 🧑‍💻 **Coder** | Writes the working solution | Opens PR; fills code sections |
-| 🔍 **Reviewer** | Ensures code quality | Leaves inline comments; must approve before merge |
-| 🧪 **Tester** | Verifies correctness with real inputs | Pastes test output as PR evidence |
-| 🏫 **Mentor** | Supports the group; asks questions, never gives answers | Writes the Teach-Back section in the PR |
-
----
-
-## 🔄 Workflow Step by Step
-
-```
-1. Read the problem brief in the project README
-2. Think individually for 8–10 minutes (no code yet — write in plain English)
-3. Discuss as a group — agree on data structures and approach
-4. Coder types; Reviewer watches and asks "why?"; Tester runs code
-5. Open a PR using the PR template — fill in EVERY section
-6. Reviewer leaves at least 2 inline comments
-7. Tester adds test output as a PR comment
-8. Mentor completes the Teach-Back section
-9. Merge only after: teach-back done ✓ + peer approved ✓ + test evidence shown ✓
-```
-
----
-
-## ❓ Getting Help
-
-- **Stuck on a concept?** Open an Issue using the `question` template. Tag `@programming-coach`.
-- **Found a bug after merging?** Open an Issue with the `bug` template, then create a `hotfix/` branch.
-- **Want to discuss an approach?** Comment directly on the relevant PR or commit.
-
-> 💡 Do not ask for help in WhatsApp or private messages. All discussion belongs in GitHub Issues and PR comments so the whole class can learn from it.
-
----
-
-## 📊 Assessment Weights
-
-| Component | Weight |
-|-----------|--------|
-| Working code (correct output) | 40% |
-| Teach-Back PR description | 30% |
-| Code review comments given to peers | 15% |
-| Commit history, branching, PR workflow | 15% |
-
----
-
-*Questions about the repository setup? Open an Issue with the `question` template.*
+Python programming
+Data analysis with CSV and SQL
+Team collaboration using GitHub
+Writing clean and structured code
+Explaining technical concepts clearly

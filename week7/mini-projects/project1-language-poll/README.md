@@ -1,74 +1,31 @@
-# Project 1 — Language Poll Analyser
+import csv
 
-🟢 **Easy** · 20–25 minutes · Pair work
+# Step 1: Read the CSV and count languages
+# store counts of each language
+counts = {}
+# open and read CSV file
+with open("../../week1/favorites.csv", "r") as file:
+    reader = csv.DictReader(file)
+# loop through rows
+    for row in reader:
+        language = row["Language"]
+# count languages
+        if language in counts:
+            counts[language] += 1
+        else:
+            counts[language] = 1
 
----
+# Step 2: Sort by popularity (most popular first)
+# sort from most popular to least
+sorted_languages = sorted(counts, key=counts.get, reverse=True)
 
-## Problem Description
+# Step 3: Print the report
+# print report title
+print("=== Language Popularity Report ===")
+# print ranked results
+for rank, language in enumerate(sorted_languages, start=1):
+    print(f"{rank}. {language}: {counts[language]} students")
 
-You are given `favorites.csv` — a survey of student programming language preferences.  
-Write a program that reads the file and produces a clean summary report showing:
-- How many students chose each language
-- Results sorted from most to least popular
-- The total number of responses
-
----
-
-## Input
-
-`favorites.csv` (already in `week1/` — copy or reference it):
-```
-Timestamp,language,problem
-10/20/2025 9:45:26,Python,Readability
-10/20/2025 10:08:03,C,Mario
-10/20/2025 11:20:23,Python,Filter
-10/20/2025 13:37:06,Scratch,Starting from Scratch
-...
-```
-
----
-
-## Expected Output
-
-```
-=== Language Popularity Report ===
-1. Python  : 196 students
-2. C       :  40 students
-3. Scratch :  28 students
-
-Total responses: 264
-```
-
----
-
-## Concepts Practised
-
-- `csv.DictReader` to read rows as dictionaries
-- Counting with a dictionary
-- Sorting by value using `sorted()` with `key=counts.get`
-- String formatting and alignment with f-strings
-- `enumerate()` for rank numbers
-
----
-
-## Starter Scaffold
-
-See `starter.py` in this folder. Follow the TODO comments in order.
-
----
-
-## Extension Ideas (for early finishers)
-
-1. Add a percentage next to each count: `Python: 196  (74.2%)`
-2. Draw a simple ASCII bar: `Python  ████████████ 196`  
-   (Hint: `"█" * (count // 5)` scales the bar)
-3. Accept the CSV filename as a command-line argument: `python solution.py favorites.csv`
-4. Handle a missing file gracefully with a `try/except FileNotFoundError`
-5. Make counting case-insensitive so `"python"` and `"Python"` are treated the same
-
----
-
-## Common Mistake to Discuss
-
-> The data stores `"Python"` with a capital P. What happens if a student typed `"python"` in the survey?  
-> How would you fix your code to handle both? Discuss with your pair before coding the extension.
+# Print the total number of responses
+# print total responses
+print(f"\nTotal responses: {sum(counts.values())}")

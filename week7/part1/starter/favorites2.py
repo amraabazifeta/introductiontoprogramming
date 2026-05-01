@@ -7,9 +7,13 @@
 #
 # Bonus: DictReader automatically uses the first row as keys — no need for next()
 
+
 import csv
 
 with open("favorites.csv", "r") as file:
-    # TODO: Create a csv.DictReader (not csv.reader)
-    # TODO: Loop over rows and print row["language"]
-    pass
+    # Create a csv.DictReader (not csv.reader)
+    reader = csv.DictReader(file)
+    
+    # Loop over rows and print the "language" column
+    for row in reader:
+        print(row["language"])

@@ -1,67 +1,62 @@
 # starter.py — Event Log Reporter
 # Project 3 | Intermediate | 35–45 minutes
 #
-# Run from this folder:
+# Run from this folder: 
 #   python starter.py
 
 import csv
 
-# ── Step 1: Set up all data structures before the loop ───────────────────────
-room_counts   = {}   # room_name  -> number of events
-type_counts   = {}   # event_type -> number of events
-day_attendees = {}   # date       -> total attendees that day
-all_events    = []   # list of row dicts — used for filtering later
+# --- Step 1: Set up storage variables -----------------------
+# store bookings and event counts
+bookings = []
+event_counts = {}
 
-# ── Step 2: Single pass through the CSV — fill all four structures ────────────
+# --- Step 2: Read the CSV
+# read CSV file
 with open("bookings.csv", "r") as file:
-    reader = csv.DictReader(file)
+    reader = csv.DictReader(file, skipinitialspace=True)
+    # clean column names (remove spaces)
+    reader.fieldnames = [field.strip() for field in reader.fieldnames]
+# loop through each row
     for row in reader:
-        room       = row["room"]
-        event_type = row["event_type"]
-        date       = row["date"]
-        attendees  = int(row["attendees"])   # always convert numeric strings!
+        # TODO: Get the event name from the row
+        # get event name (handle different column names)
+        event_name = row.get ("event" , row.get ("Event" , "Unknown")).strip()
 
-        # TODO: Update room_counts for this room
-        # (same pattern as counting languages in week1)
+        # TODO: Append event name to the bookings list
+         # collect bookings
+        bookings.append(event_name)
 
-        # TODO: Update type_counts for this event_type
+        # TODO: Increment the count for this event in event_counts
+         # count events
+        if event_name in event_counts:
+            event_counts[event_name] += 1
+        else:
+            event_counts[event_name] = 1
 
-        # TODO: Update day_attendees — ADD attendees to the running total for this date
-        # Hint: day_attendees[date] = day_attendees.get(date, 0) + attendees
+# --- Step 3: Analyze the data -------------------------------
+# TODO: Calculate total_bookings, most_popular, and least_popular
+# calculate totals and popularity
+total_bookings = len(bookings)
 
-        # TODO: Append the row dict to all_events
-        # (we need the original row dict, not just the values)
+if event_counts:
+    # find most and least popular
+    most_popular = max(event_counts, key=event_counts.get)
+    least_popular = min(event_counts, key=event_counts.get)
+else:
+    most_popular = "None"
+    least_popular = "None"
 
-# ── Step 3: Find the busiest day ──────────────────────────────────────────────
-# Hint: max(day_attendees, key=day_attendees.get)
-busiest_day = ???
-busiest_count = day_attendees[busiest_day]
+# --- Step 4: Print the report -------------------------------
+# print summary
+print("=== event Booking Analysis ===")
+print(f"{'Total Bookings:':<20} {total_bookings}")
+print(f"{'Most Popular:':<20} {most_popular} ({event_counts.get(most_popular,0)} bookings)")
+print(f"{'Least Popular:':<20} {least_popular} ({event_counts.get(least_popular,0)} bookings)")
 
-# ── Step 4: Filter large events (> 50 attendees) and sort by attendees desc ───
-# Hint: [row for row in all_events if int(row["attendees"]) > 50]
-large_events = ???
+print("\n--- Bookings per Event ---")
+# print each event count
+for event, count in event_counts.items():
+    print(f"{event:<20}: {count}")
 
-# TODO: Sort large_events by attendees descending
-# Hint: sorted(..., key=lambda row: int(row["attendees"]), reverse=True)
-large_events_sorted = ???
-
-# ── Step 5: Print the report ──────────────────────────────────────────────────
-print("=== Community Centre Booking Report ===")
-
-print("\nBookings by Room:")
-for room in sorted(room_counts):
-    # TODO: print each room and its count, indented with 2 spaces
-    pass
-
-print("\nBookings by Event Type:")
-for etype in sorted(type_counts):
-    # TODO: print each type and its count
-    pass
-
-print(f"\nBusiest Day: {busiest_day}  ({busiest_count} total attendees)")
-
-print("\nLarge Events (> 50 attendees):")
-for event in large_events_sorted:
-    # TODO: print each event formatted like:
-    # "  2025-03-03 | Room A  | Lecture  |  90 attendees"
-    pass
+print("\n" + "-" * 30)
