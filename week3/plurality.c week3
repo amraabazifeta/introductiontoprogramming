@@ -1,0 +1,103 @@
+// plurality.c
+// CS50x — Week 3, Problem Set 3
+// Student: Resul
+// ─────────────────────────
+// This program simulates a plurality (first-past-the-post) election.
+// It handles voting by name and prints the winner(s), including ties.
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <strings.h>
+
+// Maximum number of candidates allowed
+#define MAX 9
+
+// Each candidate has a name and a vote count
+typedef struct
+{
+    string name;
+    int votes;
+} candidate;
+
+candidate candidates[MAX];
+int candidate_count;
+
+// Function prototypes
+bool vote(string name);
+void print_winner(void);
+
+int main(int argc, string argv[])
+{
+    if (argc < 2)
+    {
+        printf("Usage: plurality [candidate ...]\n");
+        return 1;
+    }
+
+    candidate_count = argc - 1;
+    if (candidate_count > MAX)
+    {
+        printf("Maximum number of candidates is %i\n", MAX);
+        return 2;
+    }
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        candidates[i].name = argv[i + 1];
+        candidates[i].votes = 0;
+    }
+
+    int voter_count = get_int("Number of voters: ");
+    for (int i = 0; i < voter_count; i++)
+    {
+        string name = get_string("Vote: ");
+        if (!vote(name))
+        {
+            printf("Invalid vote.\n");
+        }
+    }
+
+    print_winner();
+}
+
+bool vote(string name)
+{
+    // Search for the candidate name in the global candidates array
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // Use strcasecmp for case-insensitive comparison
+        if (strcasecmp(candidates[i].name, name) == 0)
+        {
+            // If found, increment vote count and return true
+            candidates[i].votes++;
+            return true;
+        }
+    }
+
+    // Return false if no candidate was found with that name
+    return false;
+}
+
+void print_winner(void)
+{
+    int max_votes = 0;
+
+    // Step 1: Find the maximum number of votes received by any candidate
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes > max_votes)
+        {
+            max_votes = candidates[i].votes;
+        }
+    }
+
+    // Step 2: Print the name of all candidates who have that maximum number of votes
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == max_votes)
+        {
+            printf("%s\n", candidates[i].name);
+        }
+    }
+}
