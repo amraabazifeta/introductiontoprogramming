@@ -1,0 +1,114 @@
+# solution.py — University Survey Dashboard
+# Author: Resul
+# Date: April 28, 2026
+
+import csv
+import sqlite3
+import os
+
+def main():
+    # Configuration
+    db_name = "survey_data.db"
+    csv_files = ["faculty_science.csv", "faculty_arts.csv", "faculty_business.csv"]
+    
+    # 1. Database Setup
+    connection = sqlite3.connect(db_name)
+    db = connection.cursor()
+    
+    # Clear old data if it exists
+    db.execute("DROP TABLE IF EXISTS responses")
+    
+    # Create table schema
+    db.execute("""
+        CREATE TABLE responses (
+            student_id TEXT,
+            faculty TEXT,
+            year INTEGER,
+            satisfaction INTEGER,
+            favourite_tool TEXT,
+            comments TEXT
+        )
+    """)
+
+    # 2. Merge CSV Files into Database
+    for filename in csv_files:
+        if os.path.exists(filename):
+            with open(filename, "r") as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    db.execute("""
+                        INSERT INTO responses (student_id, faculty, year, satisfaction, favourite_tool, comments)
+                        VALUES (?, ?, ?, ?, ?, ?)
+                    """, (row['student_id'], row['faculty'], row['year'], 
+                          row['satisfaction'], row['favourite_tool'], row['comments']))
+        else:
+            print(f"Warning: {filename} not found. Skipping...")
+
+    connection.commit()
+
+    # --- 3. Dashboard Queries ---
+    print("==============================")
+    print("  UNIVERSITY SURVEY DASHBOARD")
+    print("==============================\n")
+
+    # Section 1: Total Responses by Faculty
+    print("1. Total Responses by Faculty")
+    rows = db.execute("SELECT faculty, COUNT(*) FROM responses GROUP BY faculty").fetchall()
+    total = 0
+    for faculty, count in rows:
+        print(f"   {faculty:<10} : {count}")
+        total += count
+    print(f"   TOTAL      : {total}\n")
+
+    # Section 2: Average Satisfaction by Year
+    print("2. Average Satisfaction by Year of Study")
+    rows = db.execute("SELECT year, AVG(satisfaction) FROM responses GROUP BY year ORDER BY year").fetchall()
+    for year, avg in rows:
+        print(f"   Year {year} : {avg:.1f} / 5")
+
+    # Section 3: Favourite Tool Popularity
+    print("\n3. Favourite Tool Popularity")
+    rows = db.execute("SELECT favourite_tool, COUNT(*) as count FROM responses GROUP BY favourite_tool ORDER BY count DESC").fetchall()
+    for tool, count in rows:
+        print(f"   {tool:<8} : {count} students")
+
+    # Section 4: Faculty Comparison
+    print("\n4. Faculty Comparison")
+    print("   Faculty    | Avg Satisfaction | Most Popular Tool")
+    print("   " + "-" * 45)
+    
+    faculties = db.execute("SELECT DISTINCT faculty FROM responses").fetchall()
+    for (f,) in faculties:
+        avg_sat = db.execute("SELECT AVG(satisfaction) FROM responses WHERE faculty = ?", (f,)).fetchone()[0]
+        # Nested query to find most popular tool for this faculty
+        top_tool = db.execute("""
+            SELECT favourite_tool FROM responses 
+            WHERE faculty = ? 
+            GROUP BY favourite_tool 
+            ORDER BY COUNT(*) DESC LIMIT 1
+        """, (f,)).fetchone()[0]
+        
+        print(f"   {f:<10} | {avg_sat:<16.1f} | {top_tool}")
+
+    # Section 5: Interactive Query
+    print("\n" + "="*30)
+    try:
+        min_score = int(input("Enter minimum satisfaction score (1-5): "))
+        print(f"Students with satisfaction >= {min_score}:")
+        
+        # SECURITY RULE: Use ? placeholder to prevent SQL Injection
+        rows = db.execute("""
+            SELECT student_id, faculty, year, favourite_tool 
+            FROM responses WHERE satisfaction >= ?
+        """, (min_score,)).fetchall()
+        
+        for s_id, fac, yr, tool in rows:
+            print(f"  {s_id} | {fac:<8} | Year {yr} | {tool}")
+            
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+    connection.close()
+
+if __name__ == "__main__":
+    main()
