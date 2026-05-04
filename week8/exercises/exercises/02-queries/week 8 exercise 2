@@ -1,0 +1,27 @@
+-- 2.1 — Search by Name
+SELECT first_name, last_name FROM students 
+WHERE last_name LIKE '%s%';
+
+-- 2.2 — Email Domain Search
+SELECT first_name, last_name, email FROM teachers 
+WHERE email LIKE '%@cs50.harvard.edu';
+
+-- 2.3 — Top 5 GPAs
+SELECT first_name, last_name, gpa FROM students 
+ORDER BY gpa DESC 
+LIMIT 5;
+
+-- 2.4 — Distinct Enrollment Years
+SELECT DISTINCT enrollment_year FROM students;
+
+-- 2.5 — Multiple Departments
+SELECT code, title, department_id FROM courses 
+WHERE department_id IN (1, 2);
+
+-- 2.6 — Students NOT from 2018
+SELECT first_name, last_name, enrollment_year FROM students 
+WHERE enrollment_year NOT IN (2018);
+
+-- 2.7 — Sort Courses by Credits then Title
+SELECT credits, title FROM courses 
+ORDER BY credits DESC, title ASC;
