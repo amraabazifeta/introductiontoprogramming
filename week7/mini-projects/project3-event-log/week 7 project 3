@@ -1,0 +1,75 @@
+# solution.py — Event Log Reporter
+# Author: Resul
+# Date: April 28, 2026
+
+import csv
+
+def main():
+    filename = "bookings.csv"
+    
+    # Data structures for the report
+    room_counts = {}
+    type_counts = {}
+    daily_attendance = {}
+    large_events = []
+
+    try:
+        with open(filename, "r") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                # Extract data and convert types
+                date = row["date"]
+                room = row["room"]
+                event_type = row["event_type"]
+                attendees = int(row["attendees"])
+
+                # Section 1: Bookings by Room
+                room_counts[room] = room_counts.get(room, 0) + 1
+
+                # Section 2: Bookings by Event Type
+                type_counts[event_type] = type_counts.get(event_type, 0) + 1
+
+                # Section 3: Busiest Day (Summing attendees per date)
+                daily_attendance[date] = daily_attendance.get(date, 0) + attendees
+
+                # Section 4: Large Events Filtering
+                if attendees > 50:
+                    large_events.append({
+                        "date": date,
+                        "room": room,
+                        "type": event_type,
+                        "attendees": attendees
+                    })
+
+    except FileNotFoundError:
+        print(f"Error: {filename} not found.")
+        return
+
+    # --- Calculations ---
+
+    # Find the busiest day (date with max total attendees)
+    busiest_date = max(daily_attendance, key=daily_attendance.get)
+    max_attendees = daily_attendance[busiest_date]
+
+    # Sort large events by attendees descending
+    large_events.sort(key=lambda x: x["attendees"], reverse=True)
+
+    # --- Report Output ---
+    print("=== Community Centre Booking Report ===\n")
+
+    print("Bookings by Room:")
+    for room in sorted(room_counts):
+        print(f"  {room:<8} : {room_counts[room]} events")
+
+    print("\nBookings by Event Type:")
+    for e_type in sorted(type_counts):
+        print(f"  {e_type:<10} : {type_counts[e_type]} events")
+
+    print(f"\nBusiest Day: {busiest_date}  ({max_attendees} total attendees)")
+
+    print("\nLarge Events (> 50 attendees):")
+    for event in large_events:
+        print(f"  {event['date']} | {event['room']:<8} | {event['type']:<10} | {event['attendees']:>3} attendees")
+
+if __name__ == "__main__":
+    main()
