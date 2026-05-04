@@ -1,0 +1,78 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    # Renders the initial registration form
+    return render_template("index.html")
+
+@app.route("/register", methods=["POST"])
+def register():
+    # 1. Read data from the form using the 'name' attributes from HTML
+    name = request.form.get("name")
+    sport = request.form.get("sport")
+
+    # 2. Server-side validation (The Logic Gate)
+    if not name or not sport:
+        return render_template("failure.html")
+
+    # 3. If valid, show success
+    return render_template("success.html")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Froshims | Registration</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        form { display: inline-block; text-align: left; border: 1px solid #ccc; padding: 20px; border-radius: 10px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    {% block body %}{% endblock %}
+</body>
+</html>
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Register for a Sport</h1>
+    <form action="/register" method="post">
+        <div>
+            <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
+        </div>
+        <div style="margin: 10px 0;">
+            <select name="sport">
+                <option disabled selected value="">Select a Sport</option>
+                <option value="Football">Football</option>
+                <option value="Basketball">Basketball</option>
+                <option value="Volleyball">Volleyball</option>
+            </select>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 class="success">Success!</h1>
+    <p>You are now registered for your chosen sport.</p>
+    <a href="/">Go Back</a>
+{% endblock %}
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 class="success">Success!</h1>
+    <p>You are now registered for your chosen sport.</p>
+    <a href="/">Go Back</a>
+{% endblock %}
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 class="error">Failure!</h1>
+    <p>You must provide a name and select a sport.</p>
+    <a href="/">Try Again</a>
+{% endblock %}
