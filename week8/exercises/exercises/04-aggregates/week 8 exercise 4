@@ -1,0 +1,50 @@
+-- 4.1 — Total Students
+SELECT COUNT(*) FROM students;
+
+-- 4.2 — Students per Enrollment Year
+SELECT enrollment_year, COUNT(*) AS student_count
+FROM students
+GROUP BY enrollment_year
+ORDER BY enrollment_year;
+
+-- 4.3 — Average GPA
+SELECT ROUND(AVG(gpa), 2) AS average_gpa
+FROM students;
+
+-- 4.4 — Highest and Lowest GPA
+SELECT MAX(gpa) AS highest, MIN(gpa) AS lowest, AVG(gpa) AS average
+FROM students;
+
+-- 4.5 — Courses per Department
+-- Note: LEFT JOIN is necessary to show departments with 0 courses
+SELECT d.id, d.name, COUNT(c.id) AS course_count
+FROM departments d
+LEFT JOIN courses c ON d.id = c.department_id
+GROUP BY d.id;
+
+-- 4.6 — Students per Course
+SELECT course_id, COUNT(*) AS student_count
+FROM enrollments
+GROUP BY course_id
+ORDER BY student_count DESC;
+
+-- 4.7 — Popular Courses Only
+SELECT course_id, COUNT(*) AS student_count
+FROM enrollments
+GROUP BY course_id
+HAVING COUNT(*) > 3;
+
+-- 4.8 — Average Grade per Course
+-- Assuming 'final_score' is the column name
+SELECT course_id, ROUND(AVG(final_score), 1) AS avg_score
+FROM enrollments
+GROUP BY course_id;
+
+-- 4.9 — Department Salary Stats
+SELECT 
+    department_id, 
+    COUNT(*) AS teacher_count, 
+    ROUND(AVG(salary), 0) AS avg_salary, 
+    MAX(salary) AS max_salary
+FROM teachers
+GROUP BY department_id;
