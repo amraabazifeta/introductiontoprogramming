@@ -1,0 +1,35 @@
+-- 3.1 — Student + Course Names
+SELECT s.first_name, s.last_name, c.title
+FROM enrollments e
+JOIN students s ON e.student_id = s.id
+JOIN courses c ON e.course_id = c.id;
+
+-- 3.2 — Who Teaches What?
+SELECT c.title, t.first_name, t.last_name
+FROM courses c
+JOIN teachers t ON c.teacher_id = t.id;
+
+-- 3.3 — Department + Teacher
+SELECT t.first_name, t.last_name, d.name AS department_name
+FROM teachers t
+JOIN departments d ON t.department_id = d.id;
+
+-- 3.4 — Full Enrollment Details
+SELECT s.first_name, s.last_name, c.title, t.first_name AS teacher_first, t.last_name AS teacher_last, g.letter_grade
+FROM enrollments e
+JOIN students s ON e.student_id = s.id
+JOIN courses c ON e.course_id = c.id
+JOIN teachers t ON c.teacher_id = t.id
+JOIN grades g ON (s.id = g.student_id AND c.id = g.course_id);
+
+-- 3.5 — Students Who Haven't Enrolled (The "Ghost" Students)
+SELECT s.first_name, s.last_name
+FROM students s
+LEFT JOIN enrollments e ON s.id = e.student_id
+WHERE e.id IS NULL;
+
+-- 3.6 — Courses with No Students
+SELECT c.title
+FROM courses c
+LEFT JOIN enrollments e ON c.id = e.course_id
+WHERE e.id IS NULL;
