@@ -1,0 +1,169 @@
+<form id="registration-form" novalidate>
+    <div class="form-group">
+        <label for="full-name">Full Name</label>
+        <input type="text" id="full-name" name="full-name" required minlength="2">
+        <span class="error-msg"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-msg"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <div id="password-strength-container">
+            <div id="password-strength-bar"></div>
+            <small id="password-strength-text"></small>
+        </div>
+        <span class="error-msg"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+        <span class="error-msg"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" min="18" max="120" required>
+        <span class="error-msg"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea id="bio" name="bio" maxlength="250"></textarea>
+        <small id="char-count">0 / 200 characters</small>
+        <span class="error-msg"></span>
+    </div>
+
+    <div class="form-group checkbox-group">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I accept the terms and conditions</label>
+        <span class="error-msg"></span>
+    </div>
+
+    <button type="submit" id="submit-btn">Register</button>
+</form>
+
+<div id="success-message" class="hidden">
+    <h3>Registration Successful!</h3>
+    <p>Welcome to the platform, Resul.</p>
+</div>
+input.invalid, textarea.invalid {
+    border: 2px solid #ef4444;
+    background-color: #fef2f2;
+}
+
+input.valid {
+    border: 2px solid #10b981;
+}
+
+.error-msg {
+    color: #ef4444;
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 4px;
+    min-height: 1rem;
+}
+
+#password-strength-bar {
+    height: 5px;
+    width: 0%;
+    transition: width 0.3s, background-color 0.3s;
+    margin-top: 5px;
+}
+
+.hidden { display: none; }
+.over-limit { color: #ef4444; font-weight: bold; }
+const form = document.getElementById('registration-form');
+const bio = document.getElementById('bio');
+const charCount = document.getElementById('char-count');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirm-password');
+const strengthBar = document.getElementById('password-strength-bar');
+const strengthText = document.getElementById('password-strength-text');
+
+// Helper: Show/Hide Error
+const setError = (input, message) => {
+    const errorSpan = input.parentElement.querySelector('.error-msg');
+    if (message) {
+        input.classList.add('invalid');
+        input.classList.remove('valid');
+        errorSpan.textContent = message;
+    } else {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+        errorSpan.textContent = '';
+    }
+};
+
+// Task 4: Password Strength
+password.addEventListener('input', () => {
+    const val = password.value;
+    let strength = 0;
+    let color = "#ef4444";
+    let label = "Weak";
+
+    if (val.length >= 8) strength += 40;
+    if (/\d/.test(val)) strength += 30;
+    if (/[A-Z]/.test(val)) strength += 30;
+
+    if (strength >= 70) { color = "#10b981"; label = "Strong"; }
+    else if (strength >= 40) { color = "#facc15"; label = "Fair"; }
+
+    strengthBar.style.width = strength + "%";
+    strengthBar.style.backgroundColor = color;
+    strengthText.textContent = label;
+});
+
+// Task 5: Character Counter
+bio.addEventListener('input', () => {
+    const remaining = bio.value.length;
+    charCount.textContent = `${remaining} / 200 characters`;
+    
+    if (remaining > 200) {
+        charCount.classList.add('over-limit');
+        document.getElementById('submit-btn').disabled = true;
+    } else {
+        charCount.classList.remove('over-limit');
+        document.getElementById('submit-btn').disabled = false;
+    }
+});
+
+// Task 3: Submit Handler
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let isFormValid = true;
+
+    // Validate Full Name
+    if (document.getElementById('full-name').value.length < 2) {
+        setError(document.getElementById('full-name'), "Name must be 2+ chars");
+        isFormValid = false;
+    }
+
+    // Validate Passwords Match
+    if (password.value !== confirmPassword.value) {
+        setError(confirmPassword, "Passwords do not match");
+        isFormValid = false;
+    }
+
+    // Check built-in HTML validations (Email, Required, etc.)
+    form.querySelectorAll('input[required]').forEach(input => {
+        if (!input.checkValidity()) {
+            setError(input, input.validationMessage);
+            isFormValid = false;
+        }
+    });
+
+    if (isFormValid) {
+        form.classList.add('hidden');
+        document.getElementById('success-message').classList.remove('hidden');
+    } else {
+        // Scroll to first error
+        document.querySelector('.invalid').scrollIntoView({ behavior: 'smooth' });
+    }
+});
