@@ -1,0 +1,54 @@
+from cs50 import SQL
+from flask import Flask, redirect, render_template, request
+
+app = Flask(__name__)
+
+# Connect to the SQLite database
+db = SQL("sqlite:///froshims.db")
+
+# Our 'Source of Truth'
+SPORTS = ["Basketball", "Soccer", "Volleyball", "Ultimate Frisbee"]
+
+@app.route("/")
+def index():
+    return render_template("index.html", sports=SPORTS)
+
+@app.route("/deregister", methods=["POST"])
+def deregister():
+    # 1. Get the hidden ID from the form
+    id = request.form.get("id")
+    
+    # 2. If an ID was provided, delete that specific row
+    if id:
+        db.execute("DELETE FROM registrants WHERE id = ?", id)
+        
+    # 3. Redirect back to the list
+    return redirect("/registrants")
+
+@app.route("/register", methods=["POST"])
+def register():
+    name = request.form.get("name")
+    
+    # Use getlist() to retrieve an array of all checked checkboxes
+    sports = request.form.getlist("sport")
+
+    # Validation: Missing name or no sports selected
+    if not name or not sports:
+        return render_template("error.html", message="Missing name or sport.")
+
+    # Validation: Ensure no one injected a fake sport into the HTML
+    for sport in sports:
+        if sport not in SPORTS:
+            return render_template("error.html", message="Invalid sport submitted.")
+
+    # Insert one row per selected sport
+    for sport in sports:
+        db.execute("INSERT INTO registrants (name, sport) VALUES(?, ?)", name, sport)
+
+    return redirect("/registrants")
+
+@app.route("/registrants")
+def registrants():
+    # Fetch all rows to display
+    rows = db.execute("SELECT * FROM registrants")
+    return render_template("registrants.html", registrants=rows)
