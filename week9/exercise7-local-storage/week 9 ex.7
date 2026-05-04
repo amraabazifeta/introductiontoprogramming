@@ -1,0 +1,117 @@
+// --- Task 1: Initialize localStorage ---
+let notes = JSON.parse(localStorage.getItem('notes')) || [];
+let editModeId = null; // Track if we are editing or adding
+
+const noteForm = document.getElementById('note-form');
+const noteTitle = document.getElementById('note-title');
+const noteBody = document.getElementById('note-body');
+const submitBtn = document.getElementById('submit-btn');
+const notesContainer = document.getElementById('notes-container');
+const searchInput = document.getElementById('search-input');
+
+const saveNotes = () => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+};
+
+// --- Task 3: Read & Render Notes ---
+const renderNotes = (filterTerm = "") => {
+    notesContainer.innerHTML = "";
+
+    // Task 5: Sort pinned notes to top
+    const filteredNotes = notes
+        .filter(n => 
+            n.title.toLowerCase().includes(filterTerm.toLowerCase()) || 
+            n.body.toLowerCase().includes(filterTerm.toLowerCase())
+        )
+        .sort((a, b) => b.pinned - a.pinned);
+
+    if (filteredNotes.length === 0) {
+        notesContainer.innerHTML = `<p class="placeholder">${filterTerm ? 'No results found' : 'No notes yet...'}</p>`;
+        return;
+    }
+
+    filteredNotes.forEach(note => {
+        const date = new Date(note.createdAt).toLocaleDateString('en-US', { 
+            month: 'short', day: 'numeric', year: 'numeric' 
+        });
+
+        const card = document.createElement('div');
+        card.className = `note-card ${note.pinned ? 'pinned' : ''}`;
+        card.innerHTML = `
+            <h3>${note.pinned ? '📌' : ''} ${note.title}</h3>
+            <p>${note.body.substring(0, 100)}${note.body.length > 100 ? '...' : ''}</p>
+            <small>${date}</small>
+            <div class="actions">
+                <button onclick="togglePin(${note.id})">${note.pinned ? 'Unpin' : 'Pin'}</button>
+                <button onclick="prepareEdit(${note.id})">Edit</button>
+                <button onclick="deleteNote(${note.id})">Delete</button>
+            </div>
+        `;
+        notesContainer.appendChild(card);
+    });
+};
+
+// --- Task 2 & 4: Create & Update ---
+noteForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = noteTitle.value.trim();
+    const body = noteBody.value.trim();
+
+    if (!title || !body) return;
+
+    if (editModeId) {
+        // Task 4: Update existing note
+        const index = notes.findIndex(n => n.id === editModeId);
+        notes[index] = { ...notes[index], title, body };
+        editModeId = null;
+        submitBtn.textContent = "Save Note";
+    } else {
+        // Task 2: Create new note
+        const newNote = {
+            id: Date.now(),
+            title,
+            body,
+            createdAt: new Date().toISOString(),
+            pinned: false
+        };
+        notes.push(newNote);
+    }
+
+    saveNotes();
+    renderNotes();
+    noteForm.reset();
+});
+
+// --- Task 5: Delete & Pin ---
+window.deleteNote = (id) => {
+    if (confirm("Are you sure you want to delete this note?")) {
+        notes = notes.filter(n => n.id !== id);
+        saveNotes();
+        renderNotes();
+    }
+};
+
+window.togglePin = (id) => {
+    const index = notes.findIndex(n => n.id === id);
+    notes[index].pinned = !notes[index].pinned;
+    saveNotes();
+    renderNotes();
+};
+
+// --- Task 4: Prepare Edit ---
+window.prepareEdit = (id) => {
+    const note = notes.find(n => n.id === id);
+    noteTitle.value = note.title;
+    noteBody.value = note.body;
+    editModeId = id;
+    submitBtn.textContent = "Update Note";
+    noteTitle.focus();
+};
+
+// --- Task 6: Search Filter (Bonus) ---
+searchInput.addEventListener('input', (e) => {
+    renderNotes(e.target.value);
+});
+
+// Initial Render
+renderNotes();
