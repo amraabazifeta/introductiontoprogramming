@@ -1,0 +1,121 @@
+/* Task 1: Mobile-First Reset & Variables */
+:root {
+  --primary: #2563eb;
+  --bg-alt: #f8fafc;
+  --gap: 1rem;
+}
+
+* {
+  box-sizing: border-box; /* Crucial for responsive padding */
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  color: #333;
+}
+
+/* Task 5: Responsive Typography */
+h1 {
+  /* Scales between 1.5rem and 3rem based on viewport width */
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  text-align: center;
+}
+
+main {
+  /* Constrain text width for readability */
+  max-width: 70ch; 
+  margin: 0 auto;
+  padding: var(--gap);
+}
+
+/* Task 2: Responsive Navigation (Mobile State) */
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Stacked on mobile */
+  gap: 0.5rem;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px; /* Task 2: 44px+ tap target for thumbs */
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* Task 3: Flexbox Layout (Mobile State) */
+#flexbox-demo {
+  display: flex;
+  flex-wrap: wrap; /* Task 3: Wrap onto new lines */
+  gap: var(--gap);
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.flex-card {
+  /* Task 3: Grow/Shrink, base at 250px */
+  flex: 1 1 250px; 
+  background: var(--bg-alt);
+  padding: 2rem;
+  border: 1px solid #ddd;
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center;
+}
+
+/* Task 4: CSS Grid Layout (Mobile State) */
+#grid-demo {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column on mobile */
+  gap: var(--gap);
+  margin-top: 2rem;
+}
+
+.grid-item {
+  background: #cbd5e1;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* ==========================================
+   BREAKPOINTS (Progressive Enhancement)
+   ========================================== */
+
+/* Task 1 & 2: Tablet (600px+) */
+@media (min-width: 600px) {
+  nav ul {
+    flex-direction: row; /* Task 2: Horizontal on tablet */
+    justify-content: center;
+  }
+
+  #grid-demo {
+    grid-template-columns: repeat(2, 1fr); /* Task 4: 2 columns */
+  }
+  
+  .grid-item.featured {
+    grid-column: span 2; /* Task 4: Feature item spans width */
+  }
+}
+
+/* Task 1 & 4: Desktop (900px+) */
+@media (min-width: 900px) {
+  main {
+    max-width: 1000px; /* Expand container for wider screens */
+  }
+
+  #grid-demo {
+    grid-template-columns: repeat(3, 1fr); /* Task 4: 3 columns */
+  }
+}
