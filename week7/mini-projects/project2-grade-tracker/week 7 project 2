@@ -7,11 +7,11 @@ import csv
 def main():
     filename = "grades.csv"
     
-    # Verileri tutmak için listeler ve değişkenler
+    # Initialize lists and variables to store data
     scores = []
-    students = [] # (name, score) ikililerini tutmak için
+    students = []  # List of dictionaries to store name-score pairs
     
-    # Harf notu dağılımı için sözlük
+    # Dictionary for Grade Distribution
     distribution = {"A": 0, "B": 0, "C": 0, "D": 0, "F": 0}
 
     try:
@@ -19,13 +19,13 @@ def main():
             reader = csv.DictReader(file)
             for row in reader:
                 name = row["name"]
-                # CSV'den gelen veri her zaman string'dir, sayıya çevirmeliyiz
+                # Convert string score from CSV to integer
                 score = int(row["score"])
                 
                 scores.append(score)
                 students.append({"name": name, "score": score})
                 
-                # Not aralığı kontrolü
+                # Determine grade band
                 if score >= 90:
                     distribution["A"] += 1
                 elif score >= 80:
@@ -38,23 +38,27 @@ def main():
                     distribution["F"] += 1
 
     except FileNotFoundError:
-        print(f"Error: {filename} not found.")
+        print(f"Error: The file '{filename}' was not found.")
+        return
+    except ValueError:
+        print("Error: The CSV contains non-numeric score data.")
         return
 
-    # İstatistiksel hesaplamalar
+    # Statistical Calculations
     total_students = len(scores)
     
+    # Safety check for empty files
     if total_students == 0:
-        print("No data to process.")
+        print("No student data found in the file.")
         return
 
     average = sum(scores) / total_students
     
-    # En yüksek ve en düşük notları bulma
+    # Find max and min using lambda functions for clarity
     highest = max(students, key=lambda x: x["score"])
     lowest = min(students, key=lambda x: x["score"])
 
-    # --- Rapor Çıktısı ---
+    # --- Output Report ---
     print("=== Quiz Grade Summary ===")
     print(f"Students assessed : {total_students}")
     print(f"Average score     : {average:.1f}")
