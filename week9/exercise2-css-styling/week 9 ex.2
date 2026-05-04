@@ -1,0 +1,89 @@
+/* Task 2: CSS Custom Properties */
+:root {
+  --color-primary: #2563eb;      /* Bright Blue */
+  --color-secondary: #f8fafc;    /* Light Gray */
+  --color-text: #1e293b;         /* Dark Slate */
+  --color-background: #ffffff;   /* White */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --spacing-unit: 1rem;
+}
+
+/* Task 5: General Typography */
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  line-height: 1.6; /* Comfortable reading height */
+  background-color: var(--color-background);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  margin-top: 1.5rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+/* Task 3 & 6: Element & Header Styling */
+header {
+  background-color: var(--color-primary);
+  color: white;
+  padding: calc(var(--spacing-unit) * 2);
+  text-align: center;
+}
+
+/* Task 3: Descendant Selector & Pseudo-classes */
+nav {
+  background: #f1f5f9;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-weight: 500;
+  margin: 0 1rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav a:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 4px;
+}
+
+/* Task 3 & 4: Box Model & Class Selector */
+#hero { /* ID Selector */
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.card {
+  /* The Four Box Model Layers */
+  background-color: var(--color-secondary);
+  padding: var(--spacing-unit);      /* Inside space */
+  border: 1px solid #e2e8f0;         /* Visible boundary */
+  margin: var(--spacing-unit) 0;      /* Outside space */
+  
+  border-radius: 8px;                /* Visual polish */
+  max-width: 600px;
+}
+
+/* Task 3 & 6: More Pseudo-classes & Elements */
+li:nth-child(odd) {
+  background-color: #f1f5f9;
+}
+
+/* Pseudo-element for that academic "Drop Cap" look */
+p::first-letter {
+  font-size: 150%;
+  font-weight: bold;
+  color: var(--color-primary);
+}
