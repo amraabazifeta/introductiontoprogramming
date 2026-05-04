@@ -1,0 +1,72 @@
+# grade_tracker.py — Quiz Grade Summary
+# Author: Resul
+# Date: April 28, 2026
+
+import csv
+
+def main():
+    filename = "grades.csv"
+    
+    # Verileri tutmak için listeler ve değişkenler
+    scores = []
+    students = [] # (name, score) ikililerini tutmak için
+    
+    # Harf notu dağılımı için sözlük
+    distribution = {"A": 0, "B": 0, "C": 0, "D": 0, "F": 0}
+
+    try:
+        with open(filename, "r") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                name = row["name"]
+                # CSV'den gelen veri her zaman string'dir, sayıya çevirmeliyiz
+                score = int(row["score"])
+                
+                scores.append(score)
+                students.append({"name": name, "score": score})
+                
+                # Not aralığı kontrolü
+                if score >= 90:
+                    distribution["A"] += 1
+                elif score >= 80:
+                    distribution["B"] += 1
+                elif score >= 70:
+                    distribution["C"] += 1
+                elif score >= 60:
+                    distribution["D"] += 1
+                else:
+                    distribution["F"] += 1
+
+    except FileNotFoundError:
+        print(f"Error: {filename} not found.")
+        return
+
+    # İstatistiksel hesaplamalar
+    total_students = len(scores)
+    
+    if total_students == 0:
+        print("No data to process.")
+        return
+
+    average = sum(scores) / total_students
+    
+    # En yüksek ve en düşük notları bulma
+    highest = max(students, key=lambda x: x["score"])
+    lowest = min(students, key=lambda x: x["score"])
+
+    # --- Rapor Çıktısı ---
+    print("=== Quiz Grade Summary ===")
+    print(f"Students assessed : {total_students}")
+    print(f"Average score     : {average:.1f}")
+    print(f"Highest score     : {highest['score']}  ({highest['name']})")
+    print(f"Lowest score      : {lowest['score']}  ({lowest['name']})")
+    
+    print("\nGrade Distribution:")
+    print(f"  A (90-100) : {distribution['A']} students")
+    print(f"  B (80-89)  : {distribution['B']} students")
+    print(f"  C (70-79)  : {distribution['C']} students")
+    print(f"  D (60-69)  : {distribution['D']} students")
+    print(f"  F ( 0-59)  : {distribution['F']} students")
+
+if __name__ == "__main__":
+    main()
