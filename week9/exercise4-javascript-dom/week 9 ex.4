@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resul | Engineering Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Resul's Dashboard</h1>
+        <p>Future Engineer | Web Developer | Data Enthusiast</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#gallery">Interests</a></li>
+            <li><a href="#interactive">Interactive</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="projects">
+            <h2>Technical Projects</h2>
+            <div class="flex-container">
+                <div class="card">
+                    <h3>SQL Database Analysis</h3>
+                    <p>Relational database design and complex querying for school systems.</p>
+                    <button class="btn-detail">View Details</button>
+                </div>
+                <div class="card">
+                    <h3>C Logic Engine</h3>
+                    <p>Developing efficient algorithms and memory management solutions.</p>
+                    <button class="btn-detail">View Details</button>
+                </div>
+                <div class="card">
+                    <h3>Responsive Design</h3>
+                    <p>Modern layouts using CSS Grid and Mobile-First principles.</p>
+                    <button class="btn-detail">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Focus Areas</h2>
+            <div class="grid-container">
+                <div class="grid-item">Football Analytics</div>
+                <div class="grid-item">Automotive Tech</div>
+                <div class="grid-item featured">AI & Machine Learning</div>
+                <div class="grid-item">Applied Physics</div>
+            </div>
+        </section>
+
+        <section id="interactive">
+            <h2>Live Interaction</h2>
+            <div class="counter-card">
+                <p>Task Completion Counter</p>
+                <span id="display">0</span>
+                <div class="controls">
+                    <button id="dec">− Decrease</button>
+                    <button id="reset">Reset</button>
+                    <button id="inc">+ Increase</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Resul. Built with Code & Engineering Logic.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+:root {
+    --primary: #2563eb;
+    --secondary: #0f172a;
+    --accent: #10b981;
+    --bg-light: #f8fafc;
+    --text-main: #334155;
+    --font-head: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+header {
+    background: var(--secondary);
+    color: white;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+h1 { font-family: var(--font-head); font-size: clamp(2rem, 6vw, 3.5rem); }
+
+/* Navigation */
+nav { background: white; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+nav ul { display: flex; flex-direction: column; list-style: none; padding: 1rem; }
+nav a { text-decoration: none; color: var(--primary); font-weight: 500; padding: 0.5rem; text-align: center; }
+
+/* Flexbox Projects */
+.flex-container { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 2rem 0; }
+.card {
+    flex: 1 1 300px;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--primary);
+}
+
+/* CSS Grid Gallery */
+.grid-container { display: grid; grid-template-columns: 1fr; gap: 15px; margin: 2rem 0; }
+.grid-item { background: #cbd5e1; padding: 3rem 1rem; text-align: center; font-weight: bold; border-radius: 8px; }
+
+/* Interactive Counter */
+.counter-card { text-align: center; background: white; padding: 3rem; border-radius: 15px; margin: 2rem 0; }
+#display { font-size: 5rem; display: block; margin: 1rem 0; font-family: var(--font-head); }
+.controls button { padding: 0.8rem 1.5rem; cursor: pointer; border: none; border-radius: 5px; background: var(--primary); color: white; margin: 5px; }
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) {
+    nav ul { flex-direction: row; justify-content: center; gap: 2rem; }
+    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    .grid-item.featured { grid-column: span 2; background: var(--primary); color: white; }
+    main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+}
+
+@media (min-width: 1024px) {
+    .grid-container { grid-template-columns: repeat(3, 1fr); }
+}
+// Counter State
+let count = 0;
+const display = document.getElementById('display');
+const incBtn = document.getElementById('inc');
+const decBtn = document.getElementById('dec');
+const resetBtn = document.getElementById('reset');
+
+// Logic to update visual state
+const updateUI = () => {
+    display.textContent = count;
+    
+    // Engineering logic: Change color based on thresholds
+    if (count > 10) {
+        display.style.color = "#10b981"; // Green for success
+    } else if (count < 0) {
+        display.style.color = "#ef4444"; // Red for negative
+    } else {
+        display.style.color = "#0f172a"; // Default slate
+    }
+};
+
+// Event Listeners
+incBtn.addEventListener('click', () => {
+    count++;
+    updateUI();
+});
+
+decBtn.addEventListener('click', () => {
+    count--;
+    updateUI();
+});
+
+resetBtn.addEventListener('click', () => {
+    count = 0;
+    updateUI();
+});
+
+// Handling detail button clicks
+document.querySelectorAll('.btn-detail').forEach((button, index) => {
+    button.addEventListener('click', () => {
+        console.log(`Project ${index + 1} clicked.`);
+        alert("This module is currently under development. Stay tuned, Resul!");
+    });
+});
