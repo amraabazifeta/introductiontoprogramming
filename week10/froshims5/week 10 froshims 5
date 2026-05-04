@@ -1,0 +1,36 @@
+from cs50 import SQL
+from flask import Flask, redirect, render_template, request
+
+app = Flask(__name__)
+
+# Connect to the SQLite database
+db = SQL("sqlite:///froshims.db")
+
+# Our 'Source of Truth' for valid sports
+SPORTS = ["Basketball", "Soccer", "Volleyball", "Ultimate Frisbee"]
+
+@app.route("/")
+def index():
+    return render_template("index.html", sports=SPORTS)
+
+@app.route("/register", methods=["POST"])
+def register():
+    # 1. Retrieve data from the form
+    name = request.form.get("name")
+    sport = request.form.get("sport")
+
+    # 2. Validation: Check if fields are empty or the sport is fake
+    if not name or sport not in SPORTS:
+        return render_template("error.html", message="Invalid name or sport choice.")
+
+    # 3. Database Insertion: Use '?' to prevent SQL Injection
+    db.execute("INSERT INTO registrants (name, sport) VALUES(?, ?)", name, sport)
+
+    # 4. Redirect: Go to the list page after successful registration
+    return redirect("/registrants")
+
+@app.route("/registrants")
+def registrants():
+    # Fetch all rows from the database table
+    rows = db.execute("SELECT * FROM registrants")
+    return render_template("registrants.html", registrants=rows)
