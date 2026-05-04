@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyCast | Engineering Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>SkyCast</h1>
+        <p>Precision Weather Data for Engineers</p>
+    </header>
+
+    <main>
+        <section id="search-section">
+            <form id="search-form">
+                <input type="text" id="city-input" placeholder="Enter city name (e.g. Ankara)..." required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="recent-searches" class="chips-container">
+                </div>
+        </section>
+
+        <div id="status-message"></div>
+
+        <section id="current-weather" class="hidden">
+            <div class="weather-main">
+                <h2 id="location-name">City Name</h2>
+                <div class="temp-display">
+                    <span id="current-temp">--</span>
+                    <button id="unit-toggle">°C</button>
+                </div>
+                <p id="weather-condition">Condition</p>
+                <p>Wind Speed: <span id="wind-speed">--</span> km/h</p>
+            </div>
+        </section>
+
+        <section id="forecast-section" class="hidden">
+            <h3>7-Day Forecast</h3>
+            <div id="forecast-container">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Data provided by Open-Meteo API &bull; 2026 Resul</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
