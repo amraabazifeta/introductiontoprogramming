@@ -1,0 +1,60 @@
+-- 5.1 — Above Average GPA
+SELECT first_name, last_name, gpa 
+FROM students 
+WHERE gpa > (SELECT AVG(gpa) FROM students);
+
+-- 5.2 — CS50 Students
+SELECT first_name, last_name 
+FROM students 
+WHERE id IN (
+    SELECT student_id 
+    FROM enrollments 
+    WHERE course_id = (SELECT id FROM courses WHERE code = 'CS50')
+);
+
+-- 5.3 — Students NOT in CS50
+SELECT first_name, last_name 
+FROM students 
+WHERE id NOT IN (
+    SELECT student_id 
+    FROM enrollments 
+    WHERE course_id = (SELECT id FROM courses WHERE code = 'CS50')
+);
+
+-- 5.4 — Highest-Paid Teacher's Courses
+SELECT title 
+FROM courses 
+WHERE teacher_id = (
+    SELECT id 
+    FROM teachers 
+    WHERE salary = (SELECT MAX(salary) FROM teachers)
+);
+
+-- 5.5 — Students With 3+ Courses (Subquery in FROM)
+-- Note: We treat the result of the inner query as a table named 'counts'
+SELECT first_name, last_name 
+FROM students 
+JOIN (
+    SELECT student_id, COUNT(*) AS num_courses
+    FROM enrollments 
+    GROUP BY student_id
+) AS counts ON students.id = counts.student_id
+WHERE num_courses >= 3;
+
+-- 5.8 — EXISTS: Students With Grades
+SELECT first_name, last_name 
+FROM students s
+WHERE EXISTS (
+    SELECT 1 
+    FROM grades g 
+    WHERE g.student_id = s.id
+);
+
+-- 5.9 — NOT EXISTS: Courses With No Grades
+SELECT title 
+FROM courses c
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM grades g 
+    WHERE g.course_id = c.id
+);
