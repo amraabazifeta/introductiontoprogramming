@@ -1,0 +1,34 @@
+# Project 4 — Word Counter
+# Author: Resul
+# Date: April 28, 2026
+
+sentence = input("Enter a sentence: ")
+
+# Split into a list of lowercase words to handle "The" and "the" as the same
+words = sentence.lower().split()
+
+# 1. Total number of words
+total_words = len(words)
+
+# 2. Total characters excluding spaces
+# We join the words back without spaces and count the length
+total_chars = len(sentence.replace(" ", ""))
+
+# 3. Build a word frequency dictionary
+frequency = {}
+
+for word in words:
+    if word in frequency:
+        # If word is already a key, increment its value
+        frequency[word] += 1
+    else:
+        # If it's a new word, add it to the dictionary with value 1
+        frequency[word] = 1
+
+# Print all results
+print(f"Total words: {total_words}")
+print(f"Total characters (no spaces): {total_chars}")
+print("Word frequency:")
+
+for word, count in frequency.items():
+    print(f"  {word} -> {count}")
