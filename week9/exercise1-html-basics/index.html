@@ -1,19 +1,111 @@
-<!-- 
-  Exercise 1: HTML Basics
-  ========================
-  Your job: Fix and complete this HTML document.
-  Read the README.md for full instructions.
 
-  TODO Task 1: Add missing document structure (DOCTYPE, html, head, body, title, meta tags)
-  TODO Task 2: Add semantic sections (header, nav, main with three sections)
-  TODO Task 3: Add content (paragraphs, lists, table)
-  TODO Task 4: Add media (images, figure, iframe)
-  TODO Task 5: Ensure accessibility (alt text, heading order, meaningful link text)
--->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile Page</title>
+</head>
+<body>
 
-<!-- DELETE this comment and start your document here -->
+    <!-- HEADER -->
+    <header>
+        <img src="https://placehold.co/150x150" alt="Profile photo of Erinda">
+        <h1>Erinda Ismani</h1>
+        <p>Aspiring developer | Python enthusiast | Lifelong learner</p>
+    </header>
 
-  <h1>My Profile Page</h1>
-  <p>About me goes here...</p>
+    <!-- NAV -->
+    <nav>
+        <a href="#about">About</a> |
+        <a href="#skills">Skills</a> |
+        <a href="#contact">Contact</a>
+    </nav>
 
-<!-- HINT: This page is broken — it's missing most of its required structure! -->
+    <hr>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi! My name is Erinda. I am currently learning programming through
+               an introduction to Python and web development course. I enjoy solving
+               problems and building things with code.</p>
+            <p>In my free time I like exploring new technologies, watching tutorials,
+               and working on small projects to improve my skills every day.</p>
+
+            <figure>
+                <img src="https://placehold.co/400x200" alt="A scenic view of my workspace">
+                <figcaption>My favourite place to code</figcaption>
+            </figure>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Python</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>SQL</li>
+                <li>Git and GitHub</li>
+                <li>Problem solving</li>
+            </ul>
+
+            <h3>Top 3 Skills (Ranked)</h3>
+            <ol>
+                <li>Python — I have been practising this the most</li>
+                <li>SQL — Learned queries, joins, and database design</li>
+                <li>HTML — Building structured web pages</li>
+            </ol>
+
+            <h3>Favourite YouTube Tutorial</h3>
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/rfscVS0vtbw"
+                title="Learn Python programming tutorial"
+                allowfullscreen>
+            </iframe>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Email</td>
+                        <td>erinda@email.com</td>
+                    </tr>
+                    <tr>
+                        <td>GitHub</td>
+                        <td>github.com/erinda</td>
+                    </tr>
+                    <tr>
+                        <td>LinkedIn</td>
+                        <td>linkedin.com/in/erinda</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <hr>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Made by Erinda Ismani &copy; 2026</p>
+    </footer>
+
+</body>
+</html>

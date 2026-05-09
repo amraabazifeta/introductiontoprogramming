@@ -1,119 +1,175 @@
-/* 
-  Exercise 2: CSS Styling
-  ========================
-  Complete the tasks described in README.md.
-  Do NOT modify index.html — all your work goes here.
-*/
+/* Exercise 2: CSS Styling */
 
-/* =============================================
-   TODO Task 2: Define CSS Custom Properties
-   ============================================= */
+/* Task 2 — CSS Custom Properties */
 :root {
-  /* Add your custom properties here */
-  /* Example: --color-primary: #your-color; */
+    --color-primary: #4f46e5;
+    --color-secondary: #818cf8;
+    --color-text: #1e1b4b;
+    --color-background: #f8fafc;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Merriweather', serif;
+    --spacing-unit: 1rem;
 }
 
-
-/* =============================================
-   TODO Task 3: Base / Reset Styles
-   ============================================= */
+/* Task 3 — Base Reset */
 * {
-  /* Consider a box-sizing reset */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  /* Set font-family, background-color, color, margin */
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.7;
+    padding: var(--spacing-unit);
 }
 
-
-/* =============================================
-   TODO Task 3: Typography — Headings
-   ============================================= */
+/* Task 3 — Typography */
 h1 {
-  /* Large, impactful heading */
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 h2 {
-  /* Section heading */
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-unit);
 }
 
 h3 {
-  /* Card heading */
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
-/* TODO Task 3: Pseudo-element — first letter of a paragraph */
-/* p::first-letter { ... } */
+p {
+    margin-bottom: var(--spacing-unit);
+    font-size: 1rem;
+}
 
+/* Task 3 — Pseudo-element */
+p::first-letter {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--color-primary);
+}
 
-/* =============================================
-   TODO Task 3: Navigation Links
-   ============================================= */
+/* Task 3 — Navigation */
 nav {
-  /* Style the nav bar */
+    background-color: var(--color-secondary);
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1.5rem;
 }
 
 nav a {
-  /* No underline, some padding, use your color variable */
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
 }
 
 nav a:hover {
-  /* Add an underline or color change on hover */
+    text-decoration: underline;
 }
 
 nav a:focus {
-  /* Make focus state clearly visible (don't remove it!) */
+    outline: 3px solid white;
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
-
-/* =============================================
-   TODO Task 4: Header / Hero
-   ============================================= */
+/* Task 4 — Hero Header */
 #hero {
-  /* Background color, padding, text alignment */
+    background-color: var(--color-primary);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: var(--spacing-unit);
+    text-align: center;
 }
 
+#hero p {
+    color: white;
+}
 
-/* =============================================
-   TODO Task 4: Cards & Box Model
-   ============================================= */
+/* Task 4 — Cards & Box Model */
 .card-grid {
-  /* Space the cards — you can use basic margin or any layout */
+    display: flex;
+    gap: var(--spacing-unit);
+    flex-wrap: wrap;
 }
 
 .card {
-  /* 
-    Show off the box model:
-    - padding (inside space)
-    - border (visible edge)
-    - margin (outside space)
-    - border-radius (rounded corners)
-  */
+    padding: 1.5rem;
+    border: 2px solid var(--color-secondary);
+    border-radius: 12px;
+    margin: 0.5rem 0;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    flex: 1;
+    min-width: 200px;
 }
 
+.card:hover {
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.2);
+    border-color: var(--color-primary);
+}
 
-/* =============================================
-   TODO Task 5: Alternating List Items
-   ============================================= */
+/* Task 5 — Alternating List */
 .fancy-list {
-  /* Remove default bullets, add padding */
+    list-style: none;
+    padding: 0;
 }
 
 .fancy-list li {
-  /* Base styles for list items */
+    padding: 0.75rem var(--spacing-unit);
+    border-radius: 6px;
+    margin-bottom: 0.25rem;
 }
 
 .fancy-list li:nth-child(odd) {
-  /* Different background for odd items */
+    background-color: var(--color-secondary);
+    color: white;
 }
 
 .fancy-list li:nth-child(even) {
-  /* Different background for even items */
+    background-color: #e0e7ff;
+    color: var(--color-text);
 }
 
-
-/* =============================================
-   TODO Task 6: Footer
-   ============================================= */
+/* Task 6 — Footer */
 footer {
-  /* Distinguish the footer from main content */
+    text-align: center;
+    padding: var(--spacing-unit);
+    margin-top: 2rem;
+    color: var(--color-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--color-secondary);
+}
+
+code {
+    background-color: #e0e7ff;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 3rem;
 }

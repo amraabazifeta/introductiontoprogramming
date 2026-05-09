@@ -1,85 +1,78 @@
 // CS50x Week 4 — Filter (More): helpers.c
-// ✏️  YOUR CODE GOES HERE
-//
-// Same as Filter-Less PLUS one harder function: edges()
-// grayscale, reflect, blur — identical to Filter-Less
-// edges — Sobel operator for edge detection (replaces sepia)
 
 #include "helpers.h"
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
 
-// ---------------------------------------------------------------------------
-// TODO 1: GRAYSCALE  (same as Filter-Less)
-// ---------------------------------------------------------------------------
+// TODO 1: GRAYSCALE
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
-            // TODO: average R+G+B, assign to all channels (use round())
+            int average = round((image[i][j].rgbtRed + image[i][j].rgbtGreen + image[i][j].rgbtBlue) / 3.0);
+            image[i][j].rgbtRed   = average;
+            image[i][j].rgbtGreen = average;
+            image[i][j].rgbtBlue  = average;
         }
     }
 }
 
-// ---------------------------------------------------------------------------
-// TODO 2: REFLECT  (same as Filter-Less)
-// ---------------------------------------------------------------------------
+// TODO 2: REFLECT
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     for (int i = 0; i < height; i++)
     {
-        // TODO: swap image[i][j] and image[i][width-1-j] for j in 0..width/2
+        for (int j = 0; j < width / 2; j++)
+        {
+            RGBTRIPLE tmp           = image[i][j];
+            image[i][j]             = image[i][width - 1 - j];
+            image[i][width - 1 - j] = tmp;
+        }
     }
 }
 
-// ---------------------------------------------------------------------------
-// TODO 3: BLUR  (same as Filter-Less)
-// ---------------------------------------------------------------------------
+// TODO 3: BLUR
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    // TODO: copy image, then for each pixel average its valid 3x3 neighbourhood
+    RGBTRIPLE copy[height][width];
+    memcpy(copy, image, sizeof(image[0][0]) * height * width);
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            float sum_r = 0, sum_g = 0, sum_b = 0;
+            int count = 0;
+
+            for (int di = -1; di <= 1; di++)
+            {
+                for (int dj = -1; dj <= 1; dj++)
+                {
+                    int ni = i + di;
+                    int nj = j + dj;
+                    if (ni >= 0 && ni < height && nj >= 0 && nj < width)
+                    {
+                        sum_r += copy[ni][nj].rgbtRed;
+                        sum_g += copy[ni][nj].rgbtGreen;
+                        sum_b += copy[ni][nj].rgbtBlue;
+                        count++;
+                    }
+                }
+            }
+
+            image[i][j].rgbtRed   = round(sum_r / count);
+            image[i][j].rgbtGreen = round(sum_g / count);
+            image[i][j].rgbtBlue  = round(sum_b / count);
+        }
+    }
 }
 
-// ---------------------------------------------------------------------------
-// TODO 4: EDGES  ⭐⭐⭐⭐  (Filter-More exclusive — harder!)
-// ---------------------------------------------------------------------------
-// Detect edges using the Sobel operator.
-//
-// Background:
-//   The Sobel operator uses two 3×3 kernels (Gx and Gy) to compute the
-//   gradient of brightness in the horizontal and vertical directions.
-//   Pixels with large gradients are "edges".
-//
-// Kernels:
-//   Gx:          Gy:
-//   -1  0  +1    -1 -2 -1
-//   -2  0  +2     0  0  0
-//   -1  0  +1    +1 +2 +1
-//
-// Algorithm (per channel, per pixel):
-//   1. Make a copy of the image first.
-//   2. For each pixel (i, j):
-//      a. Treat out-of-bounds neighbours as black (R=G=B=0).
-//      b. For each channel (R, G, B) separately:
-//         - Compute Gx = sum of (Gx_kernel[di+1][dj+1] * neighbour_channel)
-//         - Compute Gy = sum of (Gy_kernel[di+1][dj+1] * neighbour_channel)
-//         - Final value = round(sqrt(Gx^2 + Gy^2))
-//         - Cap at 255
-//      c. Assign final R, G, B to image[i][j].
-//
-// HINT: Define the Gx and Gy kernels as 2D int arrays.
-// HINT: Use (int) cast when reading copy channels to allow negative arithmetic.
-// HINT: round(sqrt(Gx*Gx + Gy*Gy)) — use sqrt() and round() from <math.h>.
-//
-// Example (pixel surrounded by white pixels on left, black on right):
-//   Gx for red channel will be large → edge detected → bright pixel output.
-// ---------------------------------------------------------------------------
+// TODO 4: EDGES
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
-    // Sobel kernels
     int Gx[3][3] = {
         {-1, 0, 1},
         {-2, 0, 2},
@@ -91,15 +84,48 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         { 1,  2,  1}
     };
 
-    // TODO: declare a copy of the image (same as blur)
+    RGBTRIPLE copy[height][width];
+    memcpy(copy, image, sizeof(image[0][0]) * height * width);
 
-    // TODO: outer loops over each pixel (i, j)
-    //   For each pixel:
-    //     Initialize gx_r, gy_r, gx_g, gy_g, gx_b, gy_b = 0
-    //     Inner loops di = -1..1, dj = -1..1:
-    //       - If neighbour (i+di, j+dj) is out of bounds, treat as (0,0,0)
-    //       - Otherwise use copy[i+di][j+dj]
-    //       - Accumulate: gx_r += Gx[di+1][dj+1] * neighbour_red; etc.
-    //     Final channel = min(255, round(sqrt(gx_r^2 + gy_r^2))); etc.
-    //     Assign to image[i][j]
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            int gx_r = 0, gy_r = 0;
+            int gx_g = 0, gy_g = 0;
+            int gx_b = 0, gy_b = 0;
+
+            for (int di = -1; di <= 1; di++)
+            {
+                for (int dj = -1; dj <= 1; dj++)
+                {
+                    int ni = i + di;
+                    int nj = j + dj;
+
+                    int r = 0, g = 0, b = 0;
+                    if (ni >= 0 && ni < height && nj >= 0 && nj < width)
+                    {
+                        r = copy[ni][nj].rgbtRed;
+                        g = copy[ni][nj].rgbtGreen;
+                        b = copy[ni][nj].rgbtBlue;
+                    }
+
+                    gx_r += Gx[di + 1][dj + 1] * r;
+                    gy_r += Gy[di + 1][dj + 1] * r;
+                    gx_g += Gx[di + 1][dj + 1] * g;
+                    gy_g += Gy[di + 1][dj + 1] * g;
+                    gx_b += Gx[di + 1][dj + 1] * b;
+                    gy_b += Gy[di + 1][dj + 1] * b;
+                }
+            }
+
+            int final_r = round(sqrt(gx_r * gx_r + gy_r * gy_r));
+            int final_g = round(sqrt(gx_g * gx_g + gy_g * gy_g));
+            int final_b = round(sqrt(gx_b * gx_b + gy_b * gy_b));
+
+            image[i][j].rgbtRed   = final_r > 255 ? 255 : final_r;
+            image[i][j].rgbtGreen = final_g > 255 ? 255 : final_g;
+            image[i][j].rgbtBlue  = final_b > 255 ? 255 : final_b;
+        }
+    }
 }

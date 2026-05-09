@@ -1,143 +1,232 @@
-/* 
-  Exercise 3: Responsive Design
-  ==============================
-  MOBILE-FIRST: Write base styles for small screens,
-  then use min-width media queries to enhance for larger screens.
+/* Exercise 3: Responsive Design */
 
-  Breakpoints to use:
-    600px  → tablet
-    900px  → desktop
-    1200px → wide desktop
-*/
-
-/* ===== TODO: CSS Custom Properties ===== */
 :root {
-
+    --color-primary: #1a3a5c;
+    --color-secondary: #e8a838;
+    --color-text: #1a1a2e;
+    --color-background: #f8fafc;
+    --font-main: 'Segoe UI', sans-serif;
+    --spacing-unit: 1rem;
 }
 
-/* ===== TODO: Base Styles (Mobile First) ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  /* Set font, background, color */
+    font-family: var(--font-main);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.7;
 }
 
-/* ===== TODO Task 2: Header & Nav (mobile: stacked) ===== */
+/* ===== HEADER ===== */
 header {
-
+    background-color: var(--color-primary);
+    padding: 1rem var(--spacing-unit);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header-inner {
-  /* On mobile, stack logo and nav vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
 }
 
 .logo {
-  /* Style the site logo/brand name */
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
 nav {
-  /* On mobile: links stacked in a column */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 nav a {
-  /* Comfortable tap targets (min 44px height), no underline */
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
 }
 
 nav a:hover {
-
+    color: var(--color-secondary);
 }
 
-/* ===== TODO Task 5: Hero Section ===== */
+nav a:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* ===== HERO ===== */
 #hero {
-  /* Centered text, some padding */
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
+    padding: 3rem var(--spacing-unit);
 }
 
 #hero h1 {
-  /* TODO: Use clamp() for responsive font size */
-  /* font-size: clamp(1.5rem, 5vw, 3rem); */
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin-bottom: 1rem;
 }
 
-/* ===== TODO Task 3: Flexbox Cards ===== */
+#hero p {
+    font-size: 1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 2rem var(--spacing-unit);
+    max-width: 1100px;
+    margin: 0 auto 2rem auto;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: var(--spacing-unit);
+}
+
+/* ===== FLEXBOX CARDS ===== */
 .flex-container {
-  /* display: flex, flex-wrap: wrap, gap */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-unit);
+    margin-top: 1.5rem;
 }
 
 .flex-card {
-  /* flex: 1 1 250px so they wrap naturally */
+    flex: 1 1 250px;
+    background-color: white;
+    border: 2px solid #e0e7ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
-/* ===== TODO Task 4: CSS Grid Gallery ===== */
+.flex-card:hover {
+    border-color: var(--color-secondary);
+    box-shadow: 0 4px 16px rgba(26,58,92,0.15);
+}
+
+.flex-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+/* ===== GRID GALLERY ===== */
 .photo-grid {
-  /* display: grid, 1 column on mobile, gap */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-unit);
+    margin-top: 1.5rem;
 }
 
 .grid-item {
-  /* Position relative for caption overlay */
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .grid-item img {
-  /* Make images fill their grid cell */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.grid-item.featured img {
+    height: 280px;
 }
 
 .caption {
-  /* Optional: overlay caption */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
 }
 
-/* ===== TODO: Footer ===== */
+/* ===== FOOTER ===== */
 footer {
-
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 0.9rem;
 }
-
-/* ===== TODO: Sections ===== */
-section {
-  /* padding, max-width, center with margin auto */
-}
-
 
 /* ============================================
    TABLET (600px+)
    ============================================ */
 @media (min-width: 600px) {
+    .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-  /* TODO Task 2: Nav becomes horizontal */
-  .header-inner {
-    /* Row layout */
-  }
+    nav {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
 
-  nav {
-    /* Horizontal row */
-  }
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-  /* TODO Task 4: Grid becomes 2 columns */
-  .photo-grid {
-    /* grid-template-columns: repeat(2, 1fr) */
-  }
-
-  /* Make the .featured item span 2 columns */
-  .featured {
-    /* grid-column: span 2 */
-  }
+    .featured {
+        grid-column: span 2;
+    }
 }
-
 
 /* ============================================
    DESKTOP (900px+)
    ============================================ */
 @media (min-width: 900px) {
+    .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
-  /* TODO Task 4: Grid becomes 3 columns */
-  .photo-grid {
-    /* grid-template-columns: repeat(3, 1fr) */
-  }
+    .featured {
+        grid-column: span 2;
+    }
 
+    #hero {
+        padding: 5rem 2rem;
+    }
 }
-
 
 /* ============================================
    WIDE (1200px+)
    ============================================ */
 @media (min-width: 1200px) {
+    section {
+        padding: 3rem 2rem;
+    }
 
-  /* Add any refinements for large screens */
-
+    .flex-card {
+        flex: 1 1 300px;
+    }
 }

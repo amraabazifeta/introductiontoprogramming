@@ -1,13 +1,30 @@
 # Project 3 — Grade Calculator
-# Author: your name here
+# Author: Erinda
+
+# Bonus: ask how many subjects
+num = int(input("How many subjects? "))
 
 scores = []
+for i in range(1, num + 1):
+    score = float(input(f"Enter score {i}: "))
+    scores.append(score)
 
-# TODO: use a for loop to collect 5 scores and append each to the list
+average = sum(scores) / len(scores)
 
-# TODO: calculate the average using sum() and len()
+if average >= 90:
+    grade = "A"
+elif average >= 80:
+    grade = "B"
+elif average >= 70:
+    grade = "C"
+elif average >= 60:
+    grade = "D"
+else:
+    grade = "F"
 
-# TODO: determine the grade with if/elif/else (A/B/C/D/F)
+print(f"Average: {average:.1f}")
+print(f"Grade: {grade}")
 
-# TODO: print the average (1 decimal place) and the grade
-#   Hint: f"{average:.1f}" formats to 1 decimal place
+# Bonus: highest and lowest
+print(f"Highest score: {max(scores)}")
+print(f"Lowest score: {min(scores)}")
