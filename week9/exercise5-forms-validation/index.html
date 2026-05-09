@@ -1,59 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Forms & Validation</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Forms & Validation</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<header>
+<h1>Registration Form</h1>
+<p>Complete all required fields to create your account.</p>
+</header>
+<main>
+<div id="success-message" class="hidden">
+<h2>🎉 Registration Successful!</h2>
+<p>Welcome aboard! Your account has been created.</p>
+</div>
+<form id="registration-form" novalidate>
 
-  <header>
-    <h1>Registration Form</h1>
-    <p>Complete all required fields to create your account.</p>
-  </header>
-
-  <main>
-
-    <!-- Success message (hidden until form is submitted successfully) -->
-    <div id="success-message" class="hidden">
-      <h2>🎉 Registration Successful!</h2>
-      <p>Welcome aboard! Your account has been created.</p>
-    </div>
-
-    <form id="registration-form" novalidate>
-
-      <!-- TODO Task 1: Add all form fields here -->
-      <!-- Each field needs:
-           - A <label> with matching "for" attribute
-           - An <input> (or select/textarea) with an "id"
-           - A <span class="error-msg"></span> below the input
-      -->
-
-      <!-- EXAMPLE FIELD STRUCTURE (duplicate this pattern):
-      <div class="form-group">
+    <div class="form-group">
         <label for="full-name">Full Name *</label>
         <input type="text" id="full-name" name="full-name" placeholder="Jane Doe" />
         <span class="error-msg" id="error-full-name"></span>
-      </div>
-      -->
+    </div>
 
-      <!-- Add your 9 form fields here -->
+    <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" />
+        <span class="error-msg" id="error-email"></span>
+    </div>
 
+    <div class="form-group">
+        <label for="password">Password *</label>
+        <input type="password" id="password" name="password" placeholder="Min 8 chars, 1 number" />
+        <span class="error-msg" id="error-password"></span>
+        <span class="strength-bar hidden" id="password-strength"></span>
+    </div>
 
-      <!-- Submit Button -->
-      <div class="form-group">
+    <div class="form-group">
+        <label for="confirm-password">Confirm Password *</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Repeat your password" />
+        <span class="error-msg" id="error-confirm-password"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age *</label>
+        <input type="number" id="age" name="age" placeholder="18–120" min="18" max="120" />
+        <span class="error-msg" id="error-age"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="website">Website (optional)</label>
+        <input type="url" id="website" name="website" placeholder="https://yoursite.com" />
+        <span class="error-msg" id="error-website"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="country">Country *</label>
+        <select id="country" name="country">
+            <option value="">-- Select your country --</option>
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="mk">North Macedonia</option>
+            <option value="de">Germany</option>
+            <option value="fr">France</option>
+            <option value="other">Other</option>
+        </select>
+        <span class="error-msg" id="error-country"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="bio">Bio (optional)</label>
+        <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+        <small id="char-count">0 / 200 characters</small>
+        <span class="error-msg" id="error-bio"></span>
+    </div>
+
+    <div class="form-group checkbox-group">
+        <label>
+            <input type="checkbox" id="terms" name="terms" />
+            I accept the Terms and Conditions *
+        </label>
+        <span class="error-msg" id="error-terms"></span>
+    </div>
+
+    <div class="form-group">
         <button type="submit" id="submit-btn">Create Account</button>
-      </div>
+    </div>
 
-    </form>
-
-  </main>
-
-  <footer>
-    <p>Week 9 · Exercise 5 · Forms & Validation</p>
-  </footer>
-
-  <script src="script.js"></script>
+</form>
+</main>
+<footer>
+<p>Week 9 · Exercise 5 · Forms & Validation</p>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>

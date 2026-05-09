@@ -1,17 +1,27 @@
 {% extends "layout.html" %}
-
 {% block body %}
-    <h1>Registrants</h1>
-
-    <!-- TODO: Create an HTML <table> with a <thead> row containing
-               the columns: Name, Sport, and an empty column for the button -->
-
-    <!-- TODO: In the <tbody>, use a Jinja2 for loop over "registrants".
-               For each row show:
-               - registrant name
-               - registrant sport
-               - a small <form> that POSTs to /deregister with:
-                   * a hidden <input> named "id" whose value is registrant.id
-                   * a submit button labelled "Deregister" -->
-
+<h1>Registrants</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sport</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registrant in registrants %}
+        <tr>
+            <td>{{ registrant.name }}</td>
+            <td>{{ registrant.sport }}</td>
+            <td>
+                <form action="/deregister" method="post">
+                    <input type="hidden" name="id" value="{{ registrant.id }}" />
+                    <button type="submit">Deregister</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

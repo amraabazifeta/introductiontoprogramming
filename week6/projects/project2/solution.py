@@ -1,16 +1,32 @@
 # Project 2 — Number Guessing Game
-# Author: your name here
+# Author: Erinda
 
 import random
 
-# TODO: generate a random secret number between 1 and 10
+# Bonus: difficulty levels
+print("Choose difficulty: (1) Easy 1-10  (2) Medium 1-50  (3) Hard 1-100")
+difficulty = input("Your choice: ")
 
-# TODO: set up a guesses counter
+if difficulty == "2":
+    secret = random.randint(1, 50)
+    print("Guessing between 1 and 50.")
+elif difficulty == "3":
+    secret = random.randint(1, 100)
+    print("Guessing between 1 and 100.")
+else:
+    secret = random.randint(1, 10)
+    print("Guessing between 1 and 10.")
 
-# TODO: get the user's first guess
+guesses = 0
+guess = int(input("Guess a number: "))
+guesses += 1
 
-# TODO: while loop — keep asking until the guess is correct
-#   - print "Too low!" or "Too high!" on each wrong guess
-#   - count each guess
+while guess != secret:
+    if guess < secret:
+        print("Too low!")
+    else:
+        print("Too high!")
+    guess = int(input("Try again: "))
+    guesses += 1
 
-# TODO: print the congratulations message with the number of guesses
+print(f"Correct! You got it in {guesses} guesses.")

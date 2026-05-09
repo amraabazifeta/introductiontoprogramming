@@ -1,17 +1,22 @@
 {% extends "layout.html" %}
-
 {% block body %}
-    <h1>Register</h1>
-
-    <!-- TODO: Create a form that POSTs to /register -->
-
-        <!-- TODO: Add a text input for name -->
-
-        <!-- TODO: Add a <select> dropdown for sport:
-                   - First option: empty default (value="")
-                   - Use a Jinja2 for loop to generate one <option>
-                     per sport from the "sports" variable -->
-
-        <!-- TODO: Add a submit button -->
-
+<h1>Register</h1>
+<form action="/register" method="post">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" />
+    </div>
+    <div>
+        <label for="sport">Sport</label>
+        <select id="sport" name="sport">
+            <option value="">-- Choose a sport --</option>
+            {% for sport in sports %}
+            <option value="{{ sport }}">{{ sport }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>
 {% endblock %}

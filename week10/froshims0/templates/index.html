@@ -1,15 +1,24 @@
 {% extends "layout.html" %}
-
 {% block body %}
-    <h1>Register</h1>
-
-    <!-- TODO: Create an HTML form that posts to /register -->
-
-        <!-- TODO: Add a text input for the student's name -->
-
-        <!-- TODO: Add a <select> dropdown for sport with a blank default
-                   option and at least 3 sport choices -->
-
-        <!-- TODO: Add a submit button -->
-
+<h1>Register</h1>
+<form action="/register" method="post">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" />
+    </div>
+    <div>
+        <label for="sport">Sport</label>
+        <select id="sport" name="sport">
+            <option value="">-- Choose a sport --</option>
+            <option value="basketball">Basketball</option>
+            <option value="football">Football</option>
+            <option value="swimming">Swimming</option>
+            <option value="tennis">Tennis</option>
+            <option value="volleyball">Volleyball</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>
 {% endblock %}

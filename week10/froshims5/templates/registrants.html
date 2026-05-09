@@ -1,14 +1,20 @@
 {% extends "layout.html" %}
-
 {% block body %}
-    <h1>Registrants</h1>
-
-    <!-- TODO: Create an HTML <table> with a <thead> row containing
-               the columns: Name and Sport -->
-
-    <!-- TODO: In the <tbody>, use a Jinja2 for loop over "registrants"
-               to render one <tr> per registrant showing their name and sport -->
-
-{% endblock %}
-    </table>
+<h1>Registrants</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sport</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registrant in registrants %}
+        <tr>
+            <td>{{ registrant.name }}</td>
+            <td>{{ registrant.sport }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

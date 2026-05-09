@@ -1,32 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Final Project — Week 9</title>
-  <!-- 
-    FINAL PROJECT STARTER TEMPLATE
-    ================================
-    Replace everything below with your project.
-    See README.md for the three project options and all requirements.
-    
-    Choose your option:
-      A) Weather Dashboard
-      B) Task Manager
-      C) Quiz App
-  -->
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Task Manager 📋</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<header>
+    <h1>📋 Task Manager</h1>
+    <p id="task-stats">0 of 0 tasks completed</p>
+</header>
 
-  <!-- Your HTML goes here -->
-  <main style="padding: 4rem; text-align: center; font-family: system-ui, sans-serif;">
-    <h1>🏗️ Final Project</h1>
-    <p>Replace this template with your chosen project. Good luck!</p>
-    <p>Options: <strong>A) Weather Dashboard</strong> · <strong>B) Task Manager</strong> · <strong>C) Quiz App</strong></p>
-    <p>Read <code>README.md</code> for full instructions.</p>
-  </main>
+<main>
+    <!-- Add Task Form -->
+    <section class="card" id="add-section">
+        <h2>Add New Task</h2>
+        <div class="form-row">
+            <input type="text" id="task-input" placeholder="What needs to be done?" />
+        </div>
+        <div class="form-row">
+            <select id="priority-input">
+                <option value="low">🟢 Low Priority</option>
+                <option value="medium" selected>🟡 Medium Priority</option>
+                <option value="high">🔴 High Priority</option>
+            </select>
+            <input type="date" id="date-input" />
+            <button id="btn-add">Add Task</button>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
+    <!-- Filters & Sort -->
+    <section class="card" id="controls-section">
+        <div class="controls-row">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="high">🔴 High</button>
+                <button class="filter-btn" data-filter="medium">🟡 Medium</button>
+                <button class="filter-btn" data-filter="low">🟢 Low</button>
+            </div>
+            <div class="sort-group">
+                <select id="sort-input">
+                    <option value="created">Sort: Created</option>
+                    <option value="duedate">Sort: Due Date</option>
+                    <option value="priority">Sort: Priority</option>
+                </select>
+                <button id="btn-clear-completed">Clear Completed</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Task List -->
+    <section class="card" id="tasks-section">
+        <ul id="task-list"></ul>
+        <p id="empty-message" class="hidden">No tasks here! Add one above. 🎉</p>
+    </section>
+</main>
+
+<footer>
+    <p>Week 9 · Exercise 8 · Final Project — Task Manager</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
