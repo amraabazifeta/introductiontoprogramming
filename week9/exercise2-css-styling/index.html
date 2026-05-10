@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Styling Exercise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- TODO Task 1: Add a <link> to your Google Font here -->
+  <!-- TODO Task 1: Add a <link> to style.css here -->
+</head>
+<body>
+
+  <header id="hero">
+    <h1>CSS Styling Practice</h1>
+    <p>Making the web beautiful, one property at a time.</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#cards">Cards</a>
+    <a href="#list">List</a>
+  </nav>
+
+  <main>
+
+    <section id="about">
+      <h2>About This Page</h2>
+      <p class="intro">
+        This page exists for you to practice CSS. Style everything in <code>style.css</code>.
+        Try to make it look great without touching the HTML.
+      </p>
+      <p>
+        CSS stands for <strong>Cascading Style Sheets</strong>. It controls how HTML elements
+        look — their colors, sizes, spacing, fonts, and layout. Without CSS, every website
+        would look like a plain text document from 1993.
+      </p>
+      <p>
+        The first letter of this paragraph should be styled differently using a <em>pseudo-element</em>.
+        Every paragraph should be comfortable to read with good line-height and color.
+      </p>
+    </section>
+
+    <section id="cards">
+      <h2>Styled Cards</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Card One</h3>
+          <p>This card should have padding, a border, a border-radius, and a margin.</p>
+        </div>
+        <div class="card">
+          <h3>Card Two</h3>
+          <p>Each card should be visually distinct from the surrounding page content.</p>
+        </div>
+        <div class="card">
+          <h3>Card Three</h3>
+          <p>Cards can have a subtle shadow or background color to lift them off the page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="list">
+      <h2>Alternating List</h2>
+      <ul class="fancy-list">
+        <li>HTML — Structure</li>
+        <li>CSS — Presentation</li>
+        <li>JavaScript — Behavior</li>
+        <li>Python — Backend Logic</li>
+        <li>SQL — Data Storage</li>
+        <li>Git — Version Control</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Week 9 · Exercise 2 · CSS Styling</p>
+  </footer>
+
+</body>
+</html>

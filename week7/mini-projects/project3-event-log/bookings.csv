@@ -1,0 +1,16 @@
+date,room,event_type,attendees
+2025-03-01,Room A,Lecture,80
+2025-03-01,Room B,Workshop,20
+2025-03-02,Room A,Meeting,12
+2025-03-02,Room C,Social,65
+2025-03-03,Room A,Lecture,90
+2025-03-03,Room B,Social,55
+2025-03-04,Room C,Workshop,30
+2025-03-04,Room A,Meeting,8
+2025-03-05,Room B,Lecture,72
+2025-03-05,Room C,Social,48
+2025-03-06,Room A,Workshop,35
+2025-03-06,Room B,Meeting,15
+2025-03-07,Room C,Lecture,61
+2025-03-07,Room A,Social,44
+2025-03-08,Room B,Workshop,22

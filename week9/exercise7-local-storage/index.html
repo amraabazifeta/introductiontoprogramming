@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes App — localStorage</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>📒 My Notes</h1>
+    <p>Saved in your browser via <code>localStorage</code></p>
+  </header>
+
+  <main>
+    <div class="layout">
+
+      <!-- ===== SIDEBAR: Form ===== -->
+      <aside class="sidebar">
+        <h2 id="form-title">New Note</h2>
+        <form id="note-form">
+          <div class="form-group">
+            <label for="note-title">Title *</label>
+            <input type="text" id="note-title" placeholder="Note title..." required />
+          </div>
+          <div class="form-group">
+            <label for="note-body">Content</label>
+            <textarea id="note-body" rows="6" placeholder="Write your note here..."></textarea>
+          </div>
+          <div class="button-row">
+            <button type="submit" id="btn-submit">💾 Save Note</button>
+            <button type="button" id="btn-cancel" class="secondary hidden">Cancel</button>
+          </div>
+        </form>
+      </aside>
+
+      <!-- ===== MAIN: Notes List ===== -->
+      <section class="notes-panel">
+        <div class="notes-toolbar">
+          <input type="text" id="search-input" placeholder="🔍 Search notes..." />
+          <span id="notes-count"></span>
+        </div>
+        <div id="notes-container">
+          <!-- Notes rendered by JavaScript -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Week 9 · Exercise 7 · localStorage</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+/* Exercise 4 — Styles */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: system-ui, sans-serif; background: #f0f2f5; color: #222; line-height: 1.6; }
+
+header { background: #1a3a5c; color: white; padding: 2rem; text-align: center; }
+header p { opacity: 0.8; margin-top: 0.5rem; }
+
+main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+.card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+h2 { margin-bottom: 1rem; color: #1a3a5c; }
+
+/* Task 1 */
+#target-box { padding: 1rem; border: 2px dashed #ccc; border-radius: 8px; text-align: center; color: #666; }
+
+/* Task 2 */
+#count-display { font-size: 4rem; font-weight: 800; text-align: center; padding: 1rem; transition: color 0.3s; }
+#count-display.zero  { color: #e74c3c; }
+#count-display.high  { color: #27ae60; }
+.button-group { display: flex; gap: 0.75rem; justify-content: center; }
+button { padding: 0.6rem 1.4rem; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; background: #1a3a5c; color: white; transition: opacity 0.15s; }
+button:hover { opacity: 0.85; }
+button:focus { outline: 3px solid #e8a838; outline-offset: 2px; }
+
+/* Task 3 */
+.input-row { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.input-row input { flex: 1; padding: 0.6rem 1rem; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; }
+.input-row input:focus { outline: none; border-color: #1a3a5c; }
+.input-row input.shake { animation: shake 0.3s; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+#dynamic-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+#dynamic-list li { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 1rem; background: #f8f9fa; border-radius: 6px; }
+.delete-btn { background: #e74c3c; color: white; border: none; border-radius: 4px; padding: 0.15rem 0.5rem; cursor: pointer; font-size: 0.9rem; }
+.delete-btn:hover { background: #c0392b; }
+
+/* Task 4 */
+.details { margin-top: 1rem; padding: 1rem; background: #eef7ee; border-left: 4px solid #27ae60; border-radius: 4px; }
+.details.hidden { display: none; }
+
+/* Task 5 */
+.sliders { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+.sliders label { display: flex; align-items: center; gap: 1rem; font-weight: 600; }
+.slider { flex: 1; -webkit-appearance: none; height: 8px; border-radius: 4px; outline: none; cursor: pointer; }
+.red-slider   { background: linear-gradient(to right, #000, #f00); }
+.green-slider { background: linear-gradient(to right, #000, #0f0); }
+.blue-slider  { background: linear-gradient(to right, #000, #00f); }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: white; border: 2px solid #555; cursor: pointer; }
+#color-preview { width: 100%; height: 100px; border-radius: 10px; background: rgb(128,128,128); transition: background-color 0.1s; }
+#hex-display { text-align: center; margin-top: 0.5rem; font-family: monospace; font-size: 1.2rem; letter-spacing: 0.1em; }
+
+footer { text-align: center; padding: 2rem; color: #888; font-size: 0.875rem; }

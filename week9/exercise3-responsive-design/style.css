@@ -1,0 +1,193 @@
+/* Exercise 3: Responsive Design
+  ==============================
+  MOBILE-FIRST: Write base styles for small screens,
+  then use min-width media queries to enhance for larger screens.
+
+  Breakpoints to use:
+    600px  → tablet
+    900px  → desktop
+    1200px → wide desktop
+*/
+
+/* ===== TODO: CSS Custom Properties ===== */
+:root {
+  --primary-color: #1e3a8a;
+  --text-dark: #1e293b;
+  --bg-light: #f8fafc;
+  --spacing: 1.5rem;
+}
+
+/* ===== TODO: Base Styles (Mobile First) ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ===== TODO Task 2: Header & Nav (mobile: stacked) ===== */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: var(--spacing);
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+nav {
+  width: 100%;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+nav a:hover {
+  background-color: #f1f5f9;
+}
+
+/* ===== TODO Task 5: Hero Section ===== */
+#hero {
+  text-align: center;
+  padding: 4rem var(--spacing);
+}
+
+#hero h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+/* ===== TODO Task 3: Flexbox Cards ===== */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing);
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.flex-card {
+  flex: 1 1 250px;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+/* ===== TODO Task 4: CSS Grid Gallery ===== */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing);
+  margin-top: 2rem;
+}
+
+.grid-item {
+  position: relative;
+  background-color: #cbd5e1;
+  padding: 3rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.featured {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* ===== TODO: Footer ===== */
+footer {
+  text-align: center;
+  padding: 3rem;
+  margin-top: 4rem;
+}
+
+/* ===== TODO: Sections ===== */
+section {
+  padding: 2rem var(--spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   TABLET (600px+)
+   ============================================ */
+@media (min-width: 600px) {
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav {
+    width: auto;
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  nav a {
+    border: none;
+    min-height: auto;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured {
+    grid-column: span 2;
+  }
+}
+
+/* ============================================
+   DESKTOP (900px+)
+   ============================================ */
+@media (min-width: 900px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   WIDE (1200px+)
+   ============================================ */
+@media (min-width: 1200px) {
+  section {
+    padding: 4rem 0;
+  }
+}

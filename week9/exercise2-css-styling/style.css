@@ -1,0 +1,182 @@
+/* Exercise 2: CSS Styling
+  ========================
+  Complete the tasks described in README.md.
+  Do NOT modify index.html — all your work goes here.
+*/
+
+/* =============================================
+   TODO Task 2: Define CSS Custom Properties
+   ============================================= */
+:root {
+  --color-primary: #2563eb;
+  --color-secondary: #f3f4f6;
+  --color-text: #1f2937;
+  --color-background: #ffffff;
+  --font-heading: 'Georgia', serif;
+  --font-body: 'Arial', sans-serif;
+  --spacing-unit: 1rem;
+}
+
+
+/* =============================================
+   TODO Task 3: Base / Reset Styles
+   ============================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  margin: 0 auto;
+  max-width: 1000px;
+  line-height: 1.6;
+}
+
+
+/* =============================================
+   TODO Task 3: Typography — Headings
+   ============================================= */
+h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-secondary);
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+/* TODO Task 3: Pseudo-element — first letter of a paragraph */
+p::first-letter {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  /*float: left;
+  margin-right: 0.5rem;
+  line-height: 1;*/
+}
+
+
+/* =============================================
+   TODO Task 3: Navigation Links
+   ============================================= */
+nav {
+  background-color: var(--color-secondary);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: var(--color-primary);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 4px;
+}
+
+nav a:focus {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+
+/* =============================================
+   TODO Task 4: Header / Hero
+   ============================================= */
+#hero {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+
+/* =============================================
+   TODO Task 4: Cards & Box Model
+   ============================================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-unit);
+  margin: 2rem 0;
+}
+
+.card {
+  padding: 1.5rem;
+  border: 2px solid var(--color-secondary);
+  margin: var(--spacing-unit);
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* =============================================
+   TODO Task 5: Alternating List Items
+   ============================================= */
+.fancy-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.fancy-list li {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+}
+
+.fancy-list li:nth-child(odd) {
+  background-color: var(--color-secondary);
+}
+
+.fancy-list li:nth-child(even) {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-secondary);
+}
+
+
+/* =============================================
+   TODO Task 6: Footer
+   ============================================= */
+footer {
+  background-color: var(--color-text);
+  color: var(--color-secondary);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+  border-top: 5px solid var(--color-primary);
+}
