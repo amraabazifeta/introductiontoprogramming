@@ -1,6 +1,5 @@
 # Project 1 — Temperature Converter
-# Author: your name here
-# Date:   session date here
+# Author: serhan kara
 #
 # Instructions:
 #   1. Read the README.md in this folder first.
@@ -11,11 +10,12 @@
 
 celsius = float(input("Enter temperature in Celsius: "))
 
-# TODO: calculate fahrenheit using the formula F = (C × 9/5) + 32
-# fahrenheit = ...
+# calculate fahrenheit using the formula F = (C × 9/5) + 32
+fahrenheit = (celsius * 9/5) + 32
 
-# TODO: print the result using an f-string
-# print(f"...")
+# print the result using an f-string
+print(f"{celsius}°C is equal to {fahrenheit}°F")
 
 # ── Bonus (optional) ─────────────────────────────────────────────────────────
 # Add a direction menu (C→F or F→C)
+```
