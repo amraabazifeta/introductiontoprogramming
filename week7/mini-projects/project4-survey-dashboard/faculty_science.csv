@@ -1,0 +1,16 @@
+student_id,faculty,year,satisfaction,favourite_tool,comments
+S001,Science,1,4,Python,Good course structure
+S002,Science,2,5,Python,Loved the projects
+S003,Science,1,3,R,More examples needed
+S004,Science,3,5,Python,Excellent instructors
+S005,Science,2,4,Python,Would like more SQL content
+S006,Science,4,5,R,Best technical course
+S007,Science,1,2,Excel,Too fast for beginners
+S008,Science,3,4,Python,Great problem sets
+S009,Science,2,4,SPSS,Good balance of theory
+S010,Science,4,5,Python,Highly recommend
+S011,Science,1,3,R,Needs more examples
+S012,Science,2,4,Python,Enjoyed every lecture
+S013,Science,3,4,Excel,Clear and well structured
+S014,Science,1,2,SPSS,Struggled with SQL section
+S015,Science,4,5,Python,Outstanding course

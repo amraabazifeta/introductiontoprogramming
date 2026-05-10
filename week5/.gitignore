@@ -1,0 +1,14 @@
+# Compiled binaries
+lab5/inheritance/inheritance
+pset5/speller/speller
+
+# CS50 submit
+.cs50.yml
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+.vscode/
