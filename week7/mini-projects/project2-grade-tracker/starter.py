@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 # # Arda Ok Computer Engineering Homework
+=======
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 # starter.py — Grade Tracker
 # Project 2 | Easy | 25–30 minutes
 #
@@ -23,6 +26,7 @@ with open("grades.csv", "r") as file:
         score = int(row["score"])   # IMPORTANT: CSV values are strings — must convert
 
         # TODO: Append score to the scores list
+<<<<<<< HEAD
         scores.append(score)
 
         # TODO: Update highest if this score is greater than highest["score"]
@@ -54,11 +58,26 @@ with open("grades.csv", "r") as file:
 # ── Step 3: Calculate the average ────────────────────────────────────────────
 # TODO: average = sum(scores) / len(scores)  — round to 1 decimal place
 average = round(sum(scores) / len(scores), 1)
+=======
+
+        # TODO: Update highest if this score is greater than highest["score"]
+
+        # TODO: Update lowest if this score is less than lowest["score"]
+
+        # TODO: Determine the letter grade using if/elif/else
+        #   A = 90-100, B = 80-89, C = 70-79, D = 60-69, F = 0-59
+        # TODO: Increment grade_counts[letter] by 1
+
+# ── Step 3: Calculate the average ────────────────────────────────────────────
+# TODO: average = sum(scores) / len(scores)  — round to 1 decimal place
+average = ???
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 # ── Step 4: Print the report ──────────────────────────────────────────────────
 print("=== Quiz Grade Summary ===")
 # TODO: Print all summary lines matching the expected output format
 # Hint: use f-strings. For alignment, try f"{label:<20} {value}"
+<<<<<<< HEAD
 print(f"{'Students assessed' :<18} : {len(scores)}")
 print(f"{'Average score'     :<18} : {average}")
 print(f"{'Highest score'     :<18} : {highest['score']}  ({highest['name']})")
@@ -70,3 +89,5 @@ print(f"  B (80-89)  : {grade_counts['B']} students")
 print(f"  C (70-79)  : {grade_counts['C']} students")
 print(f"  D (60-69)  : {grade_counts['D']} students")
 print(f"  F ( 0-59)  : {grade_counts['F']} students")
+=======
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

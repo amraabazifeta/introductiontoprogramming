@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 /* Exercise 2: CSS Styling
+=======
+/* 
+  Exercise 2: CSS Styling
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
   ========================
   Complete the tasks described in README.md.
   Do NOT modify index.html — all your work goes here.
@@ -8,6 +13,7 @@
    TODO Task 2: Define CSS Custom Properties
    ============================================= */
 :root {
+<<<<<<< HEAD
   --color-primary: #2563eb;
   --color-secondary: #f3f4f6;
   --color-text: #1f2937;
@@ -15,6 +21,10 @@
   --font-heading: 'Georgia', serif;
   --font-body: 'Arial', sans-serif;
   --spacing-unit: 1rem;
+=======
+  /* Add your custom properties here */
+  /* Example: --color-primary: #your-color; */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 
@@ -22,6 +32,7 @@
    TODO Task 3: Base / Reset Styles
    ============================================= */
 * {
+<<<<<<< HEAD
   box-sizing: border-box;
 }
 
@@ -32,6 +43,13 @@ body {
   margin: 0 auto;
   max-width: 1000px;
   line-height: 1.6;
+=======
+  /* Consider a box-sizing reset */
+}
+
+body {
+  /* Set font-family, background-color, color, margin */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 
@@ -39,6 +57,7 @@ body {
    TODO Task 3: Typography — Headings
    ============================================= */
 h1 {
+<<<<<<< HEAD
   font-family: var(--font-heading);
   font-size: 3rem;
   margin-bottom: 0.5rem;
@@ -65,12 +84,28 @@ p::first-letter {
   margin-right: 0.5rem;
   line-height: 1;*/
 }
+=======
+  /* Large, impactful heading */
+}
+
+h2 {
+  /* Section heading */
+}
+
+h3 {
+  /* Card heading */
+}
+
+/* TODO Task 3: Pseudo-element — first letter of a paragraph */
+/* p::first-letter { ... } */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 
 /* =============================================
    TODO Task 3: Navigation Links
    ============================================= */
 nav {
+<<<<<<< HEAD
   background-color: var(--color-secondary);
   padding: 1rem;
   margin-bottom: 2rem;
@@ -103,6 +138,21 @@ nav a:hover {
 nav a:focus {
   outline: 3px solid #f59e0b;
   outline-offset: 2px;
+=======
+  /* Style the nav bar */
+}
+
+nav a {
+  /* No underline, some padding, use your color variable */
+}
+
+nav a:hover {
+  /* Add an underline or color change on hover */
+}
+
+nav a:focus {
+  /* Make focus state clearly visible (don't remove it!) */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 
@@ -110,12 +160,16 @@ nav a:focus {
    TODO Task 4: Header / Hero
    ============================================= */
 #hero {
+<<<<<<< HEAD
   background-color: var(--color-primary);
   color: white;
   padding: 4rem 2rem;
   text-align: center;
   border-radius: 8px;
   margin-bottom: 2rem;
+=======
+  /* Background color, padding, text alignment */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 
@@ -123,6 +177,7 @@ nav a:focus {
    TODO Task 4: Cards & Box Model
    ============================================= */
 .card-grid {
+<<<<<<< HEAD
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--spacing-unit);
@@ -141,6 +196,19 @@ nav a:focus {
 
 .card:hover {
   transform: translateY(-5px);
+=======
+  /* Space the cards — you can use basic margin or any layout */
+}
+
+.card {
+  /* 
+    Show off the box model:
+    - padding (inside space)
+    - border (visible edge)
+    - margin (outside space)
+    - border-radius (rounded corners)
+  */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 
@@ -148,6 +216,7 @@ nav a:focus {
    TODO Task 5: Alternating List Items
    ============================================= */
 .fancy-list {
+<<<<<<< HEAD
   list-style: none;
   padding: 0;
   margin: 1.5rem 0;
@@ -166,6 +235,21 @@ nav a:focus {
 .fancy-list li:nth-child(even) {
   background-color: var(--color-background);
   border: 1px solid var(--color-secondary);
+=======
+  /* Remove default bullets, add padding */
+}
+
+.fancy-list li {
+  /* Base styles for list items */
+}
+
+.fancy-list li:nth-child(odd) {
+  /* Different background for odd items */
+}
+
+.fancy-list li:nth-child(even) {
+  /* Different background for even items */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 
@@ -173,6 +257,7 @@ nav a:focus {
    TODO Task 6: Footer
    ============================================= */
 footer {
+<<<<<<< HEAD
   background-color: var(--color-text);
   color: var(--color-secondary);
   padding: 2rem;
@@ -180,3 +265,7 @@ footer {
   margin-top: 4rem;
   border-top: 5px solid var(--color-primary);
 }
+=======
+  /* Distinguish the footer from main content */
+}
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

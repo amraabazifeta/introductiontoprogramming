@@ -7,6 +7,7 @@
 .mode column
 
 -- 2.1: Students whose last name contains 's' (school.db)
+<<<<<<< HEAD
 SELECT * FROM students WHERE last_name LIKE '%s%';
 
 -- 2.2: Teachers with email ending in @cs50.harvard.edu (school.db)
@@ -41,3 +42,51 @@ SELECT * FROM members WHERE membership_type IN ('premium', 'student');
 
 -- 2.12 CHALLENGE: Students with exactly 4-letter first names (school.db)
 SELECT * FROM students WHERE first_name LIKE '____';
+=======
+
+
+
+-- 2.2: Teachers with email ending in @cs50.harvard.edu (school.db)
+
+
+
+-- 2.3: Top 5 students by GPA, highest first (school.db)
+
+
+
+-- 2.4: Distinct enrollment years (school.db)
+
+
+
+-- 2.5: Courses in department 1 OR 2, using IN (school.db)
+
+
+
+-- 2.6: Students who did NOT enroll in 2018, using NOT IN (school.db)
+
+
+
+-- 2.7: Courses sorted by credits (desc), then title (asc) (school.db)
+
+
+
+-- 2.8: Books whose title starts with 'The' (library.db)
+
+
+
+-- 2.9: Loans where return_date is NULL (library.db)
+
+
+
+-- 2.10: British authors sorted by last name (library.db)
+
+
+
+-- 2.11: Members with membership_type 'premium' or 'student' (library.db)
+
+
+
+-- 2.12 CHALLENGE: Students with exactly 4-letter first names (school.db)
+
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

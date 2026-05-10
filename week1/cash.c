@@ -55,6 +55,7 @@ int main(void)
 // Prompt the user for a non-negative number of cents
 int get_cents(void)
 {
+<<<<<<< HEAD
     int cents;
     do
     {
@@ -62,30 +63,58 @@ int get_cents(void)
     }
     while (cents < 0);
     return cents;
+=======
+    // TODO: Use a do-while loop with get_int("Change owed: ")
+    //       Re-prompt if the value is negative.
+
+
+    // TODO: return the valid value
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // Return how many quarters fit in `cents`
 int calculate_quarters(int cents)
 {
+<<<<<<< HEAD
     return cents / 25;
+=======
+    // TODO: Return the number of quarters (integer division by 25)
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // Return how many dimes fit in `cents`
 int calculate_dimes(int cents)
 {
+<<<<<<< HEAD
     return cents / 10;
+=======
+    // TODO
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // Return how many nickels fit in `cents`
 int calculate_nickels(int cents)
 {
+<<<<<<< HEAD
     return cents / 5;
+=======
+    // TODO
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // Return how many pennies fit in `cents`
 int calculate_pennies(int cents)
 {
+<<<<<<< HEAD
     return cents;
     
     //TODO
+=======
+    // TODO
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }

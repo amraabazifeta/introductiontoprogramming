@@ -1,6 +1,7 @@
 # challenge2.py — Two-Column Report
 # Read favorites.csv, find the most common problem per language, print a table.
 
+<<<<<<< HEAD
 
 import csv
 
@@ -36,3 +37,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+=======
+import csv
+
+# Your code here
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

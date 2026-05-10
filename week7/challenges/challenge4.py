@@ -2,6 +2,7 @@
 # Present an interactive menu that runs different SQL queries on favorites.db.
 # Requires favorites.db — see week2/README.md for setup instructions.
 
+<<<<<<< HEAD
 
 import sqlite3
 
@@ -53,3 +54,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+=======
+import sqlite3
+
+# Your code here
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

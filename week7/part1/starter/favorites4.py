@@ -15,13 +15,17 @@ with open("favorites.csv", "r") as file:
     reader = csv.DictReader(file)
 
     # TODO: Create three counter variables: scratch, c, python — all starting at 0
+<<<<<<< HEAD
     scratch = 0
     c = 0
     python = 0
+=======
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
     for row in reader:
         favorite = row["language"]
         # TODO: Use if/elif to increment the correct counter
+<<<<<<< HEAD
         if favorite == "Scratch":
             scratch += 1
         elif favorite == "C":
@@ -33,3 +37,7 @@ with open("favorites.csv", "r") as file:
     print(f"Scratch: {scratch}")
     print(f"C: {c}")
     print(f"Python: {python}")
+=======
+
+    # TODO: Print the three counts using f-strings
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

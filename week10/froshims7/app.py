@@ -1,6 +1,7 @@
 # Implements a registration form, storing registrants in a SQLite database, with support for multiple sports and deregistration
 
 # TODO: Import SQL from cs50
+<<<<<<< HEAD
 from cs50 import SQL
 
 # TODO: Import Flask, redirect, render_template, and request from flask
@@ -19,17 +20,37 @@ SPORTS = ["Basketball", "Soccer", "Ultimate Frisbee"]
 @app.route("/")
 def index():
     return render_template("index.html", sports=SPORTS)
+=======
+# TODO: Import Flask, redirect, render_template, and request from flask
+
+
+# TODO: Create the Flask app instance
+
+
+# TODO: Connect to "froshims.db" with cs50's SQL() and store in db
+
+
+# TODO: Define the SPORTS list with at least 3 sport names
+
+
+# TODO: Define a GET route for "/" that renders index.html with sports=SPORTS
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 # TODO: Define a POST route for "/deregister" that:
 #         - Reads "id" from the form
 #         - If id exists, deletes the row: DELETE FROM registrants WHERE id = ?
 #         - Redirects to "/registrants"
+<<<<<<< HEAD
 @app.route("/deregister", methods=["POST"])
 def deregister():
     id = request.form.get("id")
     if id:
         db.execute("DELETE FROM registrants WHERE id = ?", id)
     return redirect("/registrants")
+=======
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 # TODO: Define a POST route for "/register" that:
 #         1. Validates name (missing → error.html message="Missing name")
@@ -38,6 +59,7 @@ def deregister():
 #         4. If any sport is not in SPORTS → error.html message="Invalid sport"
 #         5. Inserts one row per sport into the database
 #         6. Redirects to "/registrants"
+<<<<<<< HEAD
 @app.route("/register", methods=["POST"])
 def register():
     # 1. Validate name
@@ -60,11 +82,17 @@ def register():
 
     # 6. Redirect
     return redirect("/registrants")
+=======
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 # TODO: Define a GET route for "/registrants" that:
 #         - Queries all registrants from the database
 #         - Renders registrants.html passing the results as "registrants"
+<<<<<<< HEAD
 @app.route("/registrants")
 def registrants():
     registrants = db.execute("SELECT * FROM registrants")
     return render_template("registrants.html", registrants=registrants)
+=======
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

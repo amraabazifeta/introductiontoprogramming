@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 /* Exercise 3: Responsive Design
+=======
+/* 
+  Exercise 3: Responsive Design
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
   ==============================
   MOBILE-FIRST: Write base styles for small screens,
   then use min-width media queries to enhance for larger screens.
@@ -11,24 +16,33 @@
 
 /* ===== TODO: CSS Custom Properties ===== */
 :root {
+<<<<<<< HEAD
   --primary-color: #1e3a8a;
   --text-dark: #1e293b;
   --bg-light: #f8fafc;
   --spacing: 1.5rem;
+=======
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 /* ===== TODO: Base Styles (Mobile First) ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
+<<<<<<< HEAD
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.6;
+=======
+  /* Set font, background, color */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 /* ===== TODO Task 2: Header & Nav (mobile: stacked) ===== */
 header {
+<<<<<<< HEAD
   background-color: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   padding: var(--spacing);
@@ -72,10 +86,34 @@ nav a {
 
 nav a:hover {
   background-color: #f1f5f9;
+=======
+
+}
+
+.header-inner {
+  /* On mobile, stack logo and nav vertically */
+}
+
+.logo {
+  /* Style the site logo/brand name */
+}
+
+nav {
+  /* On mobile: links stacked in a column */
+}
+
+nav a {
+  /* Comfortable tap targets (min 44px height), no underline */
+}
+
+nav a:hover {
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 /* ===== TODO Task 5: Hero Section ===== */
 #hero {
+<<<<<<< HEAD
   text-align: center;
   padding: 4rem var(--spacing);
 }
@@ -83,10 +121,19 @@ nav a:hover {
 #hero h1 {
   font-size: clamp(1.5rem, 5vw, 3rem);
   margin-bottom: 1rem;
+=======
+  /* Centered text, some padding */
+}
+
+#hero h1 {
+  /* TODO: Use clamp() for responsive font size */
+  /* font-size: clamp(1.5rem, 5vw, 3rem); */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 /* ===== TODO Task 3: Flexbox Cards ===== */
 .flex-container {
+<<<<<<< HEAD
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing);
@@ -101,10 +148,18 @@ nav a:hover {
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   text-align: left;
+=======
+  /* display: flex, flex-wrap: wrap, gap */
+}
+
+.flex-card {
+  /* flex: 1 1 250px so they wrap naturally */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 /* ===== TODO Task 4: CSS Grid Gallery ===== */
 .photo-grid {
+<<<<<<< HEAD
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing);
@@ -126,26 +181,53 @@ nav a:hover {
 .featured {
   background-color: var(--primary-color);
   color: white;
+=======
+  /* display: grid, 1 column on mobile, gap */
+}
+
+.grid-item {
+  /* Position relative for caption overlay */
+}
+
+.grid-item img {
+  /* Make images fill their grid cell */
+}
+
+.caption {
+  /* Optional: overlay caption */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 /* ===== TODO: Footer ===== */
 footer {
+<<<<<<< HEAD
   text-align: center;
   padding: 3rem;
   margin-top: 4rem;
+=======
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 /* ===== TODO: Sections ===== */
 section {
+<<<<<<< HEAD
   padding: 2rem var(--spacing);
   max-width: 1200px;
   margin: 0 auto;
 }
 
+=======
+  /* padding, max-width, center with margin auto */
+}
+
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 /* ============================================
    TABLET (600px+)
    ============================================ */
 @media (min-width: 600px) {
+<<<<<<< HEAD
   .header-inner {
     flex-direction: row;
     justify-content: space-between;
@@ -174,20 +256,63 @@ section {
   }
 }
 
+=======
+
+  /* TODO Task 2: Nav becomes horizontal */
+  .header-inner {
+    /* Row layout */
+  }
+
+  nav {
+    /* Horizontal row */
+  }
+
+  /* TODO Task 4: Grid becomes 2 columns */
+  .photo-grid {
+    /* grid-template-columns: repeat(2, 1fr) */
+  }
+
+  /* Make the .featured item span 2 columns */
+  .featured {
+    /* grid-column: span 2 */
+  }
+}
+
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 /* ============================================
    DESKTOP (900px+)
    ============================================ */
 @media (min-width: 900px) {
+<<<<<<< HEAD
   .photo-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+=======
+
+  /* TODO Task 4: Grid becomes 3 columns */
+  .photo-grid {
+    /* grid-template-columns: repeat(3, 1fr) */
+  }
+
+}
+
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 /* ============================================
    WIDE (1200px+)
    ============================================ */
 @media (min-width: 1200px) {
+<<<<<<< HEAD
   section {
     padding: 4rem 0;
   }
 }
+=======
+
+  /* Add any refinements for large screens */
+
+}
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

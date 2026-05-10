@@ -42,6 +42,7 @@ int main(void)
     int sentences = count_sentences(text);
 
     // TODO: Compute L and S (averages per 100 words)
+<<<<<<< HEAD
     // Hint: cast to float before dividing to avoid integer division!
     float L = 100.0 * letters / words;
     float S = 100.0 * sentences / words;
@@ -64,16 +65,40 @@ int main(void)
     {
         printf("Grade %i\n", index);
     }
+=======
+    //   Hint: cast to float before dividing to avoid integer division!
+    //   float L = 100.0 * letters / words;
+    //   float S = 100.0 * sentences / words;
+
+
+    // TODO: Apply the Coleman-Liau formula
+    //   index = round(0.0588 * L - 0.296 * S - 15.8)
+    //   Use round() from <math.h> and store as int
+
+
+    // TODO: Print the grade level
+    //   if index >= 16  → printf("Grade 16+\n");
+    //   if index < 1    → printf("Before Grade 1\n");
+    //   otherwise       → printf("Grade %i\n", index);
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // ---------------------------------------------------------------------------
 // TODO: Implement count_letters
 // ---------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+// Return the number of letters (a-z, A-Z) in text.
+// Hint: use isalpha() to check if a character is a letter.
+// ---------------------------------------------------------------------------
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 int count_letters(string text)
 {
     int count = 0;
 
     // TODO: Loop through each character of text
+<<<<<<< HEAD
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         // TODO: Increment count if the character is alphabetic
@@ -82,6 +107,10 @@ int count_letters(string text)
             count++;
         }
     }
+=======
+    // TODO: Increment count if the character is alphabetic
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
     return count;
 }
@@ -89,11 +118,19 @@ int count_letters(string text)
 // ---------------------------------------------------------------------------
 // TODO: Implement count_words
 // ---------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+// Return the number of words in text.
+// Assume: words are separated by single spaces, no leading/trailing spaces.
+// Hint: number of words = number of spaces + 1
+// ---------------------------------------------------------------------------
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 int count_words(string text)
 {
     int count = 1; // Start at 1: at least one word if text is non-empty
 
     // TODO: Loop through text and count spaces
+<<<<<<< HEAD
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         if (text[i] == ' ')
@@ -101,6 +138,9 @@ int count_words(string text)
             count++;
         }
     }
+=======
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
     return count;
 }
@@ -108,11 +148,18 @@ int count_words(string text)
 // ---------------------------------------------------------------------------
 // TODO: Implement count_sentences
 // ---------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+// Return the number of sentences in text.
+// A sentence ends with '.', '!', or '?'
+// ---------------------------------------------------------------------------
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 int count_sentences(string text)
 {
     int count = 0;
 
     // TODO: Loop through text
+<<<<<<< HEAD
     for (int i = 0, n = strlen(text); i < n; i++)
     {
         // TODO: Increment count whenever you see '.', '!', or '?'
@@ -124,3 +171,10 @@ int count_sentences(string text)
 
     return count;
 }
+=======
+    // TODO: Increment count whenever you see '.', '!', or '?'
+
+
+    return count;
+}
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

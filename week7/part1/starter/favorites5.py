@@ -20,6 +20,7 @@ with open("favorites.csv", "r") as file:
     for row in reader:
         favorite = row["language"]
         # TODO: If favorite is already in counts, increment counts[favorite] by 1
+<<<<<<< HEAD
         if favorite in counts:
             counts[favorite] += 1
         # TODO: Otherwise, set counts[favorite] = 1
@@ -30,3 +31,9 @@ with open("favorites.csv", "r") as file:
     #       Format: "Python: 196"
     for language in counts:
         print(f"{language}: {counts[language]}")
+=======
+        # TODO: Otherwise, set counts[favorite] = 1
+
+    # TODO: Print each key-value pair in counts
+    #       Format: "Python: 196"
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

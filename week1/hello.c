@@ -19,8 +19,16 @@
 int main(void)
 {
     // TODO: Prompt the user for their name using get_string()
+<<<<<<< HEAD
     string name = get_string("What is your name? ");
 
     // TODO: Print "hello, " followed by their name using printf()
     printf("hello, %s\n", name);
 }
+=======
+
+
+    // TODO: Print "hello, " followed by their name using printf()
+
+}
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

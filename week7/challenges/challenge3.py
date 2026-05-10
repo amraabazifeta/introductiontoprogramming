@@ -3,6 +3,7 @@
 
 import csv
 
+<<<<<<< HEAD
 def main():
     counts = {}
     total = 0
@@ -38,3 +39,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+=======
+# Your code here
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

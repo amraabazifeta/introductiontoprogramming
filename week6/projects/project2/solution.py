@@ -1,9 +1,14 @@
 # Project 2 — Number Guessing Game
+<<<<<<< HEAD
 # Author: Arda Ok
+=======
+# Author: your name here
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 import random
 
 # TODO: generate a random secret number between 1 and 10
+<<<<<<< HEAD
 secret = random.randint(1, 10)
 
 # TODO: set up a guesses counter
@@ -27,3 +32,15 @@ while guess != secret:
 
 # TODO: print the congratulations message with the number of guesses
 print(f"Correct! You got it in {guesses} guesses.")
+=======
+
+# TODO: set up a guesses counter
+
+# TODO: get the user's first guess
+
+# TODO: while loop — keep asking until the guess is correct
+#   - print "Too low!" or "Too high!" on each wrong guess
+#   - count each guess
+
+# TODO: print the congratulations message with the number of guesses
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

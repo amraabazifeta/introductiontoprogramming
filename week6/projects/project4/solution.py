@@ -1,10 +1,15 @@
 # Project 4 — Word Counter
+<<<<<<< HEAD
 # Author: Arda Ok
+=======
+# Author: your name here
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 sentence = input("Enter a sentence: ")
 words = sentence.lower().split()
 
 # TODO: total word count using len()
+<<<<<<< HEAD
 total_words = len(words)
 
 # TODO: character count (no spaces)
@@ -25,3 +30,15 @@ print(f"Total characters (no spaces): {char_count}")
 print("Word frequency:")
 for word in frequency:
     print(f"  {word}  -> {frequency[word]}")
+=======
+
+# TODO: character count (no spaces)
+# Hint: sentence.replace(" ", "") removes all spaces, then use len()
+
+# TODO: word frequency dictionary
+# frequency = {}
+# for word in words:
+#     ...
+
+# TODO: print total words, total characters, then word frequency
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

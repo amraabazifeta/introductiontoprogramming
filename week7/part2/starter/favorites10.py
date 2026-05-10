@@ -18,6 +18,7 @@ from cs50 import SQL
 db = SQL("sqlite:///favorites.db")
 
 # TODO: Ask the user for their favourite problem using input()
+<<<<<<< HEAD
 favorite = input("Favorite: ")
 
 # TODO: Execute a SQL query: SELECT COUNT(*) AS n FROM favorites WHERE problem = ?
@@ -30,3 +31,9 @@ row = rows[0]
 
 # TODO: Print row["n"]
 print(row["n"])
+=======
+# TODO: Execute a SQL query: SELECT COUNT(*) AS n FROM favorites WHERE problem = ?
+#       Pass the user's input as the second argument to db.execute()
+# TODO: Get the first (and only) row from the result
+# TODO: Print row["n"]
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

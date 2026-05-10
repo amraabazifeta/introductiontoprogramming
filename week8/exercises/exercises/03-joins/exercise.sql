@@ -5,6 +5,7 @@
 .mode column
 
 -- 3.1: Student full name + course title for every enrollment (school.db)
+<<<<<<< HEAD
 SELECT s.first_name, s.last_name, c.title
 FROM enrollments e
 INNER JOIN students s ON e.student_id = s.id
@@ -63,3 +64,44 @@ SELECT m.first_name, m.last_name, b.title, l.loan_date, COALESCE(l.return_date, 
 FROM loans l
 INNER JOIN members m ON l.member_id = m.id
 INNER JOIN books b ON l.book_id = b.id;
+=======
+
+
+
+-- 3.2: Course title + teacher's full name (school.db)
+
+
+
+-- 3.3: Teacher's full name + their department name (school.db)
+
+
+
+-- 3.4: Student name, course title, teacher name, letter grade (school.db)
+
+
+
+-- 3.5: Students with NO enrollments (LEFT JOIN) (school.db)
+
+
+
+-- 3.6: Courses with NO students enrolled (LEFT JOIN) (school.db)
+
+
+
+-- 3.7: Book title + author's full name (library.db)
+
+
+
+-- 3.8: Genre name + all books in that genre (include empty genres) (library.db)
+
+
+
+-- 3.9: Member full name + every book they borrowed (include non-borrowers) (library.db)
+
+
+
+-- 3.10 CHALLENGE: Loans with member name, book title, dates (library.db)
+--      Use COALESCE to show "Not returned" if return_date is NULL
+
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

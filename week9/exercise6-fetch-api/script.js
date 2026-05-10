@@ -29,6 +29,7 @@ async function fetchQuote() {
 
   try {
     // TODO: fetch from 'https://api.quotable.io/random'
+<<<<<<< HEAD
     const response = await fetch('https://api.quotable.io/random');
     
     // TODO: check response.ok, throw if not
@@ -42,6 +43,16 @@ async function fetchQuote() {
       <blockquote>"${data.content}"</blockquote>
       <p class="quote-author">— ${data.author}</p>
     `;
+=======
+    // TODO: check response.ok, throw if not
+    // TODO: parse JSON
+    // TODO: update quoteDisplay with the quote content and author
+    // Template:
+    // quoteDisplay.innerHTML = `
+    //   <blockquote>"${data.content}"</blockquote>
+    //   <p class="quote-author">— ${data.author}</p>
+    // `;
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
   } catch (error) {
     showError(quoteDisplay, 'Could not load quote. Check your connection.');
@@ -70,6 +81,7 @@ async function searchUser() {
 
   try {
     // TODO: fetch from `https://api.github.com/users/${username}`
+<<<<<<< HEAD
     const response = await fetch(`https://api.github.com/users/${username}`);
 
     // TODO: If response.status === 404, show "User not found"
@@ -96,6 +108,15 @@ async function searchUser() {
         <a href="${data.html_url}" target="_blank" class="btn-link">View GitHub Profile</a>
       </div>
     `;
+=======
+    // TODO: If response.status === 404, show "User not found"
+    // TODO: If !response.ok for other reasons, throw an error
+    // TODO: Parse JSON and display:
+    //   - avatar_url (as an <img>)
+    //   - name, login, bio
+    //   - followers, public_repos
+    //   - html_url (as a link)
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
   } catch (error) {
     showError(githubResult, error.message || 'Search failed. Try again.');
@@ -117,6 +138,7 @@ const postsPerPage = 10;
 
 async function loadPosts() {
   const start = (currentPage - 1) * postsPerPage;
+<<<<<<< HEAD
   
   try {
     // TODO: fetch from query params
@@ -173,6 +195,19 @@ async function loadComments(postId, cardElement) {
   } catch (error) {
     commentsArea.innerHTML = '<p>Error loading comments.</p>';
   }
+=======
+  // TODO: fetch from:
+  //   `https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${postsPerPage}`
+  // TODO: For each post, create a card element and append to postsContainer
+  // TODO: When a card is clicked, call loadComments(post.id, cardElement)
+  // TODO: Increment currentPage after success
+}
+
+async function loadComments(postId, cardElement) {
+  // TODO: fetch from `https://jsonplaceholder.typicode.com/posts/${postId}/comments`
+  // TODO: Display comments inside or below cardElement
+  // Toggle: if comments already shown, hide them
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 loadPosts();
@@ -189,6 +224,7 @@ async function fetchAllParallel() {
   showLoading(multiResult);
 
   try {
+<<<<<<< HEAD
     // TODO: Use Promise.all to fetch all three simultaneously
     const [quoteRes, userRes, todoRes] = await Promise.all([
       fetch('https://api.quotable.io/random'),
@@ -208,10 +244,29 @@ async function fetchAllParallel() {
         <p><strong>Todo Item:</strong> ${todo.title} - ${todo.completed ? '✅' : '❌'}</p>
       </div>
     `;
+=======
+    // TODO: Use Promise.all to fetch all three simultaneously:
+    //   1. https://api.quotable.io/random
+    //   2. https://jsonplaceholder.typicode.com/users/1
+    //   3. https://jsonplaceholder.typicode.com/todos/1
+    //
+    // const [quoteRes, userRes, todoRes] = await Promise.all([
+    //   fetch('...'), fetch('...'), fetch('...')
+    // ]);
+    // const [quote, user, todo] = await Promise.all([
+    //   quoteRes.json(), userRes.json(), todoRes.json()
+    // ]);
+    //
+    // TODO: Display all three results in multiResult
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
   } catch (error) {
     showError(multiResult, 'One or more requests failed.');
   }
 }
 
+<<<<<<< HEAD
 btnFetchAll.addEventListener('click', fetchAllParallel);
+=======
+btnFetchAll.addEventListener('click', fetchAllParallel);
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

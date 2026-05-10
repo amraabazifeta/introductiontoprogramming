@@ -8,6 +8,7 @@
 -- Design entities: Users, Posts, Follows, Likes, Comments
 -- Write your CREATE TABLE statements below:
 
+<<<<<<< HEAD
 CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL UNIQUE,
@@ -49,6 +50,9 @@ CREATE TABLE comments (
     FOREIGN KEY (post_id) REFERENCES posts(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+=======
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 -- ============================================================
 -- 6.2 — Movie Rental Schema
@@ -56,6 +60,7 @@ CREATE TABLE comments (
 -- Entities: Genres, Movies, Copies, Customers, Rentals, Reviews
 -- Write your CREATE TABLE statements below:
 
+<<<<<<< HEAD
 CREATE TABLE genres (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL UNIQUE
@@ -104,6 +109,9 @@ CREATE TABLE reviews (
     FOREIGN KEY (movie_id) REFERENCES movies(id),
     FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
+=======
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 -- ============================================================
 -- 6.3 — E-Commerce Schema
@@ -111,6 +119,7 @@ CREATE TABLE reviews (
 -- Entities: Categories, Products, Customers, Orders, OrderItems
 -- Write your CREATE TABLE statements below:
 
+<<<<<<< HEAD
 CREATE TABLE categories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
@@ -151,12 +160,16 @@ CREATE TABLE order_items (
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
+=======
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 -- ============================================================
 -- 6.4 — Fix the Bad Schema
 -- ============================================================
 -- What's wrong with this? Write your fixed version:
 --
+<<<<<<< HEAD
 -- Problems identified:
 -- 1. No Primary Key defined for unique identification.
 -- 2. Non-atomic data: name and email are mixed in one column.
@@ -187,12 +200,31 @@ CREATE TABLE enrollments (
     FOREIGN KEY (student_id) REFERENCES fixed_students(id),
     FOREIGN KEY (teacher_id) REFERENCES fixed_teachers(id)
 );
+=======
+-- CREATE TABLE student_data (
+--     info TEXT,
+--     name_and_email TEXT,
+--     courses TEXT,
+--     gpa TEXT,
+--     teacher_name TEXT,
+--     teacher_salary TEXT
+-- );
+--
+-- Problems identified:
+-- 1. ...
+-- 2. ...
+-- 3. ...
+-- Fixed schema:
+
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 -- ============================================================
 -- 6.5 — Seed Your Social Media Database
 -- ============================================================
 -- After creating tables in 6.1, insert sample data:
 
+<<<<<<< HEAD
 INSERT INTO users (username, email, bio) VALUES 
 ('arda_skp', 'arda@mail.com', 'Computer Engineering student'),
 ('user_two', 'two@mail.com', 'SQL enthusiast'),
@@ -220,3 +252,17 @@ SELECT p.content, COUNT(l.user_id) as total_likes FROM posts p LEFT JOIN likes l
 
 -- Q3: User who posted the most?
 SELECT u.username, COUNT(p.id) as post_count FROM users u JOIN posts p ON u.id = p.user_id GROUP BY u.id ORDER BY post_count DESC LIMIT 1;
+=======
+
+
+-- Verification queries:
+-- Q1: Who does user 1 follow?
+
+
+-- Q2: Most liked posts?
+
+
+-- Q3: User who posted the most?
+
+
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

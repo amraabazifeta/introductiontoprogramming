@@ -21,6 +21,9 @@ with open("../week1/favorites.csv", "r") as file:
 #   C: 40
 #   Python: 196
 #   Scratch: 28
+<<<<<<< HEAD
 
 for favorite in sorted(counts):
     print(f"{favorite}: {counts[favorite]}")
+=======
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
