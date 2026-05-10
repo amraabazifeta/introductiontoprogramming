@@ -14,8 +14,21 @@ with open("../week1/favorites.csv", "r") as file:
     counts = {}
     for row in reader:
         favorite = row["language"]
+<<<<<<< HEAD
+        
+        # TODO: try to increment counts[favorite]
+        try:
+            counts[favorite] += 1
+        # TODO: except KeyError: set counts[favorite] = 1
+        except KeyError:
+            counts[favorite] = 1
+
+for favorite in counts:
+    print(f"{favorite}: {counts[favorite]}")
+=======
         # TODO: try to increment counts[favorite]
         # TODO: except KeyError: set counts[favorite] = 1
 
 for favorite in counts:
     print(f"{favorite}: {counts[favorite]}")
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

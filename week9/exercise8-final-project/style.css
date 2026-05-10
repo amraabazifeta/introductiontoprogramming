@@ -1,2 +1,196 @@
 /* style.css — Final Project */
+<<<<<<< HEAD
+
+/* 1. CSS Custom Properties (Variables) */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --bg-color: #f0f2f5;
+  --card-bg: #ffffff;
+  --text-dark: #2b2d42;
+  --text-light: #8d99ae;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+}
+
+/* 2. Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+#high-score-display {
+  font-weight: 600;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* 3. Layout */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 550px;
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  /* At least one CSS animation (Requirement) */
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 4. Quiz Elements */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+#timer {
+  color: var(--danger);
+}
+
+#question-text {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* 5. Buttons & Interactions */
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.02);
+}
+
+.option-btn {
+  background-color: #f8f9fa;
+  border: 2px solid #e9ecef;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  background-color: #f1f4ff;
+}
+
+.option-btn.correct {
+  background-color: var(--success) !important;
+  color: white;
+  border-color: var(--success);
+}
+
+.option-btn.wrong {
+  background-color: var(--danger) !important;
+  color: white;
+  border-color: var(--danger);
+}
+
+/* 6. Score & Result Area */
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border: 5px solid var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1.5rem auto;
+  color: var(--primary-color);
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* 7. Responsive Design (Requirement) */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .quiz-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+=======
 /* Build your styles here */
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

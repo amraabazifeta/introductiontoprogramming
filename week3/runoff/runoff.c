@@ -15,16 +15,25 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+<<<<<<< HEAD
+#include <strings.h>
+=======
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 // ── Limits ────────────────────────────────────────────────────────────────────
 #define MAX_VOTERS     100
 #define MAX_CANDIDATES   9
 
 // ── Data ──────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+int preferences[MAX_VOTERS][MAX_CANDIDATES];
+
+=======
 // preferences[i][j] = the index (in candidates[]) of voter i's j-th ranked choice
 int preferences[MAX_VOTERS][MAX_CANDIDATES];
 
 // Each candidate has a name, current round vote total, and an elimination flag
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 typedef struct
 {
     string name;
@@ -34,11 +43,18 @@ typedef struct
 
 candidate candidates[MAX_CANDIDATES];
 
+<<<<<<< HEAD
+int voter_count;
+int candidate_count;
+
+// ── Function prototypes ───────────────────────────────────────────────────────
+=======
 // Global counts set in main()
 int voter_count;
 int candidate_count;
 
 // ── Function prototypes — do NOT change these signatures ──────────────────────
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 bool vote(int voter, int rank, string name);
 void tabulate(void);
 bool print_winner(void);
@@ -46,7 +62,10 @@ int  find_min(void);
 bool is_tie(int min);
 void eliminate(int min);
 
+<<<<<<< HEAD
+=======
 // ── main() — provided, do not modify ─────────────────────────────────────────
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 int main(int argc, string argv[])
 {
     if (argc < 2)
@@ -76,7 +95,10 @@ int main(int argc, string argv[])
         return 3;
     }
 
+<<<<<<< HEAD
+=======
     // Collect each voter's full ranking
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
     for (int i = 0; i < voter_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
@@ -91,7 +113,10 @@ int main(int argc, string argv[])
         printf("\n");
     }
 
+<<<<<<< HEAD
+=======
     // Run rounds until we have a winner or a tie
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
     while (true)
     {
         tabulate();
@@ -107,7 +132,10 @@ int main(int argc, string argv[])
 
         if (tie)
         {
+<<<<<<< HEAD
+=======
             // All remaining candidates tie — print them all
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
             for (int i = 0; i < candidate_count; i++)
             {
                 if (!candidates[i].eliminated)
@@ -120,7 +148,10 @@ int main(int argc, string argv[])
 
         eliminate(min);
 
+<<<<<<< HEAD
+=======
         // Reset vote counts for next round
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
         for (int i = 0; i < candidate_count; i++)
         {
             candidates[i].votes = 0;
@@ -132,6 +163,18 @@ int main(int argc, string argv[])
 // ─────────────────────────────────────────────────────────────────────────────
 // TODO 1: vote(voter, rank, name)
 // ─────────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+bool vote(int voter, int rank, string name)
+{
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (strcasecmp(candidates[i].name, name) == 0)
+        {
+            preferences[voter][rank] = i;
+            return true;
+        }
+    }
+=======
 //
 // Record that `voter`'s `rank`-th preference is the candidate named `name`.
 //
@@ -155,12 +198,29 @@ bool vote(int voter, int rank, string name)
     //             preferences[voter][rank] = i;
     //             return true;
 
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
     return false;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TODO 2: tabulate()
 // ─────────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+void tabulate(void)
+{
+    for (int i = 0; i < voter_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            int candidate_index = preferences[i][j];
+            if (!candidates[candidate_index].eliminated)
+            {
+                candidates[candidate_index].votes++;
+                break;
+            }
+        }
+    }
+=======
 //
 // Update vote counts based on the current round.
 //
@@ -184,11 +244,24 @@ void tabulate(void)
     //         inner loop over ranks
     //           c = preferences[voter][rank]
     //           if !candidates[c].eliminated → candidates[c].votes++ and break
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TODO 3: print_winner()
 // ─────────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+bool print_winner(void)
+{
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes > (voter_count / 2))
+        {
+            printf("%s\n", candidates[i].name);
+            return true;
+        }
+    }
+=======
 //
 // If any non-eliminated candidate has STRICTLY MORE than half the total votes,
 // print their name and return true. Otherwise return false.
@@ -205,12 +278,26 @@ bool print_winner(void)
     //               printf("%s\n", candidates[i].name);
     //               return true;
 
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
     return false;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TODO 4: find_min()
 // ─────────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+int find_min(void)
+{
+    int min = voter_count;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (!candidates[i].eliminated && candidates[i].votes < min)
+        {
+            min = candidates[i].votes;
+        }
+    }
+    return min;
+=======
 //
 // Return the MINIMUM vote total among all non-eliminated candidates.
 //
@@ -228,11 +315,24 @@ int find_min(void)
     //       return min
 
     return 0; // placeholder — replace this
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TODO 5: is_tie(min)
 // ─────────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+bool is_tie(int min)
+{
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (!candidates[i].eliminated && candidates[i].votes != min)
+        {
+            return false;
+        }
+    }
+    return true;
+=======
 //
 // Return true if EVERY non-eliminated candidate has exactly `min` votes.
 // This means all remaining candidates are perfectly tied — declare them
@@ -250,11 +350,24 @@ bool is_tie(int min)
     // All remaining are tied:
 
     return true; // placeholder — replace with correct logic
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TODO 6: eliminate(min)
 // ─────────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+void eliminate(int min)
+{
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (!candidates[i].eliminated && candidates[i].votes == min)
+        {
+            candidates[i].eliminated = true;
+        }
+    }
+}
+=======
 //
 // Eliminate all non-eliminated candidates who have exactly `min` votes.
 // Mark them by setting candidates[i].eliminated = true.
@@ -267,3 +380,4 @@ void eliminate(int min)
     //         if !candidates[i].eliminated && candidates[i].votes == min:
     //             candidates[i].eliminated = true;
 }
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

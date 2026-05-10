@@ -29,6 +29,21 @@ async function fetchQuote() {
 
   try {
     // TODO: fetch from 'https://api.quotable.io/random'
+<<<<<<< HEAD
+    const response = await fetch('https://api.quotable.io/random');
+    
+    // TODO: check response.ok, throw if not
+    if (!response.ok) throw new Error('Failed to fetch quote');
+
+    // TODO: parse JSON
+    const data = await response.json();
+
+    // TODO: update quoteDisplay with the quote content and author
+    quoteDisplay.innerHTML = `
+      <blockquote>"${data.content}"</blockquote>
+      <p class="quote-author">— ${data.author}</p>
+    `;
+=======
     // TODO: check response.ok, throw if not
     // TODO: parse JSON
     // TODO: update quoteDisplay with the quote content and author
@@ -37,6 +52,7 @@ async function fetchQuote() {
     //   <blockquote>"${data.content}"</blockquote>
     //   <p class="quote-author">— ${data.author}</p>
     // `;
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
   } catch (error) {
     showError(quoteDisplay, 'Could not load quote. Check your connection.');
@@ -65,6 +81,34 @@ async function searchUser() {
 
   try {
     // TODO: fetch from `https://api.github.com/users/${username}`
+<<<<<<< HEAD
+    const response = await fetch(`https://api.github.com/users/${username}`);
+
+    // TODO: If response.status === 404, show "User not found"
+    if (response.status === 404) {
+      githubResult.innerHTML = '<p class="error-text">User not found</p>';
+      return;
+    }
+
+    // TODO: If !response.ok for other reasons, throw an error
+    if (!response.ok) throw new Error('Search failed');
+
+    // TODO: Parse JSON and display
+    const data = await response.json();
+
+    githubResult.innerHTML = `
+      <div class="github-profile">
+        <img src="${data.avatar_url}" alt="${data.login}" class="avatar">
+        <h3>${data.name || data.login} (@${data.login})</h3>
+        <p>${data.bio || 'No bio available'}</p>
+        <div class="stats">
+          <span>Followers: ${data.followers}</span> | 
+          <span>Public Repos: ${data.public_repos}</span>
+        </div>
+        <a href="${data.html_url}" target="_blank" class="btn-link">View GitHub Profile</a>
+      </div>
+    `;
+=======
     // TODO: If response.status === 404, show "User not found"
     // TODO: If !response.ok for other reasons, throw an error
     // TODO: Parse JSON and display:
@@ -72,6 +116,7 @@ async function searchUser() {
     //   - name, login, bio
     //   - followers, public_repos
     //   - html_url (as a link)
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
   } catch (error) {
     showError(githubResult, error.message || 'Search failed. Try again.');
@@ -93,6 +138,64 @@ const postsPerPage = 10;
 
 async function loadPosts() {
   const start = (currentPage - 1) * postsPerPage;
+<<<<<<< HEAD
+  
+  try {
+    // TODO: fetch from query params
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${postsPerPage}`);
+    const posts = await response.json();
+
+    // TODO: For each post, create a card element and append to postsContainer
+    posts.forEach(post => {
+      const card = document.createElement('div');
+      card.className = 'post-card';
+      card.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.body}</p>
+        <div class="comments-area" style="display: none;"></div>
+      `;
+      
+      // TODO: When a card is clicked, call loadComments
+      card.addEventListener('click', () => loadComments(post.id, card));
+      postsContainer.appendChild(card);
+    });
+
+    // TODO: Increment currentPage after success
+    currentPage++;
+
+  } catch (error) {
+    console.error('Error loading posts:', error);
+  }
+}
+
+async function loadComments(postId, cardElement) {
+  const commentsArea = cardElement.querySelector('.comments-area');
+
+  // Toggle: if comments already shown, hide them
+  if (commentsArea.style.display === 'block') {
+    commentsArea.style.display = 'none';
+    return;
+  }
+
+  // TODO: fetch from comments endpoint
+  try {
+    commentsArea.innerHTML = '<p>Loading comments...</p>';
+    commentsArea.style.display = 'block';
+
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+    const comments = await response.json();
+
+    commentsArea.innerHTML = comments.map(c => `
+      <div class="comment">
+        <small>${c.email}</small>
+        <p>${c.body}</p>
+      </div>
+    `).join('');
+
+  } catch (error) {
+    commentsArea.innerHTML = '<p>Error loading comments.</p>';
+  }
+=======
   // TODO: fetch from:
   //   `https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${postsPerPage}`
   // TODO: For each post, create a card element and append to postsContainer
@@ -104,6 +207,7 @@ async function loadComments(postId, cardElement) {
   // TODO: fetch from `https://jsonplaceholder.typicode.com/posts/${postId}/comments`
   // TODO: Display comments inside or below cardElement
   // Toggle: if comments already shown, hide them
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 loadPosts();
@@ -120,6 +224,27 @@ async function fetchAllParallel() {
   showLoading(multiResult);
 
   try {
+<<<<<<< HEAD
+    // TODO: Use Promise.all to fetch all three simultaneously
+    const [quoteRes, userRes, todoRes] = await Promise.all([
+      fetch('https://api.quotable.io/random'),
+      fetch('https://jsonplaceholder.typicode.com/users/1'),
+      fetch('https://jsonplaceholder.typicode.com/todos/1')
+    ]);
+
+    const [quote, user, todo] = await Promise.all([
+      quoteRes.json(), userRes.json(), todoRes.json()
+    ]);
+    
+    // TODO: Display all three results in multiResult
+    multiResult.innerHTML = `
+      <div class="multi-fetch-box">
+        <p><strong>Quote:</strong> ${quote.content}</p>
+        <p><strong>User Name:</strong> ${user.name}</p>
+        <p><strong>Todo Item:</strong> ${todo.title} - ${todo.completed ? '✅' : '❌'}</p>
+      </div>
+    `;
+=======
     // TODO: Use Promise.all to fetch all three simultaneously:
     //   1. https://api.quotable.io/random
     //   2. https://jsonplaceholder.typicode.com/users/1
@@ -133,10 +258,15 @@ async function fetchAllParallel() {
     // ]);
     //
     // TODO: Display all three results in multiResult
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
   } catch (error) {
     showError(multiResult, 'One or more requests failed.');
   }
 }
 
+<<<<<<< HEAD
 btnFetchAll.addEventListener('click', fetchAllParallel);
+=======
+btnFetchAll.addEventListener('click', fetchAllParallel);
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

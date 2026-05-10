@@ -14,11 +14,18 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+<<<<<<< HEAD
+#include <strings.h> // strcasecmp için bazı sistemlerde gerekebilir
+=======
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 // Maximum number of candidates allowed
 #define MAX 9
 
+<<<<<<< HEAD
+=======
 // ── Data structure ────────────────────────────────────────────────────────────
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 // Each candidate has a name and a vote count.
 typedef struct
 {
@@ -30,12 +37,19 @@ typedef struct
 candidate candidates[MAX];
 int candidate_count;
 
+<<<<<<< HEAD
+// Function prototypes
+bool vote(string name);
+void print_winner(void);
+
+=======
 // ── Function prototypes ───────────────────────────────────────────────────────
 // Do NOT change these signatures — check50 depends on them.
 bool vote(string name);
 void print_winner(void);
 
 // ── main() — provided, do not modify ─────────────────────────────────────────
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 int main(int argc, string argv[])
 {
     // Require at least one candidate name as a command-line argument
@@ -77,6 +91,21 @@ int main(int argc, string argv[])
 // ─────────────────────────────────────────────────────────────────────────────
 // TODO: Implement vote()
 // ─────────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+bool vote(string name)
+{
+    // TODO: Loop through candidates[] (0 to candidate_count - 1)
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // If strcasecmp(candidates[i].name, name) == 0:
+        if (strcasecmp(candidates[i].name, name) == 0)
+        {
+            // Increment candidate's votes and return true
+            candidates[i].votes++;
+            return true;
+        }
+    }
+=======
 //
 // Given a candidate name as input, search candidates[] for a matching entry.
 //   • If found  → increment that candidate's votes and return true.
@@ -98,6 +127,7 @@ bool vote(string name)
     //       If strcasecmp(candidates[i].name, name) == 0:
     //           candidates[i].votes++;
     //           return true;
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
     // If we reach here, no candidate matched
     return false;
@@ -106,6 +136,8 @@ bool vote(string name)
 // ─────────────────────────────────────────────────────────────────────────────
 // TODO: Implement print_winner()
 // ─────────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+=======
 //
 // Print the name(s) of the winner(s) — one name per line.
 // If two or more candidates share the highest vote count, print all of them.
@@ -122,12 +154,34 @@ bool vote(string name)
 //   Alice: 2 votes, Bob: 2 votes, Charlie: 1 vote
 //   → prints "Alice\nBob\n"
 // ─────────────────────────────────────────────────────────────────────────────
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 void print_winner(void)
 {
     // Step 1 — find the maximum vote count
     int max = 0;
     // TODO: Loop through candidates[]; if candidates[i].votes > max, update max
+<<<<<<< HEAD
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes > max)
+        {
+            max = candidates[i].votes;
+        }
+    }
+
+    // Step 2 — print every candidate who achieved max votes
+    // TODO: Loop through candidates[]; if candidates[i].votes == max, printf their name
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == max)
+        {
+            printf("%s\n", candidates[i].name);
+        }
+    }
+}
+=======
 
     // Step 2 — print every candidate who achieved max votes
     // TODO: Loop through candidates[]; if candidates[i].votes == max, printf their name
 }
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

@@ -18,7 +18,10 @@
 // Point values for each letter A-Z (index 0 = A, index 25 = Z)
 // Do NOT modify this array.
 int POINTS[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+<<<<<<< HEAD
+=======
 //              A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P   Q  R  S  T  U  V  W  X  Y   Z
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 // Function prototype — do NOT change this signature
 int compute_score(string word);
@@ -34,16 +37,33 @@ int main(void)
     int score2 = compute_score(word2);
 
     // TODO: Print the winner (or "Tie!" if scores are equal)
+<<<<<<< HEAD
+    if (score1 > score2)
+    {
+        printf("Player 1 wins!\n");
+    }
+    else if (score2 > score1)
+    {
+        printf("Player 2 wins!\n");
+    }
+    else
+    {
+        printf("Tie!\n");
+    }
+=======
     //
     //   If score1 > score2 → printf("Player 1 wins!\n");
     //   If score2 > score1 → printf("Player 2 wins!\n");
     //   If equal           → printf("Tie!\n");
 
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 }
 
 // ---------------------------------------------------------------------------
 // TODO: Implement compute_score
 // ---------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
 // Given a word, return its Scrabble score.
 //
 // Rules:
@@ -58,13 +78,33 @@ int main(void)
 //   - For lowercase 'a': POINTS['a' - 'a'] = POINTS[0] = 1
 //   - Use isalpha(word[i]) to skip non-letter characters
 // ---------------------------------------------------------------------------
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 int compute_score(string word)
 {
     int score = 0;
 
     // TODO: Loop through each character of word
+<<<<<<< HEAD
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+        // TODO: Add the correct point value to score
+        if (isupper(word[i]))
+        {
+            score += POINTS[word[i] - 'A'];
+        }
+        else if (islower(word[i]))
+        {
+            score += POINTS[word[i] - 'a'];
+        }
+    }
+
+    // TODO: Return the total score
+    return score;
+}
+=======
     // TODO: Add the correct point value to score
     // TODO: Return the total score
 
     return score;
 }
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

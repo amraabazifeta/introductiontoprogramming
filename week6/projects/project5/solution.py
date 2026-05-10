@@ -1,5 +1,9 @@
 # Project 5 — Mini Shopping Cart
+<<<<<<< HEAD
+# Author: Arda Ok
+=======
 # Author: your name here
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
 
 menu = {
     1: ("Apple",  0.50),
@@ -12,6 +16,44 @@ cart  = {}   # { item_name: quantity }
 total = 0.0
 
 # TODO: display the menu
+<<<<<<< HEAD
+print("--- Shop Menu ---")
+for number, (name, price) in menu.items():
+    print(f"{number}. {name:<8} ${price:.2f}")
+print("5. Done")
+
+# TODO: shopping loop
+while True:
+    choice = int(input("\nChoose an item (1-5): "))
+    
+    if choice == 5:
+        break
+        
+    if choice in menu:
+        name, price = menu[choice]
+        
+        # Sepete ekle: Eğer ürün zaten varsa miktarını artır, yoksa yeni ekle
+        if name in cart:
+            cart[name] += 1
+        else:
+            cart[name] = 1
+            
+        total += price
+        print(f"Added {name}. Total: ${total:.2f}")
+    else:
+        print("Invalid choice, try again.")
+
+# TODO: print the receipt
+print("\n--- Receipt ---")
+for item, qty in cart.items():
+    # Menüden fiyatı bulmak için küçük bir döngü veya arama yapabiliriz
+    # Ama sadece isim ve adet yazdırmak da yeterli
+    print(f"{item:<8} x{qty}")
+
+print("---------------------")
+print(f"Total: ${total:.2f}")
+print("Thank you!")
+=======
 # print("--- Shop Menu ---")
 # for number, (name, price) in menu.items():
 #     print(f"{number}. {name:<10} ${price:.2f}")
@@ -33,3 +75,4 @@ total = 0.0
 #     ...
 # print(f"Total: ${total:.2f}")
 # print("Thank you!")
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db

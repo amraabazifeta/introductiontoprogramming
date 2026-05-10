@@ -3,6 +3,28 @@
 {% block body %}
     <h1>Registrants</h1>
 
+<<<<<<< HEAD
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Sport</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registrant in registrants %}
+                <tr>
+                    <td>{{ registrant["name"] }}</td>
+                    <td>{{ registrant["sport"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <p><a href="/">Back to Registration</a></p>
+{% endblock %}
+=======
     <!-- TODO: Create an HTML <table> with a <thead> row containing
                the columns: Name and Sport -->
 
@@ -12,3 +34,4 @@
 {% endblock %}
     </table>
 {% endblock %}
+>>>>>>> 2ca3bd91f6411c03990cc852d96139ef9473a5db
