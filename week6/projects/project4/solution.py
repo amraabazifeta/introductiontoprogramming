@@ -1,17 +1,28 @@
 # Project 4 — Word Counter
-# Author: your name here
+# Author: Muhammed Soykan Tekin
 
 sentence = input("Enter a sentence: ")
 words = sentence.lower().split()
 
-# TODO: total word count using len()
+# total word count
+word_count = len(words)
 
-# TODO: character count (no spaces)
-# Hint: sentence.replace(" ", "") removes all spaces, then use len()
+# character count (no spaces)
+char_count = len(sentence.replace(" ", ""))
 
-# TODO: word frequency dictionary
-# frequency = {}
-# for word in words:
-#     ...
+# word frequency dictionary
+frequency = {}
 
-# TODO: print total words, total characters, then word frequency
+for word in words:
+    if word in frequency:
+        frequency[word] += 1
+    else:
+        frequency[word] = 1
+
+# results
+print(f"Total words: {word_count}")
+print(f"Total characters (no spaces): {char_count}")
+
+print("\nWord frequency:")
+for word, count in frequency.items():
+    print(f"{word}: {count}")
