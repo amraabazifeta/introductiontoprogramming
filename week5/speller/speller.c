@@ -1,8 +1,3 @@
-// CS50x Week 5 — Speller: speller.c
-// ⚠️  DO NOT MODIFY THIS FILE
-// Distribution code provided by CS50.
-// This file handles timing, text processing, and calls your dictionary functions.
-
 #include <ctype.h>
 #include <stdio.h>
 #include <sys/resource.h>
@@ -10,35 +5,24 @@
 
 #include "dictionary.h"
 
-// Undefine any macros
-#undef calculate
-#undef getrusage
-
-// Default dictionary path
 #define DICTIONARY "dictionaries/large"
 
-// Prototype
 double calculate(const struct rusage *b, const struct rusage *a);
 
 int main(int argc, char *argv[])
 {
-    // Check for correct number of args
     if (argc != 2 && argc != 3)
     {
         printf("Usage: ./speller [DICTIONARY] text\n");
         return 1;
     }
 
-    // Structures for timing data
     struct rusage before, after;
 
-    // Benchmarks
     double time_load = 0.0, time_check = 0.0, time_size = 0.0, time_unload = 0.0;
 
-    // Determine dictionary to use
     char *dictionary = (argc == 3) ? argv[1] : DICTIONARY;
 
-    // Load dictionary and time it
     getrusage(RUSAGE_SELF, &before);
     bool loaded = load(dictionary);
     getrusage(RUSAGE_SELF, &after);
@@ -51,7 +35,6 @@ int main(int argc, char *argv[])
 
     time_load = calculate(&before, &after);
 
-    // Try to open text file
     char *text = (argc == 3) ? argv[2] : argv[1];
     FILE *file = fopen(text, "r");
     if (file == NULL)
@@ -61,7 +44,6 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // Spell-check each word in the text
     printf("\nMISSPELLED WORDS\n\n");
 
     int index = 0, misspellings = 0, words = 0;
@@ -70,13 +52,10 @@ int main(int argc, char *argv[])
 
     while (fread(&c, sizeof(char), 1, file))
     {
-        // Allow alphabetical chars and apostrophes
         if (isalpha(c) || (c == '\'' && index > 0))
         {
-            word[index] = c;
-            index++;
+            word[index++] = c;
 
-            // Ignore too-long words
             if (index > LENGTH)
             {
                 while (fread(&c, sizeof(char), 1, file) && isalpha(c));
@@ -85,14 +64,13 @@ int main(int argc, char *argv[])
         }
         else if (index > 0)
         {
-            // We've found a complete word
             word[index] = '\0';
             words++;
 
-            // Check spelling and time it
             getrusage(RUSAGE_SELF, &before);
             bool misspelled = !check(word);
             getrusage(RUSAGE_SELF, &after);
+
             time_check += calculate(&before, &after);
 
             if (misspelled)
@@ -107,13 +85,11 @@ int main(int argc, char *argv[])
 
     fclose(file);
 
-    // Determine dictionary size and time it
     getrusage(RUSAGE_SELF, &before);
     unsigned int n = size();
     getrusage(RUSAGE_SELF, &after);
     time_size = calculate(&before, &after);
 
-    // Unload dictionary and time it
     getrusage(RUSAGE_SELF, &before);
     bool unloaded = unload();
     getrusage(RUSAGE_SELF, &after);
@@ -121,11 +97,10 @@ int main(int argc, char *argv[])
 
     if (!unloaded)
     {
-        printf("Could not unload %s.\n", dictionary);
+        printf("Could not unload dictionary.\n");
         return 1;
     }
 
-    // Report benchmarks
     printf("\nWORDS MISSPELLED:     %d\n", misspellings);
     printf("WORDS IN DICTIONARY:  %d\n", n);
     printf("WORDS IN TEXT:        %d\n", words);
@@ -135,24 +110,20 @@ int main(int argc, char *argv[])
     printf("TIME IN unload:       %.2f\n", time_unload);
     printf("TIME IN TOTAL:        %.2f\n",
            time_load + time_check + time_size + time_unload);
-    printf("\n");
 
     return 0;
 }
 
-// Calculate time elapsed between two rusage structs (in seconds)
 double calculate(const struct rusage *b, const struct rusage *a)
 {
     if (b == NULL || a == NULL)
     {
         return 0.0;
     }
-    else
-    {
-        return ((((a->ru_utime.tv_sec * 1000000 + a->ru_utime.tv_usec) -
-                  (b->ru_utime.tv_sec * 1000000 + b->ru_utime.tv_usec)) +
-                 ((a->ru_stime.tv_sec * 1000000 + a->ru_stime.tv_usec) -
-                  (b->ru_stime.tv_sec * 1000000 + b->ru_stime.tv_usec))) /
-                1000000.0);
-    }
+
+    return (((a->ru_utime.tv_sec * 1000000 + a->ru_utime.tv_usec) -
+             (b->ru_utime.tv_sec * 1000000 + b->ru_utime.tv_usec) +
+             (a->ru_stime.tv_sec * 1000000 + a->ru_stime.tv_usec) -
+             (b->ru_stime.tv_sec * 1000000 + b->ru_stime.tv_usec))
+            / 1000000.0);
 }
