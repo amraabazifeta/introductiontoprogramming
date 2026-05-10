@@ -1,0 +1,37 @@
+/* Exercise 7 — Notes App */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f5f5f0; color: #222; line-height: 1.6; min-height: 100vh; }
+header { background: #2c3e50; color: white; padding: 1.5rem 2rem; }
+header p { opacity: 0.7; font-size: 0.9rem; margin-top: 0.25rem; }
+main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+.layout { display: grid; grid-template-columns: 320px 1fr; gap: 2rem; }
+@media (max-width: 700px) { .layout { grid-template-columns: 1fr; } }
+.sidebar { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); height: fit-content; position: sticky; top: 1rem; }
+.sidebar h2 { margin-bottom: 1.25rem; color: #2c3e50; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 0.6rem 0.8rem; border: 2px solid #ddd; border-radius: 6px; font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: #2c3e50; }
+.button-row { display: flex; gap: 0.5rem; }
+button { padding: 0.6rem 1.2rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; background: #2c3e50; color: white; transition: opacity 0.15s; }
+button:hover { opacity: 0.85; }
+button.secondary { background: #ddd; color: #555; }
+.hidden { display: none; }
+.notes-panel { min-height: 400px; }
+.notes-toolbar { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem; }
+.notes-toolbar input { flex: 1; padding: 0.6rem 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.95rem; }
+.notes-toolbar input:focus { outline: none; border-color: #2c3e50; }
+#notes-count { color: #888; font-size: 0.85rem; white-space: nowrap; }
+.note-card { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border-left: 4px solid #ddd; transition: box-shadow 0.2s; }
+.note-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.note-card.pinned { border-left-color: #f39c12; }
+.note-card h3 { font-size: 1rem; margin-bottom: 0.4rem; color: #2c3e50; }
+.note-card .note-body { font-size: 0.88rem; color: #666; margin-bottom: 0.75rem; }
+.note-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #aaa; }
+.note-actions { display: flex; gap: 0.4rem; }
+.note-actions button { padding: 0.25rem 0.6rem; font-size: 0.78rem; }
+.btn-edit   { background: #3498db; }
+.btn-pin    { background: #f39c12; }
+.btn-delete { background: #e74c3c; }
+.empty-state { text-align: center; padding: 4rem 2rem; color: #aaa; }
+footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.85rem; }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript & the DOM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1 id="main-title">JavaScript DOM Practice</h1>
+    <p>Open the browser console (F12) to see your JS output.</p>
+  </header>
+
+  <main>
+
+    <!-- ===== TASK 1: Console Warmup ===== -->
+    <section id="warmup-section" class="card">
+      <h2>Task 1 — Console Warmup</h2>
+      <div id="target-box">I am the target box. Change my background color with JS!</div>
+      <p class="hint">Check <code>script.js</code> — complete the three warmup tasks there.</p>
+    </section>
+
+    <!-- ===== TASK 2: Counter ===== -->
+    <section id="counter-section" class="card">
+      <h2>Task 2 — Click Counter</h2>
+      <div id="count-display">0</div>
+      <div class="button-group">
+        <button id="btn-decrement">− Decrement</button>
+        <button id="btn-reset">Reset</button>
+        <button id="btn-increment">+ Increment</button>
+      </div>
+    </section>
+
+    <!-- ===== TASK 3: Dynamic List ===== -->
+    <section id="list-section" class="card">
+      <h2>Task 3 — Dynamic List Builder</h2>
+      <div class="input-row">
+        <input type="text" id="list-input" placeholder="Type something to add..." />
+        <button id="btn-add-item">Add Item</button>
+      </div>
+      <ul id="dynamic-list">
+        <li>Example item (delete me!) <button class="delete-btn">×</button></li>
+      </ul>
+    </section>
+
+    <!-- ===== TASK 4: Toggle ===== -->
+    <section id="toggle-section" class="card">
+      <h2>Task 4 — Show / Hide Toggle</h2>
+      <button id="btn-toggle">Show Details</button>
+      <div class="details hidden">
+        <p>🎉 You revealed the hidden content!</p>
+        <p>This div starts hidden and should appear/disappear when the button is clicked.
+           Use <code>classList.toggle()</code> on the <code>.hidden</code> class.</p>
+      </div>
+    </section>
+
+    <!-- ===== TASK 5: Color Mixer ===== -->
+    <section id="color-section" class="card">
+      <h2>Task 5 — RGB Color Mixer</h2>
+      <div class="sliders">
+        <label>Red: <span id="val-r">128</span>
+          <input type="range" id="slider-r" min="0" max="255" value="128" class="slider red-slider" />
+        </label>
+        <label>Green: <span id="val-g">128</span>
+          <input type="range" id="slider-g" min="0" max="255" value="128" class="slider green-slider" />
+        </label>
+        <label>Blue: <span id="val-b">128</span>
+          <input type="range" id="slider-b" min="0" max="255" value="128" class="slider blue-slider" />
+        </label>
+      </div>
+      <div id="color-preview"></div>
+      <p id="hex-display">#808080</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Week 9 · Exercise 4 · JavaScript & the DOM</p>
+  </footer>
+
+  <!-- Script loads at the end so HTML is ready -->
+  <script src="script.js"></script>
+</body>
+</html>

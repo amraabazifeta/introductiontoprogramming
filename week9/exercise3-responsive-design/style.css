@@ -1,0 +1,177 @@
+/* =========================
+   CSS VARIABLES
+========================= */
+:root {
+  --color-primary: #2563eb;
+  --color-secondary: #22c55e;
+  --color-text: #1f2937;
+  --color-background: #f9fafb;
+  --spacing: 1rem;
+}
+
+/* =========================
+   BASE STYLES (MOBILE FIRST)
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* =========================
+   HEADER + NAV (MOBILE)
+========================= */
+header {
+  background: var(--color-primary);
+  color: white;
+  padding: var(--spacing);
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  align-items: flex-start;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  min-height: 44px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   HERO
+========================= */
+#hero {
+  text-align: center;
+  padding: 2rem;
+}
+
+#hero h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* =========================
+   FLEXBOX
+========================= */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing);
+  padding: var(--spacing);
+}
+
+.flex-card {
+  flex: 1 1 250px;
+  background: white;
+  padding: var(--spacing);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* =========================
+   GRID
+========================= */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing);
+  padding: var(--spacing);
+}
+
+.grid-item {
+  position: relative;
+}
+
+.grid-item img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+.caption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: var(--spacing);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: var(--spacing);
+  background: #111827;
+  color: white;
+}
+
+/* =========================
+   TABLET (600px+)
+========================= */
+@media (min-width: 600px) {
+
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav {
+    flex-direction: row;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured {
+    grid-column: span 2;
+  }
+}
+
+/* =========================
+   DESKTOP (900px+)
+========================= */
+@media (min-width: 900px) {
+
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

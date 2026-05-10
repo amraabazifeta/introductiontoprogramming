@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Design Exercise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <span class="logo">⚡ ResponsiWeb</span>
+      <nav>
+        <a href="#flexbox-demo">Flexbox</a>
+        <a href="#grid-demo">Grid</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="hero">
+      <h1>Responsive Web Design</h1>
+      <p>One codebase. Every screen size. Resize this window to see it in action.</p>
+    </section>
+
+    <!-- ===== FLEXBOX SECTION ===== -->
+    <section id="flexbox-demo">
+      <h2>Flexbox Cards</h2>
+      <p>These cards rearrange themselves based on available space. Try resizing the window.</p>
+      <div class="flex-container">
+        <div class="flex-card">
+          <h3>🏗️ HTML</h3>
+          <p>Structure and semantics. The skeleton of every web page.</p>
+        </div>
+        <div class="flex-card">
+          <h3>🎨 CSS</h3>
+          <p>Styling and layout. Makes the skeleton look beautiful.</p>
+        </div>
+        <div class="flex-card">
+          <h3>⚡ JavaScript</h3>
+          <p>Interactivity and logic. Brings the page to life.</p>
+        </div>
+        <div class="flex-card">
+          <h3>🐍 Python</h3>
+          <p>Server-side logic and data processing on the backend.</p>
+        </div>
+        <div class="flex-card">
+          <h3>🗄️ SQL</h3>
+          <p>Storing and querying data in relational databases.</p>
+        </div>
+        <div class="flex-card">
+          <h3>🔧 Git</h3>
+          <p>Version control and collaboration with your team.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GRID SECTION ===== -->
+    <section id="grid-demo">
+      <h2>CSS Grid Gallery</h2>
+      <p>A photo gallery that adapts from 1 to 3 columns depending on screen width.</p>
+      <div class="photo-grid">
+        <div class="grid-item featured">
+          <img src="https://placehold.co/600x400/1a3a5c/ffffff?text=Featured" alt="Featured photo spanning two columns" />
+          <span class="caption">Featured</span>
+        </div>
+        <div class="grid-item">
+          <img src="https://placehold.co/400x300/e8a838/ffffff?text=Photo+2" alt="Gallery photo 2" />
+          <span class="caption">Photo 2</span>
+        </div>
+        <div class="grid-item">
+          <img src="https://placehold.co/400x300/2ecc71/ffffff?text=Photo+3" alt="Gallery photo 3" />
+          <span class="caption">Photo 3</span>
+        </div>
+        <div class="grid-item">
+          <img src="https://placehold.co/400x300/e74c3c/ffffff?text=Photo+4" alt="Gallery photo 4" />
+          <span class="caption">Photo 4</span>
+        </div>
+        <div class="grid-item">
+          <img src="https://placehold.co/400x300/9b59b6/ffffff?text=Photo+5" alt="Gallery photo 5" />
+          <span class="caption">Photo 5</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <h2>About Responsive Design</h2>
+      <p>
+        Responsive web design is an approach where a website's layout adapts to the
+        screen size and orientation of the device being used to view it.
+      </p>
+      <p>
+        The three pillars of responsive design are: <strong>flexible grids</strong>,
+        <strong>flexible media</strong>, and <strong>media queries</strong>. Together
+        they allow a single HTML document to look great on anything from a smartwatch
+        to a 4K monitor.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Week 9 · Exercise 3 · Responsive Design</p>
+  </footer>
+
+</body>
+</html>

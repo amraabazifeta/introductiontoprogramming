@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fetch & APIs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Fetch & REST APIs 🌍</h1>
+    <p>Making HTTP requests from the browser using <code>fetch()</code> and <code>async/await</code></p>
+  </header>
+
+  <main>
+
+    <!-- ===== TASK 1: Quote of the Day ===== -->
+    <section class="card" id="quote-section">
+      <h2>🗣️ Task 1 — Random Quote</h2>
+      <div id="quote-display">
+        <p class="placeholder">Click the button to fetch a random quote.</p>
+      </div>
+      <button id="btn-new-quote">✨ New Quote</button>
+    </section>
+
+    <!-- ===== TASK 2: GitHub User Search ===== -->
+    <section class="card" id="github-section">
+      <h2>🐙 Task 2 — GitHub User Search</h2>
+      <div class="search-row">
+        <input type="text" id="github-input" placeholder="Enter a GitHub username..." />
+        <button id="btn-search-user">Search</button>
+      </div>
+      <div id="github-result"></div>
+    </section>
+
+    <!-- ===== TASK 3: Posts Feed ===== -->
+    <section class="card" id="posts-section">
+      <h2>📰 Task 3 — Posts Feed</h2>
+      <div id="posts-container"></div>
+      <button id="btn-load-more">Load More Posts</button>
+    </section>
+
+    <!-- ===== TASK 5: Promise.all ===== -->
+    <section class="card" id="multi-fetch-section">
+      <h2>⚡ Task 5 — Parallel Fetch (Promise.all)</h2>
+      <button id="btn-fetch-all">Fetch All Three at Once</button>
+      <div id="multi-result"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Week 9 · Exercise 6 · Fetch & APIs</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

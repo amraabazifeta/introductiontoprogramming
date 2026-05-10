@@ -1,0 +1,32 @@
+/* Exercise 5 — Forms & Validation */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f0f2f5; color: #222; line-height: 1.6; }
+header { background: #1a3a5c; color: white; padding: 2rem; text-align: center; }
+header p { opacity: 0.8; margin-top: 0.5rem; }
+main { max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+#success-message { background: #d4edda; border: 2px solid #28a745; border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+#success-message h2 { color: #155724; }
+form { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.form-group { margin-bottom: 1.25rem; }
+label { display: block; font-weight: 600; margin-bottom: 0.35rem; font-size: 0.9rem; color: #444; }
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="url"], select, textarea {
+  width: 100%; padding: 0.65rem 0.9rem; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; font-family: inherit; transition: border-color 0.2s;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: #1a3a5c; }
+input.valid   { border-color: #27ae60; }
+input.invalid { border-color: #e74c3c; }
+select.valid  { border-color: #27ae60; }
+select.invalid{ border-color: #e74c3c; }
+.error-msg { display: block; color: #e74c3c; font-size: 0.82rem; margin-top: 0.3rem; min-height: 1.2em; }
+.checkbox-group label { display: flex; align-items: center; gap: 0.5rem; font-weight: normal; cursor: pointer; }
+small { display: block; margin-top: 0.3rem; font-size: 0.82rem; color: #888; }
+small.over-limit { color: #e74c3c; font-weight: bold; }
+.strength-bar { margin-top: 0.4rem; font-size: 0.82rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; }
+.strength-bar.weak   { background: #ffe0e0; color: #c0392b; }
+.strength-bar.fair   { background: #fff3cd; color: #856404; }
+.strength-bar.strong { background: #d4edda; color: #155724; }
+button[type="submit"] { width: 100%; padding: 0.8rem; background: #1a3a5c; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: opacity 0.15s; }
+button[type="submit"]:hover { opacity: 0.88; }
+button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
+.hidden { display: none; }
+footer { text-align: center; padding: 2rem; color: #888; font-size: 0.875rem; }

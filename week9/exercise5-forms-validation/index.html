@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms & Validation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Registration Form</h1>
+    <p>Complete all required fields to create your account.</p>
+  </header>
+
+  <main>
+
+    <!-- Success message (hidden until form is submitted successfully) -->
+    <div id="success-message" class="hidden">
+      <h2>🎉 Registration Successful!</h2>
+      <p>Welcome aboard! Your account has been created.</p>
+    </div>
+
+    <form id="registration-form" novalidate>
+
+      <!-- TODO Task 1: Add all form fields here -->
+      <!-- Each field needs:
+           - A <label> with matching "for" attribute
+           - An <input> (or select/textarea) with an "id"
+           - A <span class="error-msg"></span> below the input
+      -->
+
+      <!-- EXAMPLE FIELD STRUCTURE (duplicate this pattern):
+      <div class="form-group">
+        <label for="full-name">Full Name *</label>
+        <input type="text" id="full-name" name="full-name" placeholder="Jane Doe" />
+        <span class="error-msg" id="error-full-name"></span>
+      </div>
+      -->
+
+      <!-- Add your 9 form fields here -->
+
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit" id="submit-btn">Create Account</button>
+      </div>
+
+    </form>
+
+  </main>
+
+  <footer>
+    <p>Week 9 · Exercise 5 · Forms & Validation</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
