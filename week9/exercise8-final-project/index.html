@@ -3,28 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Final Project — Week 9</title>
-  <!-- 
-    FINAL PROJECT STARTER TEMPLATE
-    ================================
-    Replace everything below with your project.
-    See README.md for the three project options and all requirements.
-    
-    Choose your option:
-      A) Weather Dashboard
-      B) Task Manager
-      C) Quiz App
-  -->
+  <title>Final Project — Task Manager</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Your HTML goes here -->
-  <main style="padding: 4rem; text-align: center; font-family: system-ui, sans-serif;">
-    <h1>🏗️ Final Project</h1>
-    <p>Replace this template with your chosen project. Good luck!</p>
-    <p>Options: <strong>A) Weather Dashboard</strong> · <strong>B) Task Manager</strong> · <strong>C) Quiz App</strong></p>
-    <p>Read <code>README.md</code> for full instructions.</p>
+  <header style="text-align:center; padding:2rem;">
+    <h1>📝 Task Manager App</h1>
+    <p>Organize your tasks with localStorage + JS</p>
+  </header>
+
+  <main style="max-width:600px; margin:auto; font-family:system-ui;">
+
+    <!-- INPUT SECTION -->
+    <section style="margin-bottom:2rem;">
+      <input id="task-input" type="text" placeholder="Enter a task..." style="padding:10px; width:70%;">
+      <button id="add-btn">Add</button>
+    </section>
+
+    <!-- TASK LIST -->
+    <section>
+      <ul id="task-list" style="list-style:none; padding:0;"></ul>
+    </section>
+
   </main>
 
   <script src="script.js"></script>

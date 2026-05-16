@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CSS Styling Exercise</title>
 
-  <!-- TODO Task 1: Add a <link> to your Google Font here -->
-  <!-- TODO Task 1: Add a <link> to style.css here -->
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS File -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <header id="hero">
@@ -25,55 +31,58 @@
 
     <section id="about">
       <h2>About This Page</h2>
+
       <p class="intro">
-        This page exists for you to practice CSS. Style everything in <code>style.css</code>.
-        Try to make it look great without touching the HTML.
+        This page exists for CSS practice. Style everything in style.css.
       </p>
+
       <p>
-        CSS stands for <strong>Cascading Style Sheets</strong>. It controls how HTML elements
-        look — their colors, sizes, spacing, fonts, and layout. Without CSS, every website
-        would look like a plain text document from 1993.
+        CSS controls colors, spacing, fonts and layout.
       </p>
+
       <p>
-        The first letter of this paragraph should be styled differently using a <em>pseudo-element</em>.
-        Every paragraph should be comfortable to read with good line-height and color.
+        This paragraph demonstrates pseudo-element styling.
       </p>
     </section>
 
     <section id="cards">
       <h2>Styled Cards</h2>
+
       <div class="card-grid">
         <div class="card">
           <h3>Card One</h3>
-          <p>This card should have padding, a border, a border-radius, and a margin.</p>
+          <p>Padding, border, margin and radius.</p>
         </div>
+
         <div class="card">
           <h3>Card Two</h3>
-          <p>Each card should be visually distinct from the surrounding page content.</p>
+          <p>Each card should look separated.</p>
         </div>
+
         <div class="card">
           <h3>Card Three</h3>
-          <p>Cards can have a subtle shadow or background color to lift them off the page.</p>
+          <p>Optional shadow and background.</p>
         </div>
       </div>
     </section>
 
     <section id="list">
       <h2>Alternating List</h2>
+
       <ul class="fancy-list">
-        <li>HTML — Structure</li>
-        <li>CSS — Presentation</li>
-        <li>JavaScript — Behavior</li>
-        <li>Python — Backend Logic</li>
-        <li>SQL — Data Storage</li>
-        <li>Git — Version Control</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>SQL</li>
+        <li>Git</li>
       </ul>
     </section>
 
   </main>
 
   <footer>
-    <p>Week 9 · Exercise 2 · CSS Styling</p>
+    <p>Week 9 · CSS Exercise</p>
   </footer>
 
 </body>

@@ -45,7 +45,7 @@ button:focus { outline: 3px solid #e8a838; outline-offset: 2px; }
 /* Task 5 */
 .sliders { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
 .sliders label { display: flex; align-items: center; gap: 1rem; font-weight: 600; }
-.slider { flex: 1; -webkit-appearance: none; height: 8px; border-radius: 4px; outline: none; cursor: pointer; }
+.slider { flex: 1; -appearance: none; height: 8px; border-radius: 4px; outline: none; cursor: pointer; }
 .red-slider   { background: linear-gradient(to right, #000, #f00); }
 .green-slider { background: linear-gradient(to right, #000, #0f0); }
 .blue-slider  { background: linear-gradient(to right, #000, #00f); }

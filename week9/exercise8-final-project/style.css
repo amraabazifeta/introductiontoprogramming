@@ -1,2 +1,77 @@
-/* style.css — Final Project */
-/* Build your styles here */
+/* =========================
+   FINAL PROJECT STYLE
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+/* HEADER */
+header {
+  background: #1a3a5c;
+  color: white;
+}
+
+/* INPUT SECTION */
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #1a3a5c;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 14px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 6px;
+  background: #1a3a5c;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+/* TASK LIST */
+#task-list li {
+  background: white;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* DELETE BUTTON INSIDE LIST */
+#task-list button {
+  background: #e74c3c;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+#task-list button:hover {
+  background: #c0392b;
+}
+
+/* CONTAINER SPACING */
+main {
+  padding: 2rem;
+}

@@ -1,119 +1,133 @@
-/* 
-  Exercise 2: CSS Styling
-  ========================
-  Complete the tasks described in README.md.
-  Do NOT modify index.html — all your work goes here.
-*/
-
-/* =============================================
-   TODO Task 2: Define CSS Custom Properties
-   ============================================= */
+/* =========================
+   CSS VARIABLES
+========================= */
 :root {
-  /* Add your custom properties here */
-  /* Example: --color-primary: #your-color; */
+  --color-primary: #4f46e5;
+  --color-secondary: #22c55e;
+  --color-text: #1f2937;
+  --color-background: #f9fafb;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --spacing-unit: 1rem;
 }
 
-
-/* =============================================
-   TODO Task 3: Base / Reset Styles
-   ============================================= */
+/* =========================
+   BASE STYLES
+========================= */
 * {
-  /* Consider a box-sizing reset */
+  box-sizing: border-box;
 }
 
 body {
-  /* Set font-family, background-color, color, margin */
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
 }
 
-
-/* =============================================
-   TODO Task 3: Typography — Headings
-   ============================================= */
+/* =========================
+   TYPOGRAPHY
+========================= */
 h1 {
-  /* Large, impactful heading */
+  font-size: 2.5rem;
+  font-family: var(--font-heading);
 }
 
 h2 {
-  /* Section heading */
+  font-size: 1.75rem;
 }
 
 h3 {
-  /* Card heading */
+  font-size: 1.25rem;
 }
 
-/* TODO Task 3: Pseudo-element — first letter of a paragraph */
-/* p::first-letter { ... } */
+/* First letter pseudo-element */
+p::first-letter {
+  font-size: 1.5em;
+  color: var(--color-primary);
+  font-weight: bold;
+}
 
-
-/* =============================================
-   TODO Task 3: Navigation Links
-   ============================================= */
+/* =========================
+   NAVIGATION
+========================= */
 nav {
-  /* Style the nav bar */
+  display: flex;
+  gap: var(--spacing-unit);
+  padding: var(--spacing-unit);
+  background: var(--color-primary);
 }
 
 nav a {
-  /* No underline, some padding, use your color variable */
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
 }
 
 nav a:hover {
-  /* Add an underline or color change on hover */
+  text-decoration: underline;
 }
 
 nav a:focus {
-  /* Make focus state clearly visible (don't remove it!) */
+  outline: 2px solid yellow;
 }
 
-
-/* =============================================
-   TODO Task 4: Header / Hero
-   ============================================= */
+/* =========================
+   HERO HEADER
+========================= */
 #hero {
-  /* Background color, padding, text alignment */
+  background: var(--color-primary);
+  color: white;
+  padding: 2rem;
+  text-align: center;
 }
 
-
-/* =============================================
-   TODO Task 4: Cards & Box Model
-   ============================================= */
+/* =========================
+   CARDS
+========================= */
 .card-grid {
-  /* Space the cards — you can use basic margin or any layout */
+  display: flex;
+  gap: var(--spacing-unit);
+  padding: var(--spacing-unit);
 }
 
 .card {
-  /* 
-    Show off the box model:
-    - padding (inside space)
-    - border (visible edge)
-    - margin (outside space)
-    - border-radius (rounded corners)
-  */
+  background: white;
+  padding: 1rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  margin: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-
-/* =============================================
-   TODO Task 5: Alternating List Items
-   ============================================= */
+/* =========================
+   LIST STYLING
+========================= */
 .fancy-list {
-  /* Remove default bullets, add padding */
+  list-style: none;
+  padding: 0;
+  margin: 1rem;
 }
 
 .fancy-list li {
-  /* Base styles for list items */
+  padding: 0.75rem;
 }
 
 .fancy-list li:nth-child(odd) {
-  /* Different background for odd items */
+  background: #e0e7ff;
 }
 
 .fancy-list li:nth-child(even) {
-  /* Different background for even items */
+  background: #d1fae5;
 }
 
-
-/* =============================================
-   TODO Task 6: Footer
-   ============================================= */
+/* =========================
+   FOOTER
+========================= */
 footer {
-  /* Distinguish the footer from main content */
+  text-align: center;
+  padding: 1rem;
+  background: #111827;
+  color: white;
 }
