@@ -1,19 +1,116 @@
-<!-- 
-  Exercise 1: HTML Basics
-  ========================
-  Your job: Fix and complete this HTML document.
-  Read the README.md for full instructions.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile Page</title>
+</head>
 
-  TODO Task 1: Add missing document structure (DOCTYPE, html, head, body, title, meta tags)
-  TODO Task 2: Add semantic sections (header, nav, main with three sections)
-  TODO Task 3: Add content (paragraphs, lists, table)
-  TODO Task 4: Add media (images, figure, iframe)
-  TODO Task 5: Ensure accessibility (alt text, heading order, meaningful link text)
--->
+<body>
 
-<!-- DELETE this comment and start your document here -->
+  <!-- HEADER -->
+  <header>
+    <img src="https://placehold.co/150x150" alt="Profile picture">
+    <h1>My Profile Page</h1>
+    <p>Learning HTML step by step</p>
+  </header>
 
-  <h1>My Profile Page</h1>
-  <p>About me goes here...</p>
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#about">About</a> |
+    <a href="#skills">Skills</a> |
+    <a href="#contact">Contact</a>
+  </nav>
 
-<!-- HINT: This page is broken — it's missing most of its required structure! -->
+  <hr>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a beginner in web development and I am learning how to build structured web pages using HTML.
+      </p>
+      <p>
+        This project helps me understand semantic tags, accessibility, and proper HTML layout.
+      </p>
+    </section>
+
+    <hr>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Skills</h2>
+
+      <ul>
+        <li>HTML</li>
+        <li>CSS Basics</li>
+        <li>JavaScript Basics</li>
+        <li>Git</li>
+        <li>Problem Solving</li>
+      </ul>
+
+      <h3>Top 3 Skills</h3>
+      <ol>
+        <li>HTML</li>
+        <li>Problem Solving</li>
+        <li>Git</li>
+      </ol>
+
+      <figure>
+        <img src="https://placehold.co/300x200" alt="Coding workspace">
+        <figcaption>A simple coding workspace</figcaption>
+      </figure>
+    </section>
+
+    <hr>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+
+      <table border="1" cellpadding="5">
+        <tr>
+          <th>Method</th>
+          <th>Address</th>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>example@email.com</td>
+        </tr>
+        <tr>
+          <td>GitHub</td>
+          <td>github.com/username</td>
+        </tr>
+        <tr>
+          <td>LinkedIn</td>
+          <td>linkedin.com/in/username</td>
+        </tr>
+      </table>
+
+      <br>
+
+      <!-- YouTube Video -->
+      <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/dD2EISBDjWM"
+        title="HTML Tutorial"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+
+    </section>
+
+  </main>
+
+  <hr>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 My Profile Page</p>
+  </footer>
+
+</body>
+</html>
+

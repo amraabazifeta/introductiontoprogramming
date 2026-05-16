@@ -1,119 +1,158 @@
-/**
- * Exercise 4: JavaScript & the DOM
- * ==================================
- * Complete each task below. Read the README.md for full instructions.
- * Open the browser console (F12) to debug.
- */
+/* =========================
+   TASK 1 — WARMUP
+========================= */
 
-// ============================================================
-// TASK 1 — Console Warmup
-// ============================================================
+// 1a
+const title = document.querySelector('#main-title');
+title.textContent = "DOM Mastery 🚀";
 
-// TODO 1a: Select the element with id "main-title" and change its text to
-//          "DOM Mastery 🚀" using .textContent
+// 1b
+const cards = document.querySelectorAll('.card');
+console.log("Card count:", cards.length);
 
-
-// TODO 1b: Select ALL elements with class "card", log how many there are
-
-
-// TODO 1c: Select the element with id "target-box" and change its
-//          background color to any color you like using style.backgroundColor
+// 1c
+const box = document.querySelector('#target-box');
+box.style.backgroundColor = "#4f46e5";
+box.style.color = "white";
 
 
+/* =========================
+   TASK 2 — COUNTER
+========================= */
 
-// ============================================================
-// TASK 2 — Click Counter
-// ============================================================
-
-// Step 1: Get references to the elements you need
 const countDisplay = document.querySelector('#count-display');
-// TODO: get references to the three buttons
+const btnInc = document.querySelector('#btn-increment');
+const btnDec = document.querySelector('#btn-decrement');
+const btnReset = document.querySelector('#btn-reset');
 
-// Step 2: Track the count
 let count = 0;
 
-// Helper: update the display and apply color classes
 function updateCountDisplay() {
-  // TODO: Set countDisplay.textContent to count
-  // TODO: If count is 0, add class 'zero' to countDisplay (and remove 'high')
-  // TODO: If count > 5, add class 'high' (and remove 'zero')
-  // TODO: Otherwise, remove both classes
+  countDisplay.textContent = count;
+
+  countDisplay.classList.remove('zero', 'high');
+
+  if (count === 0) {
+    countDisplay.classList.add('zero');
+  } else if (count > 5) {
+    countDisplay.classList.add('high');
+  }
 }
 
-// TODO: Add click event listener to increment button
-// TODO: Add click event listener to decrement button (don't go below 0!)
-// TODO: Add click event listener to reset button
+btnInc.addEventListener('click', () => {
+  count++;
+  updateCountDisplay();
+});
 
-// Initialize display
+btnDec.addEventListener('click', () => {
+  if (count > 0) count--;
+  updateCountDisplay();
+});
+
+btnReset.addEventListener('click', () => {
+  count = 0;
+  updateCountDisplay();
+});
+
 updateCountDisplay();
 
 
-// ============================================================
-// TASK 3 — Dynamic List Builder
-// ============================================================
+/* =========================
+   TASK 3 — LIST BUILDER
+========================= */
 
-const listInput = document.querySelector('#list-input');
-const dynamicList = document.querySelector('#dynamic-list');
+const input = document.querySelector('#list-input');
+const addBtn = document.querySelector('#btn-add-item');
+const list = document.querySelector('#dynamic-list');
 
-// TODO: Add click listener to '#btn-add-item'
-// Inside the listener:
-//   1. Get the value from listInput
-//   2. If it's empty (after .trim()), don't add — shake the input or alert
-//   3. Create a new <li> element
-//   4. Set its text content (include a × delete button)
-//   5. Append the <li> to dynamicList
-//   6. Clear listInput.value and focus it
+function createItem(text) {
+  const li = document.createElement('li');
 
-// TODO: Handle delete buttons — you'll need event delegation OR
-//       attach a listener each time you create a new item.
-//       Hint for event delegation:
-//       dynamicList.addEventListener('click', function(event) {
-//         if (event.target.classList.contains('delete-btn')) { ... }
-//       });
+  li.innerHTML = `
+    <span>${text}</span>
+    <button class="delete-btn">×</button>
+  `;
 
-// Wire up delete buttons that already exist in the HTML
-dynamicList.addEventListener('click', function(event) {
-  // TODO: if the clicked element has class 'delete-btn', remove its parent <li>
+  list.appendChild(li);
+}
+
+addBtn.addEventListener('click', () => {
+  const value = input.value.trim();
+
+  if (value === "") {
+    input.classList.add('shake');
+    setTimeout(() => input.classList.remove('shake'), 300);
+    return;
+  }
+
+  createItem(value);
+  input.value = "";
+  input.focus();
+});
+
+// Delete with event delegation
+list.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-btn')) {
+    event.target.parentElement.remove();
+  }
 });
 
 
-// ============================================================
-// TASK 4 — Show / Hide Toggle
-// ============================================================
+/* =========================
+   TASK 4 — TOGGLE
+========================= */
 
 const toggleBtn = document.querySelector('#btn-toggle');
-const detailsDiv = document.querySelector('.details');
+const details = document.querySelector('.details');
 
-// TODO: Add click listener to toggleBtn
-// Inside:
-//   - Toggle the 'hidden' class on detailsDiv
-//   - Change button text: "Show Details" ↔ "Hide Details"
+toggleBtn.addEventListener('click', () => {
+  details.classList.toggle('hidden');
+
+  if (details.classList.contains('hidden')) {
+    toggleBtn.textContent = "Show Details";
+  } else {
+    toggleBtn.textContent = "Hide Details";
+  }
+});
 
 
-// ============================================================
-// TASK 5 — Color Mixer
-// ============================================================
+/* =========================
+   TASK 5 — COLOR MIXER
+========================= */
 
-const sliderR = document.querySelector('#slider-r');
-const sliderG = document.querySelector('#slider-g');
-const sliderB = document.querySelector('#slider-b');
-const colorPreview = document.querySelector('#color-preview');
-const hexDisplay = document.querySelector('#hex-display');
+const r = document.querySelector('#slider-r');
+const g = document.querySelector('#slider-g');
+const b = document.querySelector('#slider-b');
+
+const rVal = document.querySelector('#val-r');
+const gVal = document.querySelector('#val-g');
+const bVal = document.querySelector('#val-b');
+
+const preview = document.querySelector('#color-preview');
+const hex = document.querySelector('#hex-display');
 
 function updateColor() {
-  const r = parseInt(sliderR.value);
-  const g = parseInt(sliderG.value);
-  const b = parseInt(sliderB.value);
+  const red = +r.value;
+  const green = +g.value;
+  const blue = +b.value;
 
-  // TODO: Update the text of #val-r, #val-g, #val-b spans
+  rVal.textContent = red;
+  gVal.textContent = green;
+  bVal.textContent = blue;
 
-  // TODO: Set colorPreview's background to rgb(r, g, b)
+  preview.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 
-  // TODO: Convert each value to a 2-digit hex string and update #hex-display
-  // Hint: const hex = value.toString(16).padStart(2, '0');
+  const hexColor =
+    "#" +
+    red.toString(16).padStart(2, '0') +
+    green.toString(16).padStart(2, '0') +
+    blue.toString(16).padStart(2, '0');
+
+  hex.textContent = hexColor.toUpperCase();
 }
 
-// TODO: Add 'input' event listeners to all three sliders that call updateColor()
+r.addEventListener('input', updateColor);
+g.addEventListener('input', updateColor);
+b.addEventListener('input', updateColor);
 
-// Initialize
 updateColor();
